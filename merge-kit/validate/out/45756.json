@@ -1,0 +1,414 @@
+{
+ "pr": 45756,
+ "test": false,
+ "body_version": "version of 2026-11-25T06:42:10Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Algebra/AddCircle.lean",
+   "line": 500,
+   "decl": "Int.fract_natCast_mul_ratCast_eq_iff",
+   "msg": "`_root_.Int.fract_natCast_mul_ratCast_eq_iff` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Rat.isNat_intFract_of_isNat  Mathlib/Data/Rat/Floor.lean:220  (0.51)  : IsNat r m → IsNat (Int.fract r) 0",
+    "Rat.isNat_intFract_of_isInt  Mathlib/Data/Rat/Floor.lean:223  (0.50)  : IsInt r m → IsNat (Int.fract r) 0",
+    "Rat.isRat_intFract_of_isRat_negOfNat  Mathlib/Data/Rat/Floor.lean:232  (0.49)  : IsRat r (negOfNat n) d → IsRat (Int.fract r) (-n % d) d",
+    "Rat.den_intFract  Mathlib/Data/Rat/Floor.lean:102  (0.49)  : (fract x).den = x.den",
+    "toIcoMod_eq_fract_mul  Mathlib/Algebra/Order/ToIntervalMod.lean:1389  (0.48)  : toIcoMod hp 0 b = Int.fract (b / p) * p"
+   ],
+   "id": "45756:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Algebra/AddCircle.lean",
+   "line": 502,
+   "decl": "Int.fract_natCast_mul_ratCast_eq_iff",
+   "msg": "`have _ : Fact ((0 : 𝕜) < 1)` inside `_root_.Int.fract_natCast_mul_ratCast_eq_iff` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "ZeroLEOneClass.factZeroLtOne  Mathlib/Algebra/Order/ZeroLEOne.lean:54 : Fact ((0 : α) < 1)"
+   ],
+   "id": "45756:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 62,
+   "decl": "Rotation.orbitFract",
+   "msg": "`orbitFract` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.50)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.50)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.50)  : β => f x <| Int.fract (s x)",
+    "AddConstMapClass.map_fract  Mathlib/Algebra/AddConstMap/Basic.lean:258  (0.49)  : f (Int.fract x) = f x - ⌊x⌋ • b",
+    "TauCeti.IsSmoothDisc.apply_fract  TauCeti/Geometry/Manifold/DifferentialForm/Integration/Disc.lean:108  (0.49)  : D (s, Int.fract t) = D (s, t)"
+   ],
+   "id": "45756:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 65,
+   "decl": "Rotation.mem_orbitFract",
+   "msg": "`mem_orbitFract` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polygon.fract_mem_Ioo_of_mem_crossingTimes  TauCeti/KnotTheory/GaussCode/Polygon/Basic.lean:201  (0.55)  : Int.fract t ∈ Ioo (0 : ℝ) 1",
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.54)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.53)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.53)  : β => f x <| Int.fract (s x)",
+    "AddConstMapClass.map_fract  Mathlib/Algebra/AddConstMap/Basic.lean:258  (0.53)  : f (Int.fract x) = f x - ⌊x⌋ • b"
+   ],
+   "id": "45756:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 69,
+   "decl": "Rotation.orbitFract_zero",
+   "msg": "`orbitFract_zero` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.54)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.53)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.53)  : β => f x <| Int.fract (s x)",
+    "AddConstMapClass.map_fract  Mathlib/Algebra/AddConstMap/Basic.lean:258  (0.53)  : f (Int.fract x) = f x - ⌊x⌋ • b",
+    "TauCeti.IsSmoothDisc.apply_fract  TauCeti/Geometry/Manifold/DifferentialForm/Integration/Disc.lean:108  (0.53)  : D (s, Int.fract t) = D (s, t)"
+   ],
+   "id": "45756:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 73,
+   "decl": "Rotation.orbitFract_one",
+   "msg": "`orbitFract_one` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.norm_bernoulliFun_one_fract_le  TauCeti/Analysis/Asymptotics/Sum/EulerMaclaurin.lean:109  (0.55)  : ‖(bernoulliFun 1 (Int.fract x) : ℂ)‖ ≤ 1 / 2",
+    "TauCeti.abs_bernoulliFun_one_fract_le  TauCeti/Analysis/Asymptotics/Sum/EulerMaclaurin.lean:104  (0.55)  : |bernoulliFun 1 (Int.fract x)| ≤ 1 / 2",
+    "TauCeti.isBigO_bernoulliFun_one_fract  TauCeti/Analysis/Asymptotics/Sum/EulerMaclaurin.lean:114  (0.54)  : (fun x ↦ bernoulliFun 1 (Int.fract x)) =O[l] fun _ ↦ (1 : ℝ)",
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.54)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.53)  : Int.fract (2⁻¹ : K) = 2⁻¹"
+   ],
+   "id": "45756:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 76,
+   "decl": "Rotation.orbitFract_mono",
+   "msg": "`orbitFract_mono` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.53)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.52)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.52)  : β => f x <| Int.fract (s x)",
+    "AddConstMapClass.map_fract  Mathlib/Algebra/AddConstMap/Basic.lean:258  (0.52)  : f (Int.fract x) = f x - ⌊x⌋ • b",
+    "TauCeti.IsSmoothDisc.apply_fract  TauCeti/Geometry/Manifold/DifferentialForm/Integration/Disc.lean:108  (0.52)  : D (s, Int.fract t) = D (s, t)"
+   ],
+   "id": "45756:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 86,
+   "decl": "Rotation.zero_mem_orbitFract",
+   "msg": "`zero_mem_orbitFract` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polygon.fract_mem_Ioo_of_mem_crossingTimes  TauCeti/KnotTheory/GaussCode/Polygon/Basic.lean:201  (0.53)  : Int.fract t ∈ Ioo (0 : ℝ) 1",
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.53)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.52)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.52)  : β => f x <| Int.fract (s x)",
+    "AddConstMapClass.map_fract  Mathlib/Algebra/AddConstMap/Basic.lean:258  (0.52)  : f (Int.fract x) = f x - ⌊x⌋ • b"
+   ],
+   "id": "45756:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 89,
+   "decl": "Rotation.card_orbitFract_le",
+   "msg": "`card_orbitFract_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.norm_bernoulliFun_one_fract_le  TauCeti/Analysis/Asymptotics/Sum/EulerMaclaurin.lean:109  (0.52)  : ‖(bernoulliFun 1 (Int.fract x) : ℂ)‖ ≤ 1 / 2",
+    "TauCeti.abs_bernoulliFun_one_fract_le  TauCeti/Analysis/Asymptotics/Sum/EulerMaclaurin.lean:104  (0.52)  : |bernoulliFun 1 (Int.fract x)| ≤ 1 / 2",
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.52)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.51)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.51)  : β => f x <| Int.fract (s x)"
+   ],
+   "id": "45756:8"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 93,
+   "decl": "Rotation.card_orbitFract_of_irrational",
+   "msg": "`card_orbitFract_of_irrational` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.50)  : (Int.fract : ℤ → ℤ) = 0",
+    "GenContFract.compExactValue_correctness_of_stream_eq_some_aux_comp  Mathlib/Algebra/ContinuedFractions/Computation/CorrectnessTerminating.lean:76  (0.50)  : ((⌊a⌋ : K) * b + c) / Int.fract a + b = (b * a + c) / Int.fract a",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.49)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.49)  : β => f x <| Int.fract (s x)",
+    "AddConstMapClass.map_fract  Mathlib/Algebra/AddConstMap/Basic.lean:258  (0.49)  : f (Int.fract x) = f x - ⌊x⌋ • b"
+   ],
+   "id": "45756:9"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 122,
+   "decl": "Rotation.sum_zipWith_sub_tail_append",
+   "msg": "`sum_zipWith_sub_tail_append` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "SimpleGraph.Walk.edges_eq_zipWith_support  Mathlib/Combinatorics/SimpleGraph/Walk/Basic.lean:335  (0.59)  : p.edges = List.zipWith (s(·, ·)) p.support p.support.tail",
+    "TauCeti.Polynomial.ofCoeffList_reverse_zipWith_sub  TauCeti/Algebra/Polynomial/Coeff/List.lean:258  (0.49)  : ofCoeffList (List.zipWith (fun x y => x - y * c) l l').reverse = ofCoeffList l.reverse - ofCoeffList l'.reverse * C c",
+    "List.Vector.zipWith_tail  Mathlib/Data/Vector/Zip.lean:40  (0.48)  : (Vector.zipWith f x y).tail = Vector.zipWith f x.tail y.tail",
+    "TauCeti.Polynomial.divModByMonicStep_snd  TauCeti/Algebra/Polynomial/Coeff/List.lean:290  (0.47)  : (divModByMonicStep t qr a).2 = List.zipWith (fun x y => x - y * (qr.2 ++ [a]).headD 0) (qr.2 ++ [a]).tail t",
+    "List.Vector.zipWith_toList  Mathlib/Data/Vector/Zip.lean:29  (0.47)  : (Vector.zipWith f x y).toList = List.zipWith f x.toList y.toList"
+   ],
+   "id": "45756:10"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 133,
+   "decl": "Rotation.pos_of_mem_zipWith_sub_tail_append",
+   "msg": "`pos_of_mem_zipWith_sub_tail_append` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "List.Vector.zipWith_tail  Mathlib/Data/Vector/Zip.lean:40  (0.46)  : (Vector.zipWith f x y).tail = Vector.zipWith f x.tail y.tail",
+    "TauCeti.Polynomial.ofCoeffList_reverse_zipWith_sub  TauCeti/Algebra/Polynomial/Coeff/List.lean:258  (0.42)  : ofCoeffList (List.zipWith (fun x y => x - y * c) l l').reverse = ofCoeffList l.reverse - ofCoeffList l'.reverse * C c",
+    "Polynomial.ofCoeffList_zipWithAll_sub  Mathlib/Algebra/Polynomial/CoeffList.lean:276  (0.42)  : ofCoeffList (List.zipWithAll (fun a b => a.getD 0 - b.getD 0) p q) = ofCoeffList p - ofCoeffList q",
+    "List.mem_or_mem_of_zipWith_swap_prod_ne  Mathlib/GroupTheory/Perm/List.lean:72  (0.40)  : (zipWith Equiv.swap l l').prod x = x then (eq_or_eq_of_swap_apply_ne_self (a",
+    "Stream'.tail_zip  Mathlib/Data/Stream/Init.lean:194  (0.37)  : tail (zip f s₁ s₂) = zip f (tail s₁) (tail s₂)"
+   ],
+   "id": "45756:11"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 148,
+   "decl": "Rotation.sub_getLast_mem_zipWith_sub_tail_append",
+   "msg": "`sub_getLast_mem_zipWith_sub_tail_append` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Nat.zeckendorf_sum_fib  Mathlib/Data/Nat/Fib/Zeckendorf.lean:152  (1.00)  : l, hl => by have hl'",
+    "List.mem_getLast?_append_of_mem_getLast?  Mathlib/Data/List/Basic.lean:378  (0.46)  : x ∈ (l₁ ++ l₂).getLast?",
+    "List.Vector.zipWith_get  Mathlib/Data/Vector/Zip.lean:34  (0.41)  : (Vector.zipWith f x y).get i = f (x.get i) (y.get i)",
+    "List.Vector.zipWith_tail  Mathlib/Data/Vector/Zip.lean:40  (0.41)  : (Vector.zipWith f x y).tail = Vector.zipWith f x.tail y.tail",
+    "Stream'.Seq.get?_zipWith  Mathlib/Data/Seq/Basic.lean:555  (0.41)  : (zipWith f s s').get? n = Option.map₂ f (s.get? n) (s'.get? n)",
+    "List.getLast_append_singleton  Mathlib/Data/List/Basic.lean:306  (0.40)  : getLast (l ++ [a]) (append_ne_nil_of_right_ne_nil l (cons_ne_nil a _)) = a"
+   ],
+   "id": "45756:12"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 184,
+   "decl": "Rotation.pos_of_mem_gaps",
+   "msg": "`pos_of_mem_gaps` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Place.mem_weierstrassGaps_iff  TauCeti/FieldTheory/FunctionField/Consequences/WeierstrassGaps.lean:275  (0.49)  : n ∈ P.weierstrassGaps ↔ 1 ≤ n ∧ n ≤ 2 * genus k F - 1 ∧ P.IsGap n",
+    "TauCeti.Place.one_mem_weierstrassGaps  TauCeti/FieldTheory/FunctionField/Consequences/WeierstrassGaps.lean:317  (0.49)  : 1 ∈ P.weierstrassGaps",
+    "AddSubmonoid.mem_numericalGaps  TauCeti/NumberTheory/NumericalSemigroup/Basic.lean:57  (0.48)  : n ∈ S.numericalGaps ↔ n ∉ S",
+    "Orientation.oangle_eq_iff_eq_pos_smul_rotation_of_ne_zero  Mathlib/Geometry/Euclidean/Angle/Oriented/Rotation.lean:292  (0.48)  : ℝ, 0 < r ∧ y = r • o.rotation θ x",
+    "TauCeti.Place.mem_weierstrassGaps_iff_isGap  TauCeti/FieldTheory/FunctionField/Consequences/WeierstrassGaps.lean:289  (0.47)  : n ∈ P.weierstrassGaps ↔ P.IsGap n"
+   ],
+   "id": "45756:13"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 230,
+   "decl": "Rotation.etaNeg_pos",
+   "msg": "`etaNeg_pos` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "ciSup_neg  Mathlib/Order/ConditionallyCompletePartialOrder/Indexed.lean:95  (0.51)  : ⨆ (h : p), f h = sSup (∅ : Set α)",
+    "TauCeti.Subcoalgebra.coe_sSup_of_directedOn  TauCeti/Algebra/Coalgebra/Subcoalgebra/Lattice.lean:162  (0.44)  : (↑(sSup S) : Set C) = ⋃ D ∈ S, (D : Set C)",
+    "TopologicalSpace.Opens.coe_sSup  Mathlib/Topology/Sets/Opens.lean:210  (0.44)  : (↑(sSup S) : Set α) = ⋃ i ∈ S, ↑i",
+    "Subsemigroup.coe_sSup_of_directed_on  Mathlib/Algebra/Group/Subsemigroup/Membership.lean:107  (0.44)  : (↑(sSup S) : Set M) = ⋃ s ∈ S, ↑s",
+    "subset_sSup_of_within  Mathlib/Order/CompleteLatticeIntervals.lean:59  (0.44)  : sSup ((↑) '' t : Set α) = (@sSup s _ t : α)"
+   ],
+   "id": "45756:14"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Real/Irrational.lean",
+   "line": 162,
+   "decl": "Irrational.injective_fract_natCast_mul",
+   "msg": "`injective_fract_natCast_mul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Rat.isNat_intFract_of_isNat  Mathlib/Data/Rat/Floor.lean:220  (0.74)  : IsNat r m → IsNat (Int.fract r) 0",
+    "Int.fract_int  Mathlib/Algebra/Order/Floor/Defs.lean:276  (0.73)  : (Int.fract : ℤ → ℤ) = 0",
+    "TauCeti.fract_inv_two  TauCeti/Algebra/Order/Floor/Ring.lean:97  (0.72)  : Int.fract (2⁻¹ : K) = 2⁻¹",
+    "ContinuousOn.comp_fract  Mathlib/Topology/Algebra/Order/Floor.lean:225  (0.72)  : β => f x <| Int.fract (s x)",
+    "toIcoMod_eq_fract_mul  Mathlib/Algebra/Order/ToIntervalMod.lean:1389  (0.72)  : toIcoMod hp 0 b = Int.fract (b / p) * p"
+   ],
+   "id": "45756:15"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Real/Irrational.lean",
+   "line": 167,
+   "decl": "Irrational.injective_fract_natCast_mul",
+   "msg": "`have hne : (m : ℝ) - n ≠ 0` inside `injective_fract_natCast_mul` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Complex.ofReal_sub_ne_zero_of_im_ne_zero  TauCeti/Basic/Complex/OfRealSub.lean:28 : (t : ℂ) - z ≠ 0"
+   ],
+   "id": "45756:16"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 122,
+   "decl": "Rotation.sum_zipWith_sub_tail_append",
+   "msg": "private `sum_zipWith_sub_tail_append` states a fact about library notions only (AddCommGroup, List.zipWith, sum, tail); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:17"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 122,
+   "decl": "Rotation.sum_zipWith_sub_tail_append",
+   "msg": "`sum_zipWith_sub_tail_append` looks like general material living in a feature file; consider the topic file for AddCommGroup, List.zipWith, sum",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:18"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 133,
+   "decl": "Rotation.pos_of_mem_zipWith_sub_tail_append",
+   "msg": "private `pos_of_mem_zipWith_sub_tail_append` states a fact about library notions only (List.zipWith, l.Pairwise, l.tail, rfl); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:19"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 133,
+   "decl": "Rotation.pos_of_mem_zipWith_sub_tail_append",
+   "msg": "`pos_of_mem_zipWith_sub_tail_append` looks like general material living in a feature file; consider the topic file for List.zipWith, l.Pairwise, l.tail",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:20"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 148,
+   "decl": "Rotation.sub_getLast_mem_zipWith_sub_tail_append",
+   "msg": "private `sub_getLast_mem_zipWith_sub_tail_append` states a fact about library notions only (List.zipWith, l.tail); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:21"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Dynamics/Rotation/ThreeGap.lean",
+   "line": 148,
+   "decl": "Rotation.sub_getLast_mem_zipWith_sub_tail_append",
+   "msg": "`sub_getLast_mem_zipWith_sub_tail_append` looks like general material living in a feature file; consider the topic file for List.zipWith, l.tail",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:22"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/Algebra/AddCircle.lean",
+   "line": 500,
+   "decl": "Int.fract_natCast_mul_ratCast_eq_iff",
+   "msg": "section `variable [DivisionRing 𝕜]` (line 280) but `_root_.Int.fract_natCast_mul_ratCast_eq_iff` uses nothing DivisionRing-specific; put such decls in a section with a weaker class",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:23"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/Algebra/AddCircle.lean",
+   "line": 500,
+   "decl": "Int.fract_natCast_mul_ratCast_eq_iff",
+   "msg": "section `variable [Field 𝕜]` (line 477) but `_root_.Int.fract_natCast_mul_ratCast_eq_iff` uses nothing Field-specific; put such decls in a section with a weaker class",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:24"
+  },
+  {
+   "check": "scope",
+   "rubric": "scope",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "diff spans 3 topic directories (TauCeti/Algebra/AddCircle.lean, TauCeti/Dynamics/Rotation, TauCeti/NumberTheory/Real); one topic per PR",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45756:25"
+  }
+ ]
+}

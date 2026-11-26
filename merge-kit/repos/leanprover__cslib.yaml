@@ -1,0 +1,49 @@
+repo: leanprover/cslib
+ai_policy:
+  stance: "follows the Mathlib AI policy"
+  who_may_write_text: "NO agent-written comments/descriptions (inherits Mathlib). Our cslib#1263/#1274 bodies are agent-written: policy risk (STATE-OF-THE-FIELD.md policy table)."
+  disclosure: "'explain this in the PR description. Explain which tool(s) you used and how you used it'"
+  source: "https://raw.githubusercontent.com/leanprover/cslib/main/CONTRIBUTING.md lines 57-60 (gh api 2026-11-25)"
+ci:
+  local: ["lake build --wfail --iofail", "lake test", "lake exe checkInitImports", "lake exe mk_all", "lake shake --add-public --keep-implied --keep-prefix", "lake lint"]
+  source: "cslib CONTRIBUTING.md lines 88-105; .github/workflows/lean_action_ci.yml line 18 (build-args --wfail --iofail)"
+pr:
+  title_regex: "^(feat|fix|doc|style|refactor|test|chore|perf)(\\([^)]*\\))?: "
+  body:
+    required: []
+    forbidden: []
+    disclosure: {regex: "(AI|LLM|Claude|GPT|agent)", msg: "cslib (Mathlib policy) requires stating which AI tools were used and how"}
+  body_template: |
+    <Human-written summary of the change and why.>
+
+    AI use: <tools and how they were used>
+  source: "cslib CONTRIBUTING.md 'Pull Request Titles' lines 76-80"
+placement:
+  rules: ["major developments: discuss on Zulip first (scope, dependencies, placement)", "imports minimised with lake shake", "every file listed in Cslib.lean (mk_all)"]
+  source: "cslib CONTRIBUTING.md lines 100-122"
+review:
+  style: "human maintainers; at least one maintainer approval"
+  recurring:
+    proof-quality: 4   # fold `cases` into one `rintro` (cslib#1263 x4)
+    scope: 1           # revert unrelated Frame/Basic.lean:94 edit (cslib#1242)
+  source: "maintainer notes; FAILURE-MODES.md (review-harvest counts), general classes; cslib CONTRIBUTING.md line 47"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "cslib CONTRIBUTING.md (none stated); STATE-OF-THE-FIELD.md policy table"
+ready_signal:
+  how: "non-draft PR with CI green; ask on the working-group Zulip topic for review of big files"
+  source: "cslib CONTRIBUTING.md lines 47-55, 122; maintainer notes (asked for a domain expert, cslib#1242)"
+lean:
+  src_dirs: [Cslib]
+  sorry_allowed: false
+  forbid_set_option: false
+  authors_header: true
+  max_line: 100
+  max_proof_lines: null
+  source: "lean_action_ci.yml --wfail (sorry warning fails), unpublished observatory raw/ci-evidence.json"
+docs:
+  theorems: main
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 3

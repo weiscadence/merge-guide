@@ -1,0 +1,89 @@
+repo: TauCetiProject/TauCeti
+ai_policy:
+  stance: WELCOME (AI-authored by design, AI-reviewed under a fixed open rubric)
+  who_may_write_text: agents may write code, PR descriptions and replies
+  disclosure: none required
+  source: "TauCeti README.md lines 8, 64 (gh api, 2026-11-25); STATE-OF-THE-FIELD.md policy table §2"
+ci:
+  local: ["lake exe cache get", "bash scripts/lake-cache-get.sh .", "lake build --iofail", "lake test", "lake lint"]
+  notes: "lake lint = source guards, style, doc lint, diff guards (3000 added / 2000 removed lines, new file <= 1250 lines, paths). On this box: no full builds; merge-kit runs the grep-level subset."
+  source: "TauCeti README.md 'Building' lines 236-252"
+pr:
+  title_regex: null
+  title_source: "no title rule found in README/AGENTS.md (checked 2026-11-25)"
+  body:
+    required:
+      - {id: roadmap, regex: "^Roadmap: \\S+", rubric: attribution, msg: "missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)"}
+      - {id: quality-pass, regex: "^Quality pass:", rubric: quality-pass, msg: "missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)"}
+      - {id: q-lines, regex: "^- Q1 .*\\n- Q2 .*\\n- Q3 .*\\n- Q4 .*\\n- Q5 ", rubric: quality-pass, msg: "Quality pass must have all five lines Q1..Q5"}
+    forbidden:
+      - {id: q-unfilled, regex: "^- Q\\d [^\\n]*: …\\s*$", rubric: quality-pass, msg: "Quality pass line still `…`: answer changed/checked/declined/n/a"}
+      - {id: roadmap-placeholder, regex: "^Roadmap: <", rubric: attribution, msg: "Roadmap line is still the template placeholder"}
+    disclosure: null
+  body_template: |
+    Roadmap: <CanonicalAreaName or none>
+
+    <What this adds, which roadmap file and target it advances, and what it draws on (paper /
+    textbook section / in-tree file it follows).>
+
+    New declarations:
+    {{decls}}
+
+    Quality pass:
+    - Q1 Mathlib duplicates: …
+    - Q2 Tau Ceti duplicates, on main and in open PRs: …
+    - Q3 Hypotheses: …
+    - Q4 Section variables: …
+    - Q5 Proofs of at most 50 lines: …
+  source: "TauCeti .github/pull_request_template.md (gh api 2026-11-25); AGENTS.md lines 42-49"
+placement:
+  rules:
+    - "Each declaration in its canonical home: the earlier file whose topic/dependencies fit (placement rubric)."
+    - "Two files sharing a leading CamelCase component become a directory `Foo/` (placement rubric; TauCeti#1202)."
+    - "Flag only evidently wrong imports: unused/redundant or broad `import Mathlib` (placement rubric; TauCeti#44204)."
+    - "General helper hidden `private` in a feature file must move public to its natural home (TauCeti#19002, #45756)."
+  naming: "Mathlib naming conventions; argument-type namespace (`Nat.` not `padicValNat.`, TauCeti#19680); `coeFn` for `⇑` (TauCeti#1283)"
+  source: "TauCetiReview rubrics/placement.md, naming.md; FAILURE-MODES.md (review-harvest counts), TauCeti classes"
+review:
+  style: "AI rubric bot (TauCetiReview), one thread per rubric; humans write the rubric, not the reviews"
+  rubric_files: [_common.md, reuse.md, api-design.md, generality.md, documentation.md, naming.md, placement.md, proof-quality.md, attribution.md, scope.md, correctness.md]
+  recurring:   # distinct PR x rubric threads over 29 TauCeti PRs with rubric activity (134 threads)
+    reuse: 21
+    api-design: 19
+    generality: 18
+    documentation: 18
+    naming: 15
+    placement: 14
+    proof-quality: 11
+    attribution: 6
+    scope: 5
+    correctness: 4
+    quality-pass: 3
+  blocking: "⛔ on reuse (#8486, #8953, #8954 x2), scope (#5762), correctness (#1850); 4 of those 5 PRs closed unmerged"
+  source: "FAILURE-MODES.md (review-harvest counts), TauCeti classes (from review harvest, 2026-11-25)"
+max_open_prs:
+  value: "no written cap; stacked PRs are prohibited (each prerequisite must land first)"
+  source: "TauCeti AGENTS.md 'The rules of the repo' (no-stacking policy)"
+ready_signal:
+  how: "open as a normal (non-draft) PR with a filled Quality pass and green CI. Automatic review is currently switched off (README: 'it is currently switched off. For now, reviews are run from the command line'), so a maintainer or worker runs it. Editing the description alone does not re-trigger review: reply on the thread."
+  source: "TauCeti README.md 'Review' section (fetched 2026-11-25); review.yml gates on vars.CI_REVIEW_ENABLED; FAILURE-MODES.md quality-pass row"
+  corrected: "2026-11-25: earlier profile said 'review runs automatically on push'; the README says it is switched off"
+lean:
+  src_dirs: [TauCeti]
+  sorry_allowed: false
+  forbid_set_option: true
+  forbid_native_decide: true
+  authors_header: true
+  max_line: 100
+  max_proof_lines: 50
+  source: "AGENTS.md 'The rules of the repo' (no sorry, no set_option, no native_decide); template Q5 (50-line proofs); Mathlib style linter (100 cols)"
+naming:
+  forbid_lemma_keyword: false
+docs:
+  theorems: main
+scope:
+  allowed_paths: ["^TauCeti/", "^TauCeti\\.lean$", "^lake-manifest\\.json$", "^lean-toolchain$", "^docbuild/docs/references\\.bib$"]
+  max_added: 3000
+  max_new_file_lines: 1250
+  max_topics: 2
+  topic_depth: 3

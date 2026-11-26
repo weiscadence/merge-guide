@@ -1,0 +1,73 @@
+{
+ "pr": 8955,
+ "test": false,
+ "body_version": "version of 2026-09-25T14:25:43Z",
+ "findings": [
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/AlgebraicGeometry/Curves/StableReduction/DualGraph.lean",
+   "line": 89,
+   "decl": "TauCeti.DualGraph.arithmeticGenus",
+   "msg": "6/8 nearest neighbours of `arithmeticGenus` live in `TauCeti/AlgebraicGeometry/Curves/StableReduction/NumericalType/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.NumericalType.isTorsionFree_pic_of_arithmeticGenus_nonpos TauCeti/AlgebraicGeometry/Curves/StableReduction/Picard/Contraction.lean:269",
+    "TauCeti.NumericalType.arithmeticGenus TauCeti/AlgebraicGeometry/Curves/StableReduction/NumericalType/Basic.lean:393",
+    "TauCeti.NumericalType.arithmeticGenus_def TauCeti/AlgebraicGeometry/Curves/StableReduction/NumericalType/Basic.lean:399",
+    "TauCeti.NumericalType.two_mul_arithmeticGenus TauCeti/AlgebraicGeometry/Curves/StableReduction/NumericalType/Basic.lean:406",
+    "TauCeti.NumericalType.arithmeticGenus_of_card_eq_one TauCeti/AlgebraicGeometry/Curves/StableReduction/NumericalType/Basic.lean:418"
+   ],
+   "id": "8955:0"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/AlgebraicGeometry/Curves/StableReduction/DualGraph.lean",
+   "line": 18,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8955:1"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8955:2"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8955:3"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8955:4"
+  }
+ ]
+}

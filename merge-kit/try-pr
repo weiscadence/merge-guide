@@ -1,0 +1,27 @@
+#!/bin/sh
+# Run merge-kit on an existing GitHub PR in one command (read-only: gh + git fetch, nothing is posted).
+#   merge-kit/try-pr owner/name PR-NUMBER [extra `check` flags, e.g. --rebuild-index]
+# Clones the repo (blobless) into a temp dir, checks out the PR head, and runs `check` against the
+# PR's merge base with the PR's real title and body. Lean repos skip the declaration index unless
+# you pass `--index` (the first build reads .lake/packages/mathlib and takes minutes).
+set -eu
+[ $# -ge 2 ] || { sed -n 2,6p "$0"; exit 2; }
+repo=$1; pr=$2; shift 2
+kit=$(dirname "$(readlink -f "$0")")
+index=--no-index
+if [ "${1:-}" = "--index" ]; then index=; shift; fi
+dir=$(mktemp -d -t merge-kit-try-XXXXXX)
+gh pr view "$pr" --repo "$repo" --json title,body,baseRefName > "$dir/pr.json"
+base=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["baseRefName"])' "$dir/pr.json")
+python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); open(sys.argv[2],"w").write(d["body"] or ""); print(d["title"])' \
+  "$dir/pr.json" "$dir/body.md" > "$dir/title.txt"
+git clone -q --filter=blob:none --no-checkout "https://github.com/$repo" "$dir/repo"
+git -C "$dir/repo" fetch -q origin "pull/$pr/head:pr-$pr" "$base:base-$pr"
+git -C "$dir/repo" checkout -q "pr-$pr"
+basesha=$(git -C "$dir/repo" merge-base "pr-$pr" "base-$pr")
+echo "repo=$repo pr=#$pr base=$base@$(echo "$basesha" | cut -c1-8) workdir=$dir"
+rc=0
+"$kit/merge-kit" check "$dir/repo" "$basesha" --repo "$repo" --body "$dir/body.md" \
+  --title "$(cat "$dir/title.txt")" --out "$dir/out" $index "$@" || rc=$?
+echo "report: $dir/out/REPORT.md  (exit $rc: 1 = an 'ask' fired)"
+exit $rc

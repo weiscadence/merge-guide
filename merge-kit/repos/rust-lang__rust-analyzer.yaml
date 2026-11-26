@@ -1,0 +1,42 @@
+repo: rust-lang/rust-analyzer
+ai_policy:
+  stance: "RESTRICT: no autonomous agents"
+  who_may_write_text: "humans only: 'AI should not be used to generate comments when communicating with maintainers'; PR body and replies in your own words; 'We do not allow autonomous agents to be used to open pull requests or issues to our projects'"
+  disclosure: "'we kindly ask you to disclose usage of AI tools'; AI context only inside a quote block; citation required for AI-authored changes to analysis code"
+  forbidden_content: "AI-authored code on E-easy+E-has-instructions issues; new ide-assists during the feature freeze"
+  verdict_for_agents: "DO NOT OPEN unless a human author writes the body and every reply"
+  source: "https://github.com/rust-lang/rust-analyzer/blob/master/AI_POLICY.md lines 1-35 (fetched 2026-11-25); rust-analyzer#22906"
+ci:
+  local: ["cargo test", "cargo fmt --check", "cargo clippy"]
+  notes: "squash commits before merge (maintainer ask, rust-analyzer#22906)"
+  source: "rust-analyzer CONTRIBUTING.md; maintainer notes"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <Must be written by a human, in their own words (AI_POLICY.md).>
+  source: "rust-analyzer AI_POLICY.md"
+placement:
+  rules: ["restore an existing mechanism rather than delete it (#[deprecated] case)", "a codebase-wide lint sweep is a separate PR"]
+  source: "maintainer notes, rust-analyzer#22906"
+review:
+  style: "human maintainers; 2-3 days between rounds"
+  recurring:
+    root-cause: 1
+    scope: 1
+    policy: 1
+  source: "FAILURE-MODES.md (review-harvest counts), general classes; maintainer notes"
+max_open_prs:
+  value: "not stated"
+  source: "rust-analyzer CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "link the issue; non-draft"
+  source: "rust-analyzer CONTRIBUTING.md 'Fixing a bug or improving a feature'"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

@@ -1,0 +1,133 @@
+{
+ "pr": 19680,
+ "test": false,
+ "body_version": "version of 2026-10-21T16:12:37Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/Rat.lean",
+   "line": 135,
+   "decl": "padicValNat.mul_log_le_log",
+   "msg": "`_root_.padicValNat.mul_log_le_log` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.exists_mul_padicValNat_le_add  TauCeti/NumberTheory/Padics/PadicValNat.lean:69  (0.61)  : ∃ C, ∀ n, c * padicValNat p n ≤ n + C",
+    "TauCeti.eventually_add_mul_padicValNat_le  TauCeti/NumberTheory/Padics/PadicValNat.lean:44  (0.58)  : ∀ᶠ n in atTop, M + c * padicValNat p n ≤ n",
+    "TauCeti.mul_padicValNat_lt_mul_sub_one  TauCeti/NumberTheory/Padics/PadicValNat.lean:80  (0.56)  : e * padicValNat p n < i * (n - 1)",
+    "TauCeti.LSeries.norm_tsum_term_mul_comp_log_div_le  TauCeti/NumberTheory/LSeries/WienerIkehara/Approximation.lean:293  (0.53)  : ℕ, _root_.LSeries.term a 1 n * W (1 / (2 * π) * Real.log (n / x))‖ ≤ M * (C * (1 + 2 * π ^ 2))",
+    "TauCeti.arakelovLogHeight_le_mul_log_natCard_add_logHeight  TauCeti/NumberTheory/Height/Arakelov/Comparison.lean:177  (0.53)  : arakelovLogHeight y ≤ finrank ℚ K / 2 * Real.log (Nat.card ι) + logHeight y"
+   ],
+   "id": "19680:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/Rat.lean",
+   "line": 148,
+   "decl": "Rat.abs_padicValRat_mul_log_le_logHeight₁",
+   "msg": "`abs_padicValRat_mul_log_le_logHeight₁` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Rat.logHeight₁_natCast  Mathlib/NumberTheory/Height/NumberField.lean:559  (0.64)  : logHeight₁ (n : ℚ) = Real.log n",
+    "Polynomial.rootMultiplicity_mul_logHeight₁_le  TauCeti/NumberTheory/Height/Polynomial/RootMultiplicity.lean:52  (0.57)  : (P.rootMultiplicity β : ℝ) * logHeight₁ β ≤ P.logHeight + Module.finrank ℚ K * P.natDegree * Real.log 2",
+    "TauCeti.GlobalNumberFields.log_normalizedAbsValue_le_logHeight₁  TauCeti/NumberTheory/NumberField/Global/Places/Height.lean:130  (0.51)  : log (normalizedAbsValue v x) ≤ logHeight₁ x",
+    "TauCeti.GlobalNumberFields.abs_log_normalizedAbsValue_le_logHeight₁  TauCeti/NumberTheory/NumberField/Global/Places/Height.lean:138  (0.51)  : |log (normalizedAbsValue v x)| ≤ logHeight₁ x",
+    "padicValRat_two_harmonic  Mathlib/NumberTheory/Harmonic/Int.lean:29  (0.49)  : padicValRat 2 (harmonic n) = -Nat.log 2 n"
+   ],
+   "id": "19680:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/Rat.lean",
+   "line": 176,
+   "decl": "Rat.abs_padicValRat_le_logHeight₁_div_log_two",
+   "msg": "`abs_padicValRat_le_logHeight₁_div_log_two` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Rat.logHeight₁_natCast  Mathlib/NumberTheory/Height/NumberField.lean:559  (0.62)  : logHeight₁ (n : ℚ) = Real.log n",
+    "Polynomial.rootMultiplicity_mul_logHeight₁_le  TauCeti/NumberTheory/Height/Polynomial/RootMultiplicity.lean:52  (0.52)  : (P.rootMultiplicity β : ℝ) * logHeight₁ β ≤ P.logHeight + Module.finrank ℚ K * P.natDegree * Real.log 2",
+    "padicValRat_two_harmonic  Mathlib/NumberTheory/Harmonic/Int.lean:29  (0.50)  : padicValRat 2 (harmonic n) = -Nat.log 2 n",
+    "TauCeti.GlobalNumberFields.log_normalizedAbsValue_le_logHeight₁  TauCeti/NumberTheory/NumberField/Global/Places/Height.lean:130  (0.49)  : log (normalizedAbsValue v x) ≤ logHeight₁ x",
+    "TauCeti.GlobalNumberFields.abs_log_normalizedAbsValue_le_logHeight₁  TauCeti/NumberTheory/NumberField/Global/Places/Height.lean:138  (0.49)  : |log (normalizedAbsValue v x)| ≤ logHeight₁ x"
+   ],
+   "id": "19680:2"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/Height/Rat.lean",
+   "line": 148,
+   "decl": "Rat.abs_padicValRat_mul_log_le_logHeight₁",
+   "msg": "4/8 nearest neighbours of `abs_padicValRat_mul_log_le_logHeight₁` live in `TauCeti/NumberTheory/Height/NumberField.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "NumberField.absLogHeight₁_ratCast TauCeti/NumberTheory/Height/NumberField.lean:370",
+    "NumberField.absMulHeight₁_ratCast TauCeti/NumberTheory/Height/NumberField.lean:363",
+    "TauCeti.exists_pos_forall_le_absLogHeight₁ TauCeti/NumberTheory/Height/Kronecker.lean:129",
+    "TauCeti.absLogHeight₁_two_rpow_inv TauCeti/NumberTheory/Height/Kronecker.lean:152",
+    "TauCeti.exists_absLogHeight₁_lt TauCeti/NumberTheory/Height/Kronecker.lean:165"
+   ],
+   "id": "19680:3"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/Height/Rat.lean",
+   "line": 176,
+   "decl": "Rat.abs_padicValRat_le_logHeight₁_div_log_two",
+   "msg": "4/8 nearest neighbours of `abs_padicValRat_le_logHeight₁_div_log_two` live in `TauCeti/NumberTheory/Height/NumberField.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "NumberField.absLogHeight₁_ratCast TauCeti/NumberTheory/Height/NumberField.lean:370",
+    "NumberField.absMulHeight₁_ratCast TauCeti/NumberTheory/Height/NumberField.lean:363",
+    "TauCeti.exists_pos_forall_le_absLogHeight₁ TauCeti/NumberTheory/Height/Kronecker.lean:129",
+    "TauCeti.absLogHeight₁_two_rpow_inv TauCeti/NumberTheory/Height/Kronecker.lean:152",
+    "TauCeti.exists_absLogHeight₁_lt TauCeti/NumberTheory/Height/Kronecker.lean:165"
+   ],
+   "id": "19680:4"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19680:5"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19680:6"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/NumberTheory/Height/Rat.lean",
+   "line": 164,
+   "decl": "Rat.abs_padicValRat_mul_log_le_logHeight₁",
+   "msg": "6-step `rw` chain in `abs_padicValRat_mul_log_le_logHeight₁`: brittle; try `simp only`/`field_simp`/a named lemma",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "19680:7"
+  }
+ ]
+}

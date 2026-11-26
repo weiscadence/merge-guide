@@ -1,0 +1,43 @@
+repo: ArtBlocks/abx
+ai_policy:
+  stance: "no AI section in CONTRIBUTING.md"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; disclose anyway"
+  forbidden_content: "Do not add planning, strategy, research notebooks, review transcripts, or private triage records"
+  source: "https://github.com/ArtBlocks/abx/blob/main/CONTRIBUTING.md lines 37-46 (gh api 2026-11-25)"
+ci:
+  local: ["corepack enable", "pnpm install --frozen-lockfile", "pnpm build", "pnpm test", "cd contracts && forge soldeer install && forge test"]
+  notes: "do not raise code-size test limits to make a change pass"
+  source: "abx CONTRIBUTING.md lines 12-35, 53-60"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: verified, regex: "(?i)(tested|verified|pnpm test|forge test)", rubric: tests, msg: "say how the change was verified (CONTRIBUTING 'Before opening a change')"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <Behaviour changed.>
+
+    Verified: <commands run>
+    Affects: contracts / deployed addresses / package APIs / CLI / public docs: <which, or none>
+  source: "abx CONTRIBUTING.md 'Before opening a change' lines 5-10"
+placement:
+  rules: ["preserve package boundaries; no provider-specific behaviour in the SDK", "extend the shared script preparation rather than adding a branch (abx#177)"]
+  source: "abx CONTRIBUTING.md line 45; FAILURE-MODES.md (review-harvest counts), general classes"
+review:
+  style: "human maintainer; superseded our abx#152 and #186 with own PRs (#177, #197)"
+  recurring:
+    root-cause: 2
+  source: "FAILURE-MODES.md (review-harvest counts), general classes 'Superseded without merge'"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "abx CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "fork workflow runs need maintainer approval on each push; ask once CI is approved and green"
+  source: "abx CONTRIBUTING.md lines 66-69"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

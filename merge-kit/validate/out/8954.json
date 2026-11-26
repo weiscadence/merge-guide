@@ -1,0 +1,145 @@
+{
+ "pr": 8954,
+ "test": true,
+ "body_version": "version of 2026-09-25T14:23:27Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Geometry/Hodge/Rationalification.lean",
+   "line": 46,
+   "decl": "TauCeti.Hodge.Rationalification",
+   "msg": "`Rationalification` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "AddCommGroup  Mathlib/Algebra/Group/Defs.lean:111  (0.69)  : ",
+    "Complex.addCommGroup  Mathlib/Basic/Complex/Basic.lean:326  (0.66)  : AddCommGroup ℂ",
+    "Matrix.addCommGroup  Mathlib/LinearAlgebra/Matrix/Defs.lean:203  (0.66)  : AddCommGroup (Matrix m n α)",
+    "Submodule.addCommGroup  Mathlib/Algebra/Module/Submodule/Defs.lean:363  (0.65)  : AddCommGroup p",
+    "Fin.addCommGroup  Mathlib/Algebra/Group/Fin/Basic.lean:67  (0.65)  : AddCommGroup (Fin n)"
+   ],
+   "id": "8954:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Geometry/Hodge/Rationalification.lean",
+   "line": 50,
+   "decl": "TauCeti.Hodge.rationalificationMap",
+   "msg": "`rationalificationMap` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "LinearMap.ker_tensorProductMk  Mathlib/LinearAlgebra/TensorProduct/RightExactness.lean:405  (0.65)  : ker (TensorProduct.mk R (R ⧸ I) Q 1) = I • ⊤",
+    "LinearMap.lTensor_comp_mk  Mathlib/LinearAlgebra/TensorProduct/Map.lean:364  (0.64)  : f.lTensor M ∘ₗ TensorProduct.mk R M N m = TensorProduct.mk R M P m ∘ₗ f",
+    "IsLocalRing.map_tensorProduct_mk_eq_top  Mathlib/RingTheory/LocalRing/Module.lean:71  (0.64)  : N.map (TensorProduct.mk R k M 1) = ⊤ ↔ N = ⊤",
+    "LinearMap.rTensor_comp_flip_mk  Mathlib/LinearAlgebra/TensorProduct/Map.lean:369  (0.63)  : f.rTensor M ∘ₗ (TensorProduct.mk R N M).flip m = (TensorProduct.mk R P M).flip m ∘ₗ f",
+    "PiTensorProduct.gMul_eq_coe_linearMap  Mathlib/LinearAlgebra/TensorPower/Basic.lean:89  (0.63)  : a ₜ* b = ((TensorProduct.mk R _ _).compr₂ ↑(mulEquiv : _ ≃ₗ[R] (⨂[R]^(i + j)) M) : ⨂[R]^i M →ₗ[R] (⨂[R]^j) M →ₗ[R] (⨂[R]"
+   ],
+   "id": "8954:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Geometry/Hodge/Rationalification.lean",
+   "line": 56,
+   "decl": "TauCeti.Hodge.rationalificationMap_apply",
+   "msg": "`rationalificationMap_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "LinearMap.ker_tensorProductMk  Mathlib/LinearAlgebra/TensorProduct/RightExactness.lean:405  (0.63)  : ker (TensorProduct.mk R (R ⧸ I) Q 1) = I • ⊤",
+    "LinearMap.lTensor_comp_mk  Mathlib/LinearAlgebra/TensorProduct/Map.lean:364  (0.62)  : f.lTensor M ∘ₗ TensorProduct.mk R M N m = TensorProduct.mk R M P m ∘ₗ f",
+    "IsLocalRing.map_tensorProduct_mk_eq_top  Mathlib/RingTheory/LocalRing/Module.lean:71  (0.62)  : N.map (TensorProduct.mk R k M 1) = ⊤ ↔ N = ⊤",
+    "LinearMap.rTensor_comp_flip_mk  Mathlib/LinearAlgebra/TensorProduct/Map.lean:369  (0.61)  : f.rTensor M ∘ₗ (TensorProduct.mk R N M).flip m = (TensorProduct.mk R P M).flip m ∘ₗ f",
+    "PiTensorProduct.gMul_eq_coe_linearMap  Mathlib/LinearAlgebra/TensorPower/Basic.lean:89  (0.61)  : a ₜ* b = ((TensorProduct.mk R _ _).compr₂ ↑(mulEquiv : _ ≃ₗ[R] (⨂[R]^(i + j)) M) : ⨂[R]^i M →ₗ[R] (⨂[R]^j) M →ₗ[R] (⨂[R]"
+   ],
+   "id": "8954:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Geometry/Hodge/Rationalification.lean",
+   "line": 61,
+   "decl": "TauCeti.Hodge.isBaseChange_rationalificationMap",
+   "msg": "`isBaseChange_rationalificationMap` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TensorProduct.isBaseChange  Mathlib/RingTheory/IsTensorProduct.lean:384  (0.80)  : IsBaseChange S (TensorProduct.mk R S M 1)",
+    "TauCeti.Hodge.isBaseChange_complexificationMap  TauCeti/Geometry/Hodge/Conjugation.lean:596  (0.67)  : IsBaseChange ℂ (complexificationMap (V",
+    "TauCeti.Hodge.isBaseChange_rationalToComplexMap  TauCeti/Geometry/Hodge/BaseChange.lean:168  (0.67)  : IsBaseChange ℂ (rationalToComplexMap hℚ ιℂ)",
+    "TauCeti.Hodge.isBaseChange_tateLatticeMap  TauCeti/Geometry/Hodge/Tate/Basic.lean:50  (0.66)  : IsBaseChange ℂ tateLatticeMap",
+    "TauCeti.Hodge.isBaseChange_integralQuotientToComplex  TauCeti/Geometry/Hodge/SubquotientModel.lean:188  (0.62)  : IsBaseChange ℂ (integralQuotientToComplex hℚ hℂ U)"
+   ],
+   "id": "8954:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Geometry/Hodge/Rationalification.lean",
+   "line": 67,
+   "decl": "TauCeti.Hodge.rationalificationMap_injective",
+   "msg": "`rationalificationMap_injective` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Module.FaithfullyFlat.tensorProduct_mk_injective  Mathlib/RingTheory/Flat/FaithfullyFlat/Algebra.lean:91  (0.81)  : Function.Injective (TensorProduct.mk A B M 1)",
+    "Module.Flat.tensorProduct_mk_injective  Mathlib/RingTheory/Flat/Basic.lean:259  (0.68)  : Injective (TensorProduct.mk R S M 1)",
+    "Algebra.TensorProduct.mk_one_injective_of_isScalarTower  Mathlib/RingTheory/TensorProduct/Basic.lean:507  (0.66)  : Function.Injective (TensorProduct.mk R S M 1)",
+    "TensorProduct.sum_tmul_basis_left_injective  Mathlib/LinearAlgebra/TensorProduct/Basis.lean:185  (0.63)  : Function.Injective (Finsupp.lsum R fun i ↦ (TensorProduct.mk R M N) (ℬ i))",
+    "TensorProduct.sum_tmul_basis_right_injective  Mathlib/LinearAlgebra/TensorProduct/Basis.lean:116  (0.63)  : Function.Injective (Finsupp.lsum R fun i ↦ (TensorProduct.mk R M N).flip (𝒞 i))"
+   ],
+   "id": "8954:4"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Geometry/Hodge/Rationalification.lean",
+   "line": 20,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`Suggested.lean`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8954:5"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8954:6"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8954:7"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8954:8"
+  }
+ ]
+}

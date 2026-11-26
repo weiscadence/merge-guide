@@ -1,0 +1,47 @@
+repo: Verified-zkEVM/clean
+ai_policy:
+  stance: "no written AI policy (no CONTRIBUTING.md; README has none)"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; disclose anyway"
+  source: "gh api repos/Verified-zkEVM/clean/contents/CONTRIBUTING.md -> 404 (2026-11-25); README.md"
+ci:
+  local: ["python3 scripts/check-consecutive-empty-lines.py", "lake build --wfail", "lake build CleanTests"]
+  source: ".github/workflows/ci.yml lines 16-28"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <What and why; fix the problem rather than document it (clean#512).>
+  source: "maintainer notes"
+placement:
+  rules: ["prefer the most direct expression (`body init 0`) over detours (clean#515 x2)"]
+  source: "maintainer notes"
+review:
+  style: "human maintainer; fast approvals"
+  recurring:
+    proof-quality: 2   # simplest direct term, clean#515
+    scope: 1           # PR that pins a known-bad behaviour refused, clean#512
+  source: "FAILURE-MODES.md (review-harvest counts), general classes; maintainer notes"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "none stated in README"
+ready_signal:
+  how: "CI green, non-draft"
+  source: "ci.yml"
+lean:
+  src_dirs: [Clean]
+  sorry_allowed: false
+  forbid_set_option: false
+  authors_header: false
+  max_line: null
+  max_proof_lines: null
+  source: "ci.yml build-args --wfail (sorry warning fails); ci-evidence.json"
+docs:
+  theorems: main
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

@@ -1,0 +1,49 @@
+repo: ImperialCollegeLondon/FLT
+ai_policy:
+  stance: "no AI section in CONTRIBUTING"
+  who_may_write_text: "unknown (no written rule); disclose anyway"
+  disclosure: "not required in writing"
+  source: "https://raw.githubusercontent.com/ImperialCollegeLondon/FLT/main/CONTRIBUTING.md (gh api 2026-11-25); STATE-OF-THE-FIELD.md policy table"
+ci:
+  local: ["lake exe cache get", "lake build --iofail", "scripts/run_before_push.sh"]
+  notes: "sorry allowed by design (warn.sorry = false)"
+  source: "FLT CONTRIBUTING.md lines 36-45; ci-evidence.json (blueprint.yml TEST_ARGS=--iofail; lakefile.toml:14-15)"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: null
+  body_template: |
+    Closes #<issue>
+
+    <What the task asked and what this proves.>
+  source: "FLT CONTRIBUTING.md 'Claiming a Task' / 'Submitting' lines 19-57"
+placement:
+  rules: ["work only on a claimed task issue: comment `claim` on the issue, then `propose #PR` after opening"]
+  source: "FLT CONTRIBUTING.md lines 19-57"
+review:
+  style: "human maintainers via the project dashboard columns"
+  recurring: {}
+  recurring_note: "FLT#1215 has no review yet (our only FLT PR)"
+  source: "unpublished observatory REPORT.md §1.1 (FLT: 1 PR, open)"
+max_open_prs:
+  value: "one PR per claimed task; no numeric cap"
+  source: "FLT CONTRIBUTING.md lines 19-57"
+ready_signal:
+  how: "comment `awaiting-review` on the PR (adds the label, moves the task to In Review). FLT#1215 never got it."
+  source: "FLT CONTRIBUTING.md line 61; STATE-OF-THE-FIELD.md policy table"
+lean:
+  src_dirs: [FLT]
+  sorry_allowed: true
+  forbid_set_option: false
+  authors_header: true
+  max_line: 100
+  max_proof_lines: null
+  source: "ci-evidence.json; Mathlib style"
+docs:
+  theorems: main
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 3

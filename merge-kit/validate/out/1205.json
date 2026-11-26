@@ -1,0 +1,109 @@
+{
+ "pr": 1205,
+ "test": true,
+ "body_version": "version of 2026-07-26T07:01:34Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Contour/HungerbuhlerWasem.lean",
+   "line": 194,
+   "decl": "TauCeti.Contour.conditionAprime_of_simple_poles",
+   "msg": "`conditionAprime_of_simple_poles` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Contour.conditionAprime_comm  TauCeti/Analysis/Contour/RegularityConditions.lean:352  (0.87)  : ConditionAprime γ a b f S ↔ ConditionAprime γ b a f S",
+    "TauCeti.Contour.conditionAprime_iff  TauCeti/Analysis/Contour/RegularityConditions.lean:334  (0.77)  : ConditionAprime γ a b f S ↔ (∀ s ∈ S, (Set.uIcc a b ∩ γ ⁻¹' {s}).Finite) ∧ (∀ t₀ ∈ Set.Ioo (min a b) (max a b), γ t₀ ∈ S"
+   ],
+   "id": "1205:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Contour/HungerbuhlerWasem.lean",
+   "line": 221,
+   "decl": "TauCeti.Contour.conditionB_of_simple_poles",
+   "msg": "`conditionB_of_simple_poles` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Contour.conditionB_comm  TauCeti/Analysis/Contour/RegularityConditions.lean:414  (0.85)  : ConditionB γ a b f ↔ ConditionB γ b a f",
+    "TauCeti.Contour.conditionB_iff  TauCeti/Analysis/Contour/RegularityConditions.lean:404  (0.76)  : ConditionB γ a b f ↔ (∀ t₀ ∈ Set.Ioo (min a b) (max a b), meromorphicOrderAt f (γ t₀) < (-1 : ℤ) → SectorCompatible f (γ"
+   ],
+   "id": "1205:1"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Contour/HungerbuhlerWasem.lean",
+   "line": 194,
+   "decl": "TauCeti.Contour.conditionAprime_of_simple_poles",
+   "msg": "6/8 nearest neighbours of `conditionAprime_of_simple_poles` live in `TauCeti/Analysis/Contour/RegularityConditions.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Contour.ConditionAprime TauCeti/Analysis/Contour/RegularityConditions.lean:316",
+    "TauCeti.Contour.conditionAprime_iff TauCeti/Analysis/Contour/RegularityConditions.lean:334",
+    "TauCeti.Contour.conditionAprime_comm TauCeti/Analysis/Contour/RegularityConditions.lean:352",
+    "TauCeti.Contour.ConditionB TauCeti/Analysis/Contour/RegularityConditions.lean:391",
+    "TauCeti.Contour.conditionB_iff TauCeti/Analysis/Contour/RegularityConditions.lean:404"
+   ],
+   "id": "1205:2"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Contour/HungerbuhlerWasem.lean",
+   "line": 221,
+   "decl": "TauCeti.Contour.conditionB_of_simple_poles",
+   "msg": "6/8 nearest neighbours of `conditionB_of_simple_poles` live in `TauCeti/Analysis/Contour/RegularityConditions.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Contour.ConditionB TauCeti/Analysis/Contour/RegularityConditions.lean:391",
+    "TauCeti.Contour.conditionB_iff TauCeti/Analysis/Contour/RegularityConditions.lean:404",
+    "TauCeti.Contour.conditionB_comm TauCeti/Analysis/Contour/RegularityConditions.lean:414",
+    "TauCeti.Contour.ConditionAprime TauCeti/Analysis/Contour/RegularityConditions.lean:316",
+    "TauCeti.Contour.conditionAprime_iff TauCeti/Analysis/Contour/RegularityConditions.lean:334"
+   ],
+   "id": "1205:3"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1205:4"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1205:5"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1205:6"
+  }
+ ]
+}

@@ -1,0 +1,115 @@
+{
+ "pr": 45797,
+ "test": false,
+ "body_version": "version of 2026-11-25T10:53:17Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 61,
+   "decl": "TauCeti.hasDerivAt_exp_neg_mul_rpow_mul_laguerre",
+   "msg": "`hasDerivAt_exp_neg_mul_rpow_mul_laguerre` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Finset.hasDerivAt_sum_eval_mul_exp  TauCeti/Analysis/SpecialFunctions/Exp/ExponentialPolynomial.lean:81  (0.58)  : HasDerivAt (fun x ↦ ∑ i ∈ s, (p i).eval x * Real.exp (γ i * x)) (∑ i ∈ s, (derivative (p i) + C (γ i) * p i).eval x * Re",
+    "TauCeti.hasDerivAt_exp_mul_const_mul_exp_neg  TauCeti/Analysis/SpecialFunctions/Exponential.lean:97  (0.54)  : HasDerivAt (fun t : ℝ ↦ exp (t • x) * c * exp (t • (-x))) (x * c - c * x) 0",
+    "ProbabilityTheory.hasDerivAt_neg_exp_mul_exp  Mathlib/Probability/Distributions/Exponential.lean:111  (0.53)  : HasDerivAt (fun a ↦ -exp (-(r * a))) (r * exp (-(r * x))) x",
+    "Finset.hasDerivAt_sum_eval_mul_cexp  TauCeti/Analysis/SpecialFunctions/Exp/ExponentialPolynomial.lean:221  (0.53)  : HasDerivAt (fun z ↦ ∑ i ∈ s, (p i).eval z * Complex.exp (γ i * z)) (∑ i ∈ s, (derivative (p i) + C (γ i) * p i).eval z *",
+    "TauCeti.hasDerivAt_mul_exp_neg_mul  TauCeti/Analysis/SpecialFunctions/Exp/Deriv.lean:81  (0.52)  : HasDerivAt (fun s ↦ c * Real.exp (-(k * s))) (-(k * (c * Real.exp (-(k * t))))) t"
+   ],
+   "id": "45797:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 78,
+   "decl": "TauCeti.iteratedDeriv_exp_neg_mul_rpow_eq_laguerre",
+   "msg": "`iteratedDeriv_exp_neg_mul_rpow_eq_laguerre` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.eval_zero_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:135  (0.50)  : (laguerre α n).eval 0 = ((1 : ℚ) / n.factorial) • (ascPochhammer R n).smeval (α + 1)",
+    "Finset.iteratedDeriv_sum_eval_mul_cexp  TauCeti/Analysis/SpecialFunctions/Exp/ExponentialPolynomial.lean:233  (0.44)  : iteratedDeriv n (fun z ↦ ∑ i ∈ s, (p i).eval z * Complex.exp (γ i * z)) = fun z ↦ ∑ i ∈ s, ((fun r ↦ derivative r + C (γ",
+    "iteratedDeriv_exp_const_mul  Mathlib/Analysis/SpecialFunctions/ExpDeriv.lean:391  (0.44)  : (iteratedDeriv n fun s => exp (c * s)) = fun s => c ^ n * exp (c * s)",
+    "Polynomial.coeff_laguerre_self  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:94  (0.42)  : (laguerre α n).coeff n = algebraMap ℚ R ((-1) ^ n / n.factorial)",
+    "MvPolynomial.iteratedDeriv_eval_update_mul_cexp  TauCeti/Analysis/MvPolynomial/Deriv.lean:68  (0.42)  : iteratedDeriv σ (fun w ↦ eval (update x i w) F * Complex.exp (a * w + b)) = fun w ↦ (∑ k ∈ range (σ + 1), (σ.choose k : "
+   ],
+   "id": "45797:1"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 61,
+   "decl": "TauCeti.hasDerivAt_exp_neg_mul_rpow_mul_laguerre",
+   "msg": "8/8 nearest neighbours of `hasDerivAt_exp_neg_mul_rpow_mul_laguerre` live in `TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Polynomial.integrable_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:116",
+    "Polynomial.integral_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:127",
+    "Polynomial.laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:69",
+    "Polynomial.laguerreMeasure_def TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:74",
+    "Polynomial.sigmaFinite_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:81"
+   ],
+   "id": "45797:2"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 78,
+   "decl": "TauCeti.iteratedDeriv_exp_neg_mul_rpow_eq_laguerre",
+   "msg": "6/8 nearest neighbours of `iteratedDeriv_exp_neg_mul_rpow_eq_laguerre` live in `TauCeti/Analysis/InnerProductSpace/NormPow.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Polynomial.integrable_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:116",
+    "Polynomial.integral_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:127",
+    "TauCeti.iteratedFDeriv_two_norm_rpow_apply TauCeti/Analysis/InnerProductSpace/NormPow.lean:413",
+    "TauCeti.norm_iteratedFDeriv_two_norm_rpow_le TauCeti/Analysis/InnerProductSpace/NormPow.lean:440",
+    "TauCeti.norm_iteratedFDeriv_two_norm_rpow_sub_le TauCeti/Analysis/InnerProductSpace/NormPow.lean:569"
+   ],
+   "id": "45797:3"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 33,
+   "decl": null,
+   "msg": "module docstring contains proof mechanics (`is proved by`): docstrings describe the result, not the process or proof",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45797:4"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "45797:5"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "45797:6"
+  }
+ ]
+}

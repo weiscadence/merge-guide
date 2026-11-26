@@ -1,0 +1,12 @@
+{
+ "https://arxiv.org/abs/2601.15195": {
+  "checked": "2026-11-26",
+  "note": "The abstract gives no percentages for these causes, so the guide quotes none.",
+  "quote": "uncovering rejection reasons not captured by quantitative metrics, including lack of meaningful reviewer engagement, duplicate PRs, unwanted feature implementations, and agent misalignment"
+ },
+ "https://arxiv.org/abs/2602.08915": {
+  "checked": "2026-11-26",
+  "note": "",
+  "quote": "documentation tasks achieve 82.1% acceptance compared to 66.1% for new features"
+ }
+}

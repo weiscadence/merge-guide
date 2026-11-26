@@ -1,0 +1,546 @@
+{
+ "pr": 1850,
+ "test": false,
+ "body_version": "version of 2026-08-03T03:10:06Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/BoundedGenerator/Basic.lean",
+   "line": 59,
+   "decl": "TauCeti.Semigroups.StronglyContinuousSemigroup.norm_exp_le_exp_norm",
+   "msg": "`norm_exp_le_exp_norm` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Complex.norm_exp_le_exp_norm  Mathlib/Analysis/Complex/Exponential.lean:507  (1.00)  : ‖exp x‖ ≤ Real.exp ‖x‖",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_apply  TauCeti/Analysis/Semigroups/ExponentialShift.lean:63  (0.85)  : S.expShift lambda t = Real.exp (-(lambda * (t : ℝ))) • S t",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_apply_apply  TauCeti/Analysis/Semigroups/ExponentialShift.lean:68  (0.85)  : S.expShift lambda t x = Real.exp (-(lambda * (t : ℝ))) • S t x",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShiftContraction_apply  TauCeti/Analysis/Semigroups/ExponentialShift.lean:146  (0.84)  : S.expShiftContraction lambda hb t = Real.exp (-(lambda * (t : ℝ))) • S t",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_realOperator_of_nonneg  TauCeti/Analysis/Semigroups/ExponentialShift.lean:90  (0.83)  : (S.expShift lambda).realOperator t = Real.exp (-(lambda * t)) • S.realOperator t",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_realOperator_apply_of_nonneg  TauCeti/Analysis/Semigroups/ExponentialShift.lean:97  (0.83)  : (S.expShift lambda).realOperator t x = Real.exp (-(lambda * t)) • S.realOperator t x"
+   ],
+   "id": "1850:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/BoundedGenerator/Basic.lean",
+   "line": 77,
+   "decl": "TauCeti.Semigroups.StronglyContinuousSemigroup.exp_add_of_commute",
+   "msg": "`exp_add_of_commute` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Complex.exp_add  Mathlib/Analysis/Complex/Exponential.lean:110  (1.00)  : exp (x + y) = exp x * exp y",
+    "Real.exp_add  Mathlib/Analysis/Complex/Exponential.lean:221  (1.00)  : exp (x + y) = exp x * exp y",
+    "Circle.exp_add  Mathlib/Analysis/Complex/Circle.lean:136  (1.00)  : exp (x + y) = exp x * exp y",
+    "Matrix.exp_add_of_commute  Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean:128  (0.80)  : exp (A + B) = exp A * exp B",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_apply  TauCeti/Analysis/Semigroups/ExponentialShift.lean:63  (0.79)  : S.expShift lambda t = Real.exp (-(lambda * (t : ℝ))) • S t",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_apply_apply  TauCeti/Analysis/Semigroups/ExponentialShift.lean:68  (0.79)  : S.expShift lambda t x = Real.exp (-(lambda * (t : ℝ))) • S t x",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_realOperator_of_nonneg  TauCeti/Analysis/Semigroups/ExponentialShift.lean:90  (0.79)  : (S.expShift lambda).realOperator t = Real.exp (-(lambda * t)) • S.realOperator t",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.expShift_realOperator_apply_of_nonneg  TauCeti/Analysis/Semigroups/ExponentialShift.lean:97  (0.79)  : (S.expShift lambda).realOperator t x = Real.exp (-(lambda * t)) • S.realOperator t x"
+   ],
+   "id": "1850:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 76,
+   "decl": "TauCeti.Semigroups.IsMDissipative.smulSubLinear",
+   "msg": "`smulSubLinear` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.55)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.51)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.41)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0"
+   ],
+   "id": "1850:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 87,
+   "decl": "TauCeti.Semigroups.IsMDissipative.smulSubEquiv",
+   "msg": "`smulSubEquiv` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.47)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.42)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖"
+   ],
+   "id": "1850:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 95,
+   "decl": "TauCeti.Semigroups.IsMDissipative.smulSubEquiv_apply",
+   "msg": "`smulSubEquiv_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.54)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.50)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.40)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0"
+   ],
+   "id": "1850:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 101,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolventLinear",
+   "msg": "`resolventLinear` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.49)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.45)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.37)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0"
+   ],
+   "id": "1850:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 105,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolventLinear_apply",
+   "msg": "`resolventLinear_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.48)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.43)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖"
+   ],
+   "id": "1850:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 109,
+   "decl": "TauCeti.Semigroups.IsMDissipative.norm_resolventLinear_le",
+   "msg": "`norm_resolventLinear_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.59)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.55)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.44)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0"
+   ],
+   "id": "1850:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 126,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolvent",
+   "msg": "`resolvent` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.59)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.54)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.44)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0"
+   ],
+   "id": "1850:8"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 129,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolvent_apply",
+   "msg": "`resolvent_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.51)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.46)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.38)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0"
+   ],
+   "id": "1850:9"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 135,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolvent_mem_domain",
+   "msg": "`resolvent_mem_domain` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.68)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.64)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.isDissipative_iff_real_inner_nonpos  TauCeti/Analysis/Semigroups/Dissipative/Hilbert.lean:53  (0.50)  : A.domain, ⟪A x, (x : X)⟫_ℝ ≤ 0",
+    "IsSelfAdjoint.dense_domain  Mathlib/Analysis/InnerProductSpace/LinearPMap.lean:240  (0.37)  : Dense (A.domain : Set E)"
+   ],
+   "id": "1850:10"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 151,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolvent_smul_sub_apply",
+   "msg": "`resolvent_smul_sub_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.46)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.ofBounded_resolvent_eq_inv_smul_tsum_pow  TauCeti/Analysis/Semigroups/BoundedGenerator/Resolvent.lean:68  (0.43)  : ℕ, (lambda⁻¹ • A) ^ n",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.42)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_smul_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:370  (0.42)  : ‖((lambda • S.resolvent lambda hlambda) ^ n) x‖ ≤ ‖x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.resolvent_sub_resolvent_apply  TauCeti/Analysis/Semigroups/Resolvent/Identity.lean:271  (0.42)  : S.resolvent lambda hlambda x - S.resolvent mu hmu x = (mu - lambda) • S.resolvent lambda hlambda (S.resolvent mu hmu x)"
+   ],
+   "id": "1850:11"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 159,
+   "decl": "TauCeti.Semigroups.IsMDissipative.resolvent_norm_le",
+   "msg": "`resolvent_norm_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.48)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.44)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.resolvent_pow_norm_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:323  (0.44)  : ‖S.resolvent lambda hlambda ^ n‖ ≤ (1 / lambda) ^ n",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:351  (0.44)  : ‖(S.resolvent lambda hlambda ^ n) x‖ ≤ (1 / lambda) ^ n * ‖x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_smul_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:370  (0.44)  : ‖((lambda • S.resolvent lambda hlambda) ^ n) x‖ ≤ ‖x‖"
+   ],
+   "id": "1850:12"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 169,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaApprox",
+   "msg": "`yosidaApprox` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.47)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.43)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "LinearMap.norm_mkContinuous₂_aux  Mathlib/Analysis/Normed/Operator/Bilinear.lean:95  (0.39)  : ‖(f x).mkContinuous (C * ‖x‖) (h x)‖ ≤ max C 0 * ‖x‖"
+   ],
+   "id": "1850:13"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 173,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaApprox_apply",
+   "msg": "`yosidaApprox_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.isMDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166  (0.46)  : A.domain => lambda • (x : X) - A x",
+    "TauCeti.Semigroups.isDissipative_iff  TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93  (0.42)  : A.domain, lambda * ‖(x : X)‖ ≤ ‖lambda • (x : X) - A x‖",
+    "LinearMap.norm_mkContinuous₂_aux  Mathlib/Analysis/Normed/Operator/Bilinear.lean:95  (0.39)  : ‖(f x).mkContinuous (C * ‖x‖) (h x)‖ ≤ max C 0 * ‖x‖"
+   ],
+   "id": "1850:14"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 185,
+   "decl": "TauCeti.Semigroups.IsMDissipative.norm_yosidaApprox_le",
+   "msg": "`norm_yosidaApprox_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.ContractionSemigroup.resolvent_pow_norm_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:323  (0.71)  : ‖S.resolvent lambda hlambda ^ n‖ ≤ (1 / lambda) ^ n",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:351  (0.70)  : ‖(S.resolvent lambda hlambda ^ n) x‖ ≤ (1 / lambda) ^ n * ‖x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_smul_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:370  (0.70)  : ‖((lambda • S.resolvent lambda hlambda) ^ n) x‖ ≤ ‖x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_smul_resolvent_pow_le_one  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:358  (0.70)  : ‖(lambda • S.resolvent lambda hlambda) ^ n‖ ≤ 1",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.resolvent_pow_norm_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:268  (0.69)  : ‖S.resolvent hb lambda hlambda ^ n‖ ≤ M / (lambda - omega) ^ n"
+   ],
+   "id": "1850:15"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 229,
+   "decl": "TauCeti.Semigroups.IsMDissipative.exp_smul_one",
+   "msg": "`exp_smul_one` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.add_one_le_exp  Mathlib/Analysis/Complex/Exponential.lean:659  (0.72)  : x + 1 ≤ Real.exp x",
+    "Real.add_one_lt_exp  Mathlib/Analysis/Complex/Exponential.lean:650  (0.72)  : x + 1 < Real.exp x",
+    "Real.norm_exp_sub_one_sub_id_le  Mathlib/Analysis/Complex/Exponential.lean:483  (0.71)  : ‖Real.exp x - 1 - x‖ ≤ ‖x‖ ^ 2",
+    "Real.exp_bound_div_one_sub_of_interval  Mathlib/Analysis/Complex/Exponential.lean:644  (0.71)  : Real.exp x ≤ 1 / (1 - x)",
+    "Real.exp_bound_div_one_sub_of_interval'  Mathlib/Analysis/Complex/Exponential.lean:627  (0.71)  : Real.exp x < 1 / (1 - x)"
+   ],
+   "id": "1850:16"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 242,
+   "decl": "TauCeti.Semigroups.IsMDissipative.norm_exp_yosidaApprox_le_one",
+   "msg": "`norm_exp_yosidaApprox_le_one` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Semigroups.ContractionSemigroup.norm_smul_resolvent_pow_le_one  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:358  (0.58)  : ‖(lambda • S.resolvent lambda hlambda) ^ n‖ ≤ 1",
+    "TauCeti.Semigroups.ContractionSemigroup.resolvent_pow_norm_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:323  (0.56)  : ‖S.resolvent lambda hlambda ^ n‖ ≤ (1 / lambda) ^ n",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:351  (0.56)  : ‖(S.resolvent lambda hlambda ^ n) x‖ ≤ (1 / lambda) ^ n * ‖x‖",
+    "TauCeti.Semigroups.ContractionSemigroup.norm_smul_resolvent_pow_apply_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:370  (0.56)  : ‖((lambda • S.resolvent lambda hlambda) ^ n) x‖ ≤ ‖x‖",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.resolvent_pow_norm_le  TauCeti/Analysis/Semigroups/Resolvent/PowerBounds.lean:268  (0.55)  : ‖S.resolvent hb lambda hlambda ^ n‖ ≤ M / (lambda - omega) ^ n"
+   ],
+   "id": "1850:17"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/BoundedGenerator/Basic.lean",
+   "line": 59,
+   "decl": "TauCeti.Semigroups.StronglyContinuousSemigroup.norm_exp_le_exp_norm",
+   "msg": "8/8 nearest neighbours of `norm_exp_le_exp_norm` live in `TauCeti/Analysis/Semigroups/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.StronglyContinuousSemigroup TauCeti/Analysis/Semigroups/Basic.lean:43",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.instFunLike TauCeti/Analysis/Semigroups/Basic.lean:57",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.ext TauCeti/Analysis/Semigroups/Basic.lean:64",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.map_zero TauCeti/Analysis/Semigroups/Basic.lean:69",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.map_zero_apply TauCeti/Analysis/Semigroups/Basic.lean:74"
+   ],
+   "id": "1850:18"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/BoundedGenerator/Basic.lean",
+   "line": 77,
+   "decl": "TauCeti.Semigroups.StronglyContinuousSemigroup.exp_add_of_commute",
+   "msg": "8/8 nearest neighbours of `exp_add_of_commute` live in `TauCeti/Analysis/Semigroups/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.StronglyContinuousSemigroup TauCeti/Analysis/Semigroups/Basic.lean:43",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.instFunLike TauCeti/Analysis/Semigroups/Basic.lean:57",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.ext TauCeti/Analysis/Semigroups/Basic.lean:64",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.map_zero TauCeti/Analysis/Semigroups/Basic.lean:69",
+    "TauCeti.Semigroups.StronglyContinuousSemigroup.map_zero_apply TauCeti/Analysis/Semigroups/Basic.lean:74"
+   ],
+   "id": "1850:19"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 169,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaApprox",
+   "msg": "5/8 nearest neighbours of `yosidaApprox` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126",
+    "TauCeti.Semigroups.IsMDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:160",
+    "TauCeti.Semigroups.isMDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166"
+   ],
+   "id": "1850:20"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 173,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaApprox_apply",
+   "msg": "5/8 nearest neighbours of `yosidaApprox_apply` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126",
+    "TauCeti.Semigroups.IsMDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:160",
+    "TauCeti.Semigroups.isMDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166"
+   ],
+   "id": "1850:21"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 179,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaApprox_eq_smul_sub_one",
+   "msg": "5/8 nearest neighbours of `yosidaApprox_eq_smul_sub_one` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126",
+    "TauCeti.Semigroups.IsMDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:160",
+    "TauCeti.Semigroups.isMDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166"
+   ],
+   "id": "1850:22"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 185,
+   "decl": "TauCeti.Semigroups.IsMDissipative.norm_yosidaApprox_le",
+   "msg": "5/8 nearest neighbours of `norm_yosidaApprox_le` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126",
+    "TauCeti.Semigroups.IsMDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:160",
+    "TauCeti.Semigroups.isMDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166"
+   ],
+   "id": "1850:23"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 208,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaApprox_apply_of_mem_domain",
+   "msg": "5/8 nearest neighbours of `yosidaApprox_apply_of_mem_domain` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126",
+    "TauCeti.Semigroups.IsMDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:160",
+    "TauCeti.Semigroups.isMDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166"
+   ],
+   "id": "1850:24"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 229,
+   "decl": "TauCeti.Semigroups.IsMDissipative.exp_smul_one",
+   "msg": "private `exp_smul_one` states a fact about library notions only (Real.exp, exp); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1850:25"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 229,
+   "decl": "TauCeti.Semigroups.IsMDissipative.exp_smul_one",
+   "msg": "`exp_smul_one` looks like general material living in a feature file; consider the topic file for Real.exp, exp",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1850:26"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 242,
+   "decl": "TauCeti.Semigroups.IsMDissipative.norm_exp_yosidaApprox_le_one",
+   "msg": "5/8 nearest neighbours of `norm_exp_yosidaApprox_le_one` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126",
+    "TauCeti.Semigroups.IsMDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:160",
+    "TauCeti.Semigroups.isMDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:166"
+   ],
+   "id": "1850:27"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 281,
+   "decl": "TauCeti.Semigroups.IsMDissipative.yosidaSemigroup",
+   "msg": "5/8 nearest neighbours of `yosidaSemigroup` live in `TauCeti/Analysis/Semigroups/Dissipative/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Semigroups.ContractionSemigroup.isDissipative_generator TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:413",
+    "TauCeti.Semigroups.ContractionSemigroup.isMDissipative_generator TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:453",
+    "TauCeti.Semigroups.IsDissipative TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:88",
+    "TauCeti.Semigroups.isDissipative_iff TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:93",
+    "TauCeti.Semigroups.isDissipative_zero TauCeti/Analysis/Semigroups/Dissipative/Basic.lean:126"
+   ],
+   "id": "1850:28"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1850:29"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1850:30"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 1,
+   "decl": null,
+   "msg": "new file has no copyright header with `Authors:`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1850:31"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/Analysis/Semigroups/YosidaApproximation.lean",
+   "line": 248,
+   "decl": "TauCeti.Semigroups.IsMDissipative.norm_exp_yosidaApprox_le_one",
+   "msg": "6-step `rw` chain in `norm_exp_yosidaApprox_le_one`: brittle; try `simp only`/`field_simp`/a named lemma",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1850:32"
+  }
+ ]
+}

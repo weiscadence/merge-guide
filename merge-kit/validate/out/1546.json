@@ -1,0 +1,395 @@
+{
+ "pr": 1546,
+ "test": false,
+ "body_version": "version of 2026-07-31T02:17:54Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/Parseval.lean",
+   "line": 36,
+   "decl": "HilbertBasis.hasSum_norm_sq_inner",
+   "msg": "`_root_.HilbertBasis.hasSum_norm_sq_inner` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "HilbertBasis.hasSum_norm_inner_sq  Mathlib/Analysis/InnerProductSpace/l2Space.lean:480  (0.72)  : HasSum (fun i => ‖⟪b i, x⟫‖ ^ 2) (‖x‖ ^ 2)",
+    "HilbertBasis.hasSum_eNorm_inner_sq  Mathlib/Analysis/InnerProductSpace/l2Space.lean:512  (0.71)  : HasSum (fun i => ‖⟪b i, x⟫‖ₑ ^ 2) (‖x‖ₑ ^ 2)",
+    "HilbertBasis.hasSum_nnNorm_inner_sq  Mathlib/Analysis/InnerProductSpace/l2Space.lean:496  (0.71)  : HasSum (fun i => ‖⟪b i, x⟫‖₊ ^ 2) (‖x‖₊ ^ 2)",
+    "HilbertBasis.hasSum_inner_mul_inner  Mathlib/Analysis/InnerProductSpace/l2Space.lean:464  (0.63)  : HasSum (fun i => ⟪x, b i⟫ * ⟪b i, y⟫) ⟪x, y⟫",
+    "HilbertBasis.hasSum_repr_symm  Mathlib/Analysis/InnerProductSpace/l2Space.lean:431  (0.55)  : HasSum (fun i => f i • b i) (b.repr.symm f)"
+   ],
+   "id": "1546:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/Parseval.lean",
+   "line": 43,
+   "decl": "HilbertBasis.tsum_norm_sq_inner",
+   "msg": "`_root_.HilbertBasis.tsum_norm_sq_inner` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.inner_apply  Mathlib/Analysis/InnerProductSpace/Basic.lean:1029  (0.70)  : inner ℝ x y = x * y",
+    "TensorProduct.inner_tmul  Mathlib/Analysis/InnerProductSpace/TensorProduct.lean:69  (0.69)  : inner 𝕜 (x ⊗ₜ[𝕜] y) (x' ⊗ₜ[𝕜] y') = inner 𝕜 x x' * inner 𝕜 y y'",
+    "PUnit.inner_eq_zero  Mathlib/Analysis/InnerProductSpace/Defs.lean:616  (0.69)  : inner 𝕜 x y = 0",
+    "TauCeti.inner_hermiteFunctionLp  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Orthonormal.lean:99  (0.69)  : inner 𝕜 (hermiteFunctionLp 𝕜 m) (hermiteFunctionLp 𝕜 n) = if m = n then (1 : 𝕜) else 0",
+    "TauCeti.inner_hermiteFunctionLp_zero_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Lp.lean:71  (0.69)  : inner 𝕜 (hermiteFunctionLp 𝕜 0) (hermiteFunctionLp 𝕜 0) = 1"
+   ],
+   "id": "1546:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/Parseval.lean",
+   "line": 48,
+   "decl": "HilbertBasis.summable_norm_sq_inner",
+   "msg": "`_root_.HilbertBasis.summable_norm_sq_inner` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "HilbertBasis.summable_norm_inner_sq  Mathlib/Analysis/InnerProductSpace/l2Space.lean:484  (0.73)  : Summable fun i => ‖⟪b i, x⟫‖ ^ 2",
+    "HilbertBasis.summable_nnNorm_inner_sq  Mathlib/Analysis/InnerProductSpace/l2Space.lean:500  (0.72)  : Summable fun i => ‖⟪b i, x⟫‖₊ ^ 2",
+    "HilbertBasis.summable_inner_mul_inner  Mathlib/Analysis/InnerProductSpace/l2Space.lean:470  (0.64)  : Summable fun i => ⟪x, b i⟫ * ⟪b i, y⟫",
+    "OrthogonalFamily.summable_iff_norm_sq_summable  Mathlib/Analysis/InnerProductSpace/Subspace.lean:212  (0.54)  : (Summable fun i => V i (f i)) ↔ Summable fun i => ‖f i‖ ^ 2",
+    "lp.summable_inner  Mathlib/Analysis/InnerProductSpace/l2Space.lean:108  (0.51)  : Summable fun i => ⟪f i, g i⟫"
+   ],
+   "id": "1546:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 47,
+   "decl": "TauCeti.hermiteHilbertBasis_repr_apply",
+   "msg": "`hermiteHilbertBasis_repr_apply` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "HilbertBasis.repr_apply_apply  Mathlib/Analysis/InnerProductSpace/l2Space.lean:416  (0.64)  : b.repr v i = ⟪b i, v⟫",
+    "HilbertBasis.repr_reindex_apply  Mathlib/Analysis/InnerProductSpace/l2Space.lean:666  (0.58)  : (b.reindex e).repr x i' = b.repr x (e.symm i')",
+    "HilbertBasis.repr_self  Mathlib/Analysis/InnerProductSpace/l2Space.lean:412  (0.56)  : b.repr (b i) = lp.single 2 i (1 : 𝕜)",
+    "HilbertBasis.hasSum_repr  Mathlib/Analysis/InnerProductSpace/l2Space.lean:448  (0.56)  : HasSum (fun i => b.repr x i • b i) x",
+    "Module.Basis.repr_apply_eq  Mathlib/LinearAlgebra/Basis/Defs.lean:343  (0.54)  : b.repr x i = f x i"
+   ],
+   "id": "1546:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 53,
+   "decl": "TauCeti.tsum_inner_mul_inner_hermiteFunctionLp",
+   "msg": "`tsum_inner_mul_inner_hermiteFunctionLp` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.inner_hermiteFunctionLp  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Orthonormal.lean:99  (0.90)  : inner 𝕜 (hermiteFunctionLp 𝕜 m) (hermiteFunctionLp 𝕜 n) = if m = n then (1 : 𝕜) else 0",
+    "TauCeti.inner_hermiteFunctionLp_zero_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Lp.lean:71  (0.90)  : inner 𝕜 (hermiteFunctionLp 𝕜 0) (hermiteFunctionLp 𝕜 0) = 1",
+    "Real.inner_apply  Mathlib/Analysis/InnerProductSpace/Basic.lean:1029  (0.70)  : inner ℝ x y = x * y",
+    "TensorProduct.inner_tmul  Mathlib/Analysis/InnerProductSpace/TensorProduct.lean:69  (0.69)  : inner 𝕜 (x ⊗ₜ[𝕜] y) (x' ⊗ₜ[𝕜] y') = inner 𝕜 x x' * inner 𝕜 y y'",
+    "PUnit.inner_eq_zero  Mathlib/Analysis/InnerProductSpace/Defs.lean:616  (0.69)  : inner 𝕜 x y = 0"
+   ],
+   "id": "1546:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 60,
+   "decl": "TauCeti.tsum_norm_sq_inner_hermiteFunctionLp",
+   "msg": "`tsum_norm_sq_inner_hermiteFunctionLp` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.inner_hermiteFunctionLp  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Orthonormal.lean:99  (0.87)  : inner 𝕜 (hermiteFunctionLp 𝕜 m) (hermiteFunctionLp 𝕜 n) = if m = n then (1 : 𝕜) else 0",
+    "TauCeti.inner_hermiteFunctionLp_zero_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Lp.lean:71  (0.86)  : inner 𝕜 (hermiteFunctionLp 𝕜 0) (hermiteFunctionLp 𝕜 0) = 1",
+    "Real.inner_apply  Mathlib/Analysis/InnerProductSpace/Basic.lean:1029  (0.69)  : inner ℝ x y = x * y",
+    "TensorProduct.inner_tmul  Mathlib/Analysis/InnerProductSpace/TensorProduct.lean:69  (0.68)  : inner 𝕜 (x ⊗ₜ[𝕜] y) (x' ⊗ₜ[𝕜] y') = inner 𝕜 x x' * inner 𝕜 y y'",
+    "PUnit.inner_eq_zero  Mathlib/Analysis/InnerProductSpace/Defs.lean:616  (0.68)  : inner 𝕜 x y = 0"
+   ],
+   "id": "1546:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 65,
+   "decl": "TauCeti.summable_norm_sq_inner_hermiteFunctionLp",
+   "msg": "`summable_norm_sq_inner_hermiteFunctionLp` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.inner_hermiteFunctionLp  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Orthonormal.lean:99  (0.87)  : inner 𝕜 (hermiteFunctionLp 𝕜 m) (hermiteFunctionLp 𝕜 n) = if m = n then (1 : 𝕜) else 0",
+    "TauCeti.inner_hermiteFunctionLp_zero_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Lp.lean:71  (0.86)  : inner 𝕜 (hermiteFunctionLp 𝕜 0) (hermiteFunctionLp 𝕜 0) = 1",
+    "Real.inner_apply  Mathlib/Analysis/InnerProductSpace/Basic.lean:1029  (0.69)  : inner ℝ x y = x * y",
+    "TensorProduct.inner_tmul  Mathlib/Analysis/InnerProductSpace/TensorProduct.lean:69  (0.68)  : inner 𝕜 (x ⊗ₜ[𝕜] y) (x' ⊗ₜ[𝕜] y') = inner 𝕜 x x' * inner 𝕜 y y'",
+    "PUnit.inner_eq_zero  Mathlib/Analysis/InnerProductSpace/Defs.lean:616  (0.68)  : inner 𝕜 x y = 0"
+   ],
+   "id": "1546:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 70,
+   "decl": "TauCeti.hasSum_hermiteFunctionLp_expansion",
+   "msg": "`hasSum_hermiteFunctionLp_expansion` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.inner_hermiteFunctionLp  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Orthonormal.lean:99  (0.56)  : inner 𝕜 (hermiteFunctionLp 𝕜 m) (hermiteFunctionLp 𝕜 n) = if m = n then (1 : 𝕜) else 0",
+    "TauCeti.inner_hermiteFunctionLp_zero_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Lp.lean:71  (0.55)  : inner 𝕜 (hermiteFunctionLp 𝕜 0) (hermiteFunctionLp 𝕜 0) = 1",
+    "Polynomial.hasSum_hermite_generating_function  TauCeti/RingTheory/Polynomial/Hermite/GeneratingFunction.lean:84  (0.54)  : HasSum (fun n : ℕ => aeval x (hermite n) * t ^ n / n !) (cexp (x * t - t ^ 2 / 2))",
+    "EisensteinSeries.hasSum_qExpansion_E2  Mathlib/NumberTheory/ModularForms/EisensteinSeries/E2/Summable.lean:106  (0.51)  : HasSum (fun m : ℕ ↦ (if m = 0 then 1 else -24 * σ 1 m : ℂ) • 𝕢 z ^ m) (E2 z)",
+    "lp.hasSum_inner  Mathlib/Analysis/InnerProductSpace/l2Space.lean:156  (0.51)  : HasSum (fun i => ⟪f i, g i⟫) ⟪f, g⟫"
+   ],
+   "id": "1546:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 76,
+   "decl": "TauCeti.hermiteHilbertBasis_repr_self",
+   "msg": "`hermiteHilbertBasis_repr_self` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "HilbertBasis.repr_self  Mathlib/Analysis/InnerProductSpace/l2Space.lean:412  (0.92)  : b.repr (b i) = lp.single 2 i (1 : 𝕜)",
+    "Module.Basis.repr_self  Mathlib/LinearAlgebra/Basis/Defs.lean:131  (0.80)  : b.repr (b i) = Finsupp.single i 1",
+    "OrthonormalBasis.repr_self  Mathlib/Analysis/InnerProductSpace/PiL2.lean:417  (0.80)  : b.repr (b i) = EuclideanSpace.single i (1 : 𝕜)",
+    "Module.Basis.reindexRange_repr_self  Mathlib/LinearAlgebra/Basis/Defs.lean:420  (0.77)  : b.reindexRange.repr (b i) = Finsupp.single ⟨b i, mem_range_self i⟩ 1",
+    "Module.Basis.repr_eq_iff  Mathlib/LinearAlgebra/Basis/Defs.lean:331  (0.74)  : ↑b.repr = f ↔ ∀ i, f (b i) = Finsupp.single i 1"
+   ],
+   "id": "1546:8"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/InnerProductSpace/Parseval.lean",
+   "line": 43,
+   "decl": "HilbertBasis.tsum_norm_sq_inner",
+   "msg": "4/8 nearest neighbours of `_root_.HilbertBasis.tsum_norm_sq_inner` live in `TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.hilbertBasisOfWeightedMeasure TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:169",
+    "TauCeti.coe_hilbertBasisOfWeightedMeasure TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:180",
+    "TauCeti.hilbertBasisOfOrthogonalSystem TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:193",
+    "TauCeti.coe_hilbertBasisOfOrthogonalSystem TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:205"
+   ],
+   "id": "1546:9"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/InnerProductSpace/Parseval.lean",
+   "line": 48,
+   "decl": "HilbertBasis.summable_norm_sq_inner",
+   "msg": "4/8 nearest neighbours of `_root_.HilbertBasis.summable_norm_sq_inner` live in `TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.hilbertBasisOfWeightedMeasure TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:169",
+    "TauCeti.coe_hilbertBasisOfWeightedMeasure TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:180",
+    "TauCeti.hilbertBasisOfOrthogonalSystem TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:193",
+    "TauCeti.coe_hilbertBasisOfOrthogonalSystem TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:205"
+   ],
+   "id": "1546:10"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 47,
+   "decl": "TauCeti.hermiteHilbertBasis_repr_apply",
+   "msg": "6/8 nearest neighbours of `hermiteHilbertBasis_repr_apply` live in `TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.hermiteHilbertBasis TauCeti/Analysis/SpecialFunctions/Hermite/Function/HilbertBasis.lean:101",
+    "TauCeti.coe_hermiteHilbertBasis TauCeti/Analysis/SpecialFunctions/Hermite/Function/HilbertBasis.lean:118",
+    "TauCeti.aeval_derivative_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:68",
+    "TauCeti.integral_aeval_mul_hermite_succ TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:86",
+    "TauCeti.integral_aeval_mul_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:118"
+   ],
+   "id": "1546:11"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 53,
+   "decl": "TauCeti.tsum_inner_mul_inner_hermiteFunctionLp",
+   "msg": "6/8 nearest neighbours of `tsum_inner_mul_inner_hermiteFunctionLp` live in `TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.aeval_derivative_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:68",
+    "TauCeti.integral_aeval_mul_hermite_succ TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:86",
+    "TauCeti.integral_aeval_mul_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:118",
+    "TauCeti.integral_hermite_swap TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:136",
+    "TauCeti.integral_hermite_mul_hermite_mul_gaussian TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:143"
+   ],
+   "id": "1546:12"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 60,
+   "decl": "TauCeti.tsum_norm_sq_inner_hermiteFunctionLp",
+   "msg": "6/8 nearest neighbours of `tsum_norm_sq_inner_hermiteFunctionLp` live in `TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.aeval_derivative_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:68",
+    "TauCeti.integral_aeval_mul_hermite_succ TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:86",
+    "TauCeti.integral_aeval_mul_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:118",
+    "TauCeti.integral_hermite_swap TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:136",
+    "TauCeti.integral_hermite_mul_hermite_mul_gaussian TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:143"
+   ],
+   "id": "1546:13"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 65,
+   "decl": "TauCeti.summable_norm_sq_inner_hermiteFunctionLp",
+   "msg": "6/8 nearest neighbours of `summable_norm_sq_inner_hermiteFunctionLp` live in `TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.aeval_derivative_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:68",
+    "TauCeti.integral_aeval_mul_hermite_succ TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:86",
+    "TauCeti.integral_aeval_mul_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:118",
+    "TauCeti.integral_hermite_swap TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:136",
+    "TauCeti.integral_hermite_mul_hermite_mul_gaussian TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:143"
+   ],
+   "id": "1546:14"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 70,
+   "decl": "TauCeti.hasSum_hermiteFunctionLp_expansion",
+   "msg": "6/8 nearest neighbours of `hasSum_hermiteFunctionLp_expansion` live in `TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.aeval_derivative_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:68",
+    "TauCeti.integral_aeval_mul_hermite_succ TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:86",
+    "TauCeti.integral_aeval_mul_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:118",
+    "TauCeti.integral_hermite_swap TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:136",
+    "TauCeti.integral_hermite_mul_hermite_mul_gaussian TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:143"
+   ],
+   "id": "1546:15"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 76,
+   "decl": "TauCeti.hermiteHilbertBasis_repr_self",
+   "msg": "6/8 nearest neighbours of `hermiteHilbertBasis_repr_self` live in `TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.hermiteHilbertBasis TauCeti/Analysis/SpecialFunctions/Hermite/Function/HilbertBasis.lean:101",
+    "TauCeti.coe_hermiteHilbertBasis TauCeti/Analysis/SpecialFunctions/Hermite/Function/HilbertBasis.lean:118",
+    "TauCeti.aeval_derivative_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:68",
+    "TauCeti.integral_aeval_mul_hermite_succ TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:86",
+    "TauCeti.integral_aeval_mul_hermite TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean:118"
+   ],
+   "id": "1546:16"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/InnerProductSpace/Parseval.lean",
+   "line": 21,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1546:17"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 59,
+   "decl": null,
+   "msg": "decl docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1546:18"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 30,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1546:19"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Function/Parseval.lean",
+   "line": 76,
+   "decl": "TauCeti.hermiteHilbertBasis_repr_self",
+   "msg": "section `variable [RCLike 𝕜]` (line 42) but `hermiteHilbertBasis_repr_self` uses nothing RCLike-specific; put such decls in a section with a weaker class",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1546:20"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1546:21"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1546:22"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1546:23"
+  }
+ ]
+}

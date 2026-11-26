@@ -1,0 +1,354 @@
+{
+ "pr": 45354,
+ "test": true,
+ "body_version": "version of 2026-11-23T05:11:36Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 52,
+   "decl": "Real.neg_one_pow_mul_sub_convergent_pos",
+   "msg": "`neg_one_pow_mul_sub_convergent_pos` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.79)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.convergent_zero  Mathlib/NumberTheory/DiophantineApproximation/Basic.lean:356  (0.78)  : ξ.convergent 0 = ⌊ξ⌋",
+    "Real.convergent_of_zero  Mathlib/NumberTheory/DiophantineApproximation/Basic.lean:367  (0.77)  : convergent 0 n = 0",
+    "Real.convergent_of_int  Mathlib/NumberTheory/DiophantineApproximation/Basic.lean:375  (0.77)  : convergent ξ n = ξ",
+    "Real.exists_rat_eq_convergent  Mathlib/NumberTheory/DiophantineApproximation/Basic.lean:565  (0.77)  : ∃ n, q = ξ.convergent n"
+   ],
+   "id": "45354:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 61,
+   "decl": "Real.neg_one_pow_mul_sub_convergent_pos",
+   "msg": "`have hpB : 0 ≤ ((of ξ).contsAux n).b` inside `neg_one_pow_mul_sub_convergent_pos` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "GenContFract.zero_le_of_contsAux_b  Mathlib/Algebra/ContinuedFractions/Computation/Approximations.lean:260 : 0 ≤ ((of v).contsAux n).b"
+   ],
+   "id": "45354:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 70,
+   "decl": "Real.num_convergent_mul_den_convergent_succ_sub",
+   "msg": "`num_convergent_mul_den_convergent_succ_sub` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.91)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.fib_succ_le_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127  (0.66)  : Nat.fib (n + 1) ≤ (ξ.convergent n).den",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.64)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.tendsto_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142  (0.64)  : Tendsto (fun n ↦ (ξ.convergent n).den) atTop atTop",
+    "Rat.num_lt_succ_floor_mul_den  Mathlib/Data/Rat/Floor.lean:341  (0.63)  : q.num < (⌊q⌋ + 1) * q.den"
+   ],
+   "id": "45354:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 81,
+   "decl": "Real.neg_one_pow_mul_den_convergent_mul_sub_num_convergent_pos",
+   "msg": "`neg_one_pow_mul_den_convergent_mul_sub_num_convergent_pos` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.85)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.61)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.60)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.tendsto_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142  (0.60)  : Tendsto (fun n ↦ (ξ.convergent n).den) atTop atTop",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.59)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)"
+   ],
+   "id": "45354:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 92,
+   "decl": "Real.den_convergent_mul_sub_num_convergent_eq_zero",
+   "msg": "`den_convergent_mul_sub_num_convergent_eq_zero` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.91)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.64)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.tendsto_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142  (0.64)  : Tendsto (fun n ↦ (ξ.convergent n).den) atTop atTop",
+    "Rat.den_sub_num_ne_zero  TauCeti/Data/Rat/AbcTriple.lean:37  (0.63)  : (q.den : ℤ) - q.num ≠ 0 ↔ q ≠ 1",
+    "Real.den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112  (0.63)  : ((ξ.convergent n).den : ℝ) = (of ξ).dens n"
+   ],
+   "id": "45354:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 102,
+   "decl": "Real.neg_one_pow_mul_den_convergent_mul_sub_num_convergent_nonneg",
+   "msg": "`neg_one_pow_mul_den_convergent_mul_sub_num_convergent_nonneg` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.85)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.60)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.60)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.tendsto_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142  (0.59)  : Tendsto (fun n ↦ (ξ.convergent n).den) atTop atTop",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.59)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)"
+   ],
+   "id": "45354:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 109,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_of_pos",
+   "msg": "`abs_den_convergent_mul_sub_num_convergent_le_of_pos` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.86)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.66)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.63)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.61)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.fib_succ_le_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127  (0.60)  : Nat.fib (n + 1) ≤ (ξ.convergent n).den"
+   ],
+   "id": "45354:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 147,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_of_pos",
+   "msg": "`have ha' : (1 : ℝ) ≤ a` inside `abs_den_convergent_mul_sub_num_convergent_le_of_pos` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Int.cast_one_le_of_pos  Mathlib/Algebra/Order/Ring/Cast.lean:83 : (1 : R) ≤ a",
+    "SzemerediRegularity.one_le_m_coe  Mathlib/Combinatorics/SimpleGraph/Regularity/Bound.lean:113 : (1 : ℝ) ≤ m",
+    "PosNum.one_le_cast  Mathlib/Data/Num/Lemmas.lean:569 : (1 : α) ≤ n"
+   ],
+   "id": "45354:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 154,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_of_pos",
+   "msg": "`have ha' : (a : ℝ) ≤ -1` inside `abs_den_convergent_mul_sub_num_convergent_le_of_pos` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Int.cast_le_neg_one_of_neg  Mathlib/Algebra/Order/Ring/Cast.lean:85 : (a : R) ≤ -1"
+   ],
+   "id": "45354:8"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 155,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_of_pos",
+   "msg": "`have hb' : (0 : ℝ) < b` inside `abs_den_convergent_mul_sub_num_convergent_le_of_pos` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Units.zero_lt  Mathlib/Algebra/Order/GroupWithZero/Canonical.lean:114 : (0 : α) < u",
+    "Rat.cast_pos_of_pos  Mathlib/Data/Rat/Cast/Order.lean:34 : (0 : K) < q"
+   ],
+   "id": "45354:9"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 162,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le",
+   "msg": "`abs_den_convergent_mul_sub_num_convergent_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.89)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.69)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.65)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.63)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.fib_succ_le_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127  (0.63)  : Nat.fib (n + 1) ≤ (ξ.convergent n).den"
+   ],
+   "id": "45354:10"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 174,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_norm",
+   "msg": "`abs_den_convergent_mul_sub_num_convergent_le_norm` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132  (0.74)  : (convergent φ n).den * φ - (convergent φ n).num = -ψ ^ (n + 1)",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.58)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.54)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.52)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.fib_succ_le_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127  (0.52)  : Nat.fib (n + 1) ≤ (ξ.convergent n).den"
+   ],
+   "id": "45354:11"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 70,
+   "decl": "Real.num_convergent_mul_den_convergent_succ_sub",
+   "msg": "5/8 nearest neighbours of `num_convergent_mul_den_convergent_succ_sub` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132",
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112",
+    "Real.fib_succ_le_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127",
+    "Real.monotone_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134",
+    "Real.tendsto_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142"
+   ],
+   "id": "45354:12"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 81,
+   "decl": "Real.neg_one_pow_mul_den_convergent_mul_sub_num_convergent_pos",
+   "msg": "5/8 nearest neighbours of `neg_one_pow_mul_den_convergent_mul_sub_num_convergent_pos` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132",
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112",
+    "Real.fib_succ_le_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127",
+    "Real.monotone_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134",
+    "Real.tendsto_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142"
+   ],
+   "id": "45354:13"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 92,
+   "decl": "Real.den_convergent_mul_sub_num_convergent_eq_zero",
+   "msg": "5/8 nearest neighbours of `den_convergent_mul_sub_num_convergent_eq_zero` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132",
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112",
+    "Real.fib_succ_le_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127",
+    "Real.monotone_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134",
+    "Real.tendsto_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142"
+   ],
+   "id": "45354:14"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 102,
+   "decl": "Real.neg_one_pow_mul_den_convergent_mul_sub_num_convergent_nonneg",
+   "msg": "5/8 nearest neighbours of `neg_one_pow_mul_den_convergent_mul_sub_num_convergent_nonneg` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132",
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112",
+    "Real.fib_succ_le_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127",
+    "Real.monotone_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134",
+    "Real.tendsto_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142"
+   ],
+   "id": "45354:15"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 109,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_of_pos",
+   "msg": "private `abs_den_convergent_mul_sub_num_convergent_le_of_pos` states a fact about library notions only (convergent, den, num); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45354:16"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 109,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_of_pos",
+   "msg": "`abs_den_convergent_mul_sub_num_convergent_le_of_pos` looks like general material living in a feature file; consider the topic file for convergent, den, num",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45354:17"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 162,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le",
+   "msg": "4/8 nearest neighbours of `abs_den_convergent_mul_sub_num_convergent_le` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132",
+    "TauCeti.FareySymbol.finite_setOf_abs_num_le_and_den_le_and_free_lt TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:662",
+    "TauCeti.FareySymbol.forall_mem_xs_abs_num_le_one_and_den_le_one_iff TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:697",
+    "TauCeti.FareySymbol.infinite_setOf_abs_num_le_one_and_den_le_one TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:786",
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112"
+   ],
+   "id": "45354:18"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 174,
+   "decl": "Real.abs_den_convergent_mul_sub_num_convergent_le_norm",
+   "msg": "4/8 nearest neighbours of `abs_den_convergent_mul_sub_num_convergent_le_norm` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.den_convergent_goldenRatio_mul_sub_num TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean:132",
+    "TauCeti.FareySymbol.finite_setOf_abs_num_le_and_den_le_and_free_lt TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:662",
+    "TauCeti.FareySymbol.forall_mem_xs_abs_num_le_one_and_den_le_one_iff TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:697",
+    "TauCeti.FareySymbol.infinite_setOf_abs_num_le_one_and_den_le_one TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:786",
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112"
+   ],
+   "id": "45354:19"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/BestApproximation.lean",
+   "line": 85,
+   "decl": "Real.neg_one_pow_mul_den_convergent_mul_sub_num_convergent_pos",
+   "msg": "undocumented `show` in `neg_one_pow_mul_den_convergent_mul_sub_num_convergent_pos`",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45354:20"
+  }
+ ]
+}

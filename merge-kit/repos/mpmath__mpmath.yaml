@@ -1,0 +1,41 @@
+repo: mpmath/mpmath
+ai_policy:
+  stance: "no written policy (CONTRIBUTING.rst 404 at master)"
+  who_may_write_text: "not stated; maintainer accepted disclosed AI PRs (mpmath#1244)"
+  disclosure: "disclose (our practice)"
+  source: "gh api contents/CONTRIBUTING.rst -> 404 (2026-11-25); STATE-OF-THE-FIELD.md policy table"
+ci:
+  local: ["pip install --upgrade .[ci]", "pytest", "./mpmath/tests/test_version_frozen.sh", "(also run with gmpy2 uninstalled: pip uninstall -y gmpy2 python-gmp; pytest)"]
+  source: ".github/workflows/test.yml lines 28, 64-72"
+pr:
+  title_regex: null
+  body:
+    required: [{id: closes, regex: "(?i)(closes|fixes) #\\d+", rubric: scope, msg: "link every issue the PR closes (mpmath#1241 also closed #658)"}]
+    forbidden: []
+    disclosure: null
+  body_template: |
+    Closes #<issue>
+
+    <Root cause and where it was fixed (inside the existing mechanism).>
+  source: "PLAYBOOK.md items 1-7 (mpmath#1241, #1244)"
+placement:
+  rules: ["fix at the root inside the existing mechanism (format_digits owns zero-padding, mpmath#1244)", "tests go into the existing test_<feature> function"]
+  source: "maintainer notes"
+review:
+  style: "human maintainer, fast"
+  recurring:
+    root-cause: 1
+    tests: 2
+    ci: 1
+  source: "FAILURE-MODES.md (review-harvest counts), general classes (mpmath#1244 x2 tests, #1241 CI)"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "none found"
+ready_signal:
+  how: "CI green; non-draft"
+  source: "mpmath#1241 ('CI fails.')"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

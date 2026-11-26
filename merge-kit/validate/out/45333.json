@@ -1,0 +1,220 @@
+{
+ "pr": 45333,
+ "test": false,
+ "body_version": "version of 2026-11-23T04:30:30Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 166,
+   "decl": "TauCeti.den_convergent_goldenRatio_mul_abs",
+   "msg": "`den_convergent_goldenRatio_mul_abs` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.59)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.59)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)",
+    "Real.tendsto_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142  (0.59)  : Tendsto (fun n ↦ (ξ.convergent n).den) atTop atTop",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.58)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112  (0.57)  : ((ξ.convergent n).den : ℝ) = (of ξ).dens n"
+   ],
+   "id": "45333:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 177,
+   "decl": "TauCeti.tendsto_den_convergent_goldenRatio_mul_abs",
+   "msg": "`tendsto_den_convergent_goldenRatio_mul_abs` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.tendsto_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142  (0.69)  : Tendsto (fun n ↦ (ξ.convergent n).den) atTop atTop",
+    "Real.monotone_den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134  (0.47)  : Monotone fun n ↦ (ξ.convergent n).den",
+    "Real.abs_sub_convergent_le  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:150  (0.47)  : |ξ - ξ.convergent n| ≤ 1 / ((ξ.convergent n).den * (ξ.convergent (n + 1)).den)",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.46)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Real.den_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112  (0.46)  : ((ξ.convergent n).den : ℝ) = (of ξ).dens n"
+   ],
+   "id": "45333:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 192,
+   "decl": "TauCeti.one_le_abs_mul_goldenRatio_sub_mul_abs_mul_goldenConj_sub",
+   "msg": "`one_le_abs_mul_goldenRatio_sub_mul_abs_mul_goldenConj_sub` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.goldenRatio_sub_goldenConj  Mathlib/NumberTheory/Real/GoldenRatio.lean:76  (0.67)  : φ - ψ = √5",
+    "Real.goldenRatio_mul_goldenConj  Mathlib/NumberTheory/Real/GoldenRatio.lean:56  (0.65)  : φ * ψ = -1",
+    "Real.goldenConj_mul_goldenRatio  Mathlib/NumberTheory/Real/GoldenRatio.lean:60  (0.65)  : ψ * φ = -1",
+    "Real.one_sub_goldenRatio  Mathlib/NumberTheory/Real/GoldenRatio.lean:72  (0.63)  : 1 - ψ = φ",
+    "TauCeti.inv_goldenRatio_eq_goldenRatio_sub_one  TauCeti/NumberTheory/Real/GoldenRatio.lean:55  (0.62)  : φ⁻¹ = φ - 1"
+   ],
+   "id": "45333:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 209,
+   "decl": "TauCeti.one_le_abs_mul_goldenRatio_sub_mul_add",
+   "msg": "`one_le_abs_mul_goldenRatio_sub_mul_add` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.one_sub_goldenRatio  Mathlib/NumberTheory/Real/GoldenRatio.lean:72  (0.65)  : 1 - ψ = φ",
+    "TauCeti.inv_goldenRatio_eq_goldenRatio_sub_one  TauCeti/NumberTheory/Real/GoldenRatio.lean:55  (0.64)  : φ⁻¹ = φ - 1",
+    "TauCeti.Multiquadratic.two_mul_log_goldenRatio_div_sqrt_le_LFunction_one_re  TauCeti/NumberTheory/Multiquadratic/FundamentalDiscriminant/LFunction.lean:53  (0.63)  : 2 * Real.log Real.goldenRatio / √|(D : ℝ)| ≤ ((fundamentalDiscriminantCharCast ℂ D hD).LFunction 1).re",
+    "TauCeti.NumberField.two_mul_log_goldenRatio_div_sqrt_le_LFunction_one_re  TauCeti/NumberTheory/NumberField/Quadratic/DedekindZeta.lean:480  (0.63)  : 2 * Real.log Real.goldenRatio / √|(discr K : ℝ)| ≤ (DirichletCharacter.LFunction ((fundamentalDiscriminantChar (discr K)",
+    "DirichletCharacter.two_mul_log_goldenRatio_div_sqrt_le_LFunction_one_re  TauCeti/NumberTheory/LSeries/Quadratic/RealZero.lean:72  (0.63)  : 2 * Real.log Real.goldenRatio / √(N : ℝ) ≤ (χ.LFunction 1).re"
+   ],
+   "id": "45333:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 224,
+   "decl": "TauCeti.sq_mul_lt_one_of_abs_mul_goldenRatio_sub_mul_lt",
+   "msg": "`sq_mul_lt_one_of_abs_mul_goldenRatio_sub_mul_lt` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Real.one_lt_goldenRatio  Mathlib/NumberTheory/Real/GoldenRatio.lean:95  (0.60)  : 1 < φ",
+    "Real.one_sub_goldenRatio  Mathlib/NumberTheory/Real/GoldenRatio.lean:72  (0.59)  : 1 - ψ = φ",
+    "TauCeti.log_goldenRatio_lt_one_half  TauCeti/NumberTheory/Real/GoldenRatio.lean:92  (0.58)  : Real.log Real.goldenRatio < 1 / 2",
+    "TauCeti.inv_goldenRatio_eq_goldenRatio_sub_one  TauCeti/NumberTheory/Real/GoldenRatio.lean:55  (0.58)  : φ⁻¹ = φ - 1",
+    "Real.fib_succ_sub_goldenRatio_mul_fib  Mathlib/NumberTheory/Real/GoldenRatio.lean:210  (0.55)  : Nat.fib (n + 1) - φ * Nat.fib n = ψ ^ n"
+   ],
+   "id": "45333:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 242,
+   "decl": "TauCeti.sq_mul_lt_one_of_abs_mul_goldenRatio_sub_mul_lt",
+   "msg": "`have h1 : w * w < 1` inside `sq_mul_lt_one_of_abs_mul_goldenRatio_sub_mul_lt` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "mul_lt_one_of_nonneg_of_lt_one_left  Mathlib/Algebra/Order/GroupWithZero/Basic.lean:456 : a * b < 1",
+    "mul_lt_one_of_nonneg_of_lt_one_right  Mathlib/Algebra/Order/GroupWithZero/Basic.lean:460 : a * b < 1"
+   ],
+   "id": "45333:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 250,
+   "decl": "TauCeti.finite_setOf_abs_goldenRatio_sub_lt_of_sqrt_five_lt",
+   "msg": "`finite_setOf_abs_goldenRatio_sub_lt_of_sqrt_five_lt` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Rat.finite_rat_abs_sub_lt_one_div_den_sq  Mathlib/NumberTheory/DiophantineApproximation/Basic.lean:280  (0.75)  : {q : ℚ | |ξ - q| < 1 / (q.den : ℚ) ^ 2}.Finite",
+    "Bornology.IsBounded.finite_setOf_rat_den_le  TauCeti/Data/Rat/BoundedDen.lean:32  (0.69)  : {r : ℚ | r.den ≤ N ∧ (r : K) ∈ s}.Finite",
+    "TauCeti.FareySymbol.finite_setOf_abs_num_le_and_den_le_and_free_lt  TauCeti/NumberTheory/Modular/FareySymbol/Basic.lean:662  (0.66)  : {F : FareySymbol | (∀ x ∈ F.xs, |x.num| ≤ (A : ℤ) ∧ x.den ≤ B) ∧ ∀ j, SideLabel.free j ∈ F.labels → j < L}.Finite",
+    "Real.one_div_lt_abs_sub_convergent  TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:160  (0.46)  : 1 / ((ξ.convergent n).den * ((ξ.convergent n).den + (ξ.convergent (n + 1)).den)) < |ξ - ξ.convergent n|",
+    "Rat.den_abs_eq_den  Mathlib/Algebra/Order/Ring/Unbundled/Rat.lean:143  (0.44)  : |q|.den = q.den"
+   ],
+   "id": "45333:6"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 166,
+   "decl": "TauCeti.den_convergent_goldenRatio_mul_abs",
+   "msg": "4/8 nearest neighbours of `den_convergent_goldenRatio_mul_abs` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112",
+    "Real.fib_succ_le_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127",
+    "Real.monotone_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134",
+    "Real.tendsto_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142",
+    "TauCeti.log_den_convergent_bounds TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/PartialQuotients.lean:42"
+   ],
+   "id": "45333:7"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 177,
+   "decl": "TauCeti.tendsto_den_convergent_goldenRatio_mul_abs",
+   "msg": "4/8 nearest neighbours of `tendsto_den_convergent_goldenRatio_mul_abs` live in `TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Real.den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:112",
+    "Real.fib_succ_le_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:127",
+    "Real.monotone_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:134",
+    "Real.tendsto_den_convergent TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/Basic.lean:142",
+    "TauCeti.log_den_convergent_bounds TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/PartialQuotients.lean:42"
+   ],
+   "id": "45333:8"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 192,
+   "decl": "TauCeti.one_le_abs_mul_goldenRatio_sub_mul_abs_mul_goldenConj_sub",
+   "msg": "5/8 nearest neighbours of `one_le_abs_mul_goldenRatio_sub_mul_abs_mul_goldenConj_sub` live in `TauCeti/NumberTheory/Real/GoldenRatio.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Multiquadratic.two_mul_log_goldenRatio_div_sqrt_le_LFunction_one_re TauCeti/NumberTheory/Multiquadratic/FundamentalDiscriminant/LFunction.lean:53",
+    "TauCeti.inv_goldenRatio_eq_goldenRatio_sub_one TauCeti/NumberTheory/Real/GoldenRatio.lean:55",
+    "TauCeti.floor_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:70",
+    "TauCeti.fract_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:75",
+    "TauCeti.inv_fract_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:79"
+   ],
+   "id": "45333:9"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 209,
+   "decl": "TauCeti.one_le_abs_mul_goldenRatio_sub_mul_add",
+   "msg": "5/8 nearest neighbours of `one_le_abs_mul_goldenRatio_sub_mul_add` live in `TauCeti/NumberTheory/Real/GoldenRatio.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Multiquadratic.two_mul_log_goldenRatio_div_sqrt_le_LFunction_one_re TauCeti/NumberTheory/Multiquadratic/FundamentalDiscriminant/LFunction.lean:53",
+    "TauCeti.inv_goldenRatio_eq_goldenRatio_sub_one TauCeti/NumberTheory/Real/GoldenRatio.lean:55",
+    "TauCeti.floor_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:70",
+    "TauCeti.fract_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:75",
+    "TauCeti.inv_fract_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:79"
+   ],
+   "id": "45333:10"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/ContinuedFractions/GoldenRatio.lean",
+   "line": 224,
+   "decl": "TauCeti.sq_mul_lt_one_of_abs_mul_goldenRatio_sub_mul_lt",
+   "msg": "5/8 nearest neighbours of `sq_mul_lt_one_of_abs_mul_goldenRatio_sub_mul_lt` live in `TauCeti/NumberTheory/Real/GoldenRatio.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Multiquadratic.two_mul_log_goldenRatio_div_sqrt_le_LFunction_one_re TauCeti/NumberTheory/Multiquadratic/FundamentalDiscriminant/LFunction.lean:53",
+    "TauCeti.inv_goldenRatio_eq_goldenRatio_sub_one TauCeti/NumberTheory/Real/GoldenRatio.lean:55",
+    "TauCeti.floor_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:70",
+    "TauCeti.fract_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:75",
+    "TauCeti.inv_fract_goldenRatio TauCeti/NumberTheory/Real/GoldenRatio.lean:79"
+   ],
+   "id": "45333:11"
+  }
+ ]
+}

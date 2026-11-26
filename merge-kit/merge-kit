@@ -1,0 +1,2 @@
+#!/bin/sh
+exec nice -n 19 python3 "$(dirname "$(readlink -f "$0")")/mergekit/cli.py" "$@"

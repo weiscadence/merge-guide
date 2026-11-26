@@ -1,0 +1,392 @@
+{
+ "pr": 1202,
+ "test": true,
+ "body_version": "current (never edited)",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 64,
+   "decl": "TauCeti.memLp_pi_prod",
+   "msg": "`memLp_pi_prod` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.memLp_pi_iff  Mathlib/MeasureTheory/SpecificCodomains/Pi.lean:30  (0.61)  : MemLp f p μ ↔ ∀ i, MemLp (f · i) p μ",
+    "MeasureTheory.memLp_piLp_iff  Mathlib/MeasureTheory/SpecificCodomains/WithLp.lean:33  (0.61)  : MemLp f p μ ↔ ∀ i, MemLp (f · i) p μ",
+    "MeasureTheory.MemLp.prod  Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.lean:643  (0.60)  : MemLp (∏ i ∈ s, f i) (∑ i ∈ s, (p i)⁻¹)⁻¹ μ",
+    "MeasureTheory.MemLp.fun_prod  Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.lean:654  (0.59)  : MemLp (fun ω ↦ ∏ i ∈ s, f i ω) (∑ i ∈ s, (p i)⁻¹)⁻¹ μ",
+    "MeasureTheory.MemLp.prodLp_snd  Mathlib/MeasureTheory/SpecificCodomains/WithLp.lean:68  (0.56)  : MemLp (fun x ↦ (f x).snd) p μ"
+   ],
+   "id": "1202:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 77,
+   "decl": "TauCeti.L2piMul",
+   "msg": "`L2piMul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.51)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.51)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.51)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.Lp.smul_def  Mathlib/MeasureTheory/Function/Holder.lean:193  (0.50)  : f • g = ((Lp.memLp f).smul (Lp.memLp g)).toLp (⇑f • ⇑g)",
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.48)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a"
+   ],
+   "id": "1202:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 81,
+   "decl": "TauCeti.coeFn_L2piMul",
+   "msg": "`coeFn_L2piMul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Lp.coeFn_lpSMul  Mathlib/MeasureTheory/Function/Holder.lean:197  (0.53)  : (f • g : Lp E r μ) =ᵐ[μ] ⇑f • g",
+    "MeasureTheory.AEEqFun.coeFn_mul  Mathlib/MeasureTheory/Function/AEEqFun.lean:741  (0.52)  : ⇑(f * g) =ᵐ[μ] f * g",
+    "MeasureTheory.Lp.coeFn_LpToLpOfMeasureLeSMul  Mathlib/MeasureTheory/Function/LpSpace/Basic.lean:1020  (0.51)  : LpToLpOfMeasureLeSMul hc h f =ᵐ[μ] f",
+    "Pi.counit_comp_dFinsuppCoeFnLinearMap  Mathlib/RingTheory/Coalgebra/Basic.lean:469  (0.45)  : counit (R",
+    "Pi.comul_comp_dFinsuppCoeFnLinearMap  Mathlib/RingTheory/Coalgebra/Basic.lean:480  (0.45)  : comul (R"
+   ],
+   "id": "1202:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 88,
+   "decl": "TauCeti.inner_L2piMul",
+   "msg": "`inner_L2piMul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.59)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a",
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.52)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.52)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.52)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.Lp.smul_def  Mathlib/MeasureTheory/Function/Holder.lean:193  (0.51)  : f • g = ((Lp.memLp f).smul (Lp.memLp g)).toLp (⇑f • ⇑g)"
+   ],
+   "id": "1202:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 105,
+   "decl": "TauCeti.orthonormal_L2piMul",
+   "msg": "`orthonormal_L2piMul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.49)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.49)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.49)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.Lp.smul_def  Mathlib/MeasureTheory/Function/Holder.lean:193  (0.49)  : f • g = ((Lp.memLp f).smul (Lp.memLp g)).toLp (⇑f • ⇑g)",
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.47)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a"
+   ],
+   "id": "1202:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 121,
+   "decl": "TauCeti.norm_L2piMul",
+   "msg": "`norm_L2piMul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.69)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.61)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.61)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.Lp.smul_def  Mathlib/MeasureTheory/Function/Holder.lean:193  (0.60)  : f • g = ((Lp.memLp f).smul (Lp.memLp g)).toLp (⇑f • ⇑g)",
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.59)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a"
+   ],
+   "id": "1202:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 136,
+   "decl": "TauCeti.coeFn_L2piMul_update",
+   "msg": "`coeFn_L2piMul_update` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Measure.pi_map_eval  Mathlib/MeasureTheory/Constructions/Pi.lean:375  (0.64)  : (Measure.pi μ).map (Function.eval i) = (∏ j ∈ Finset.univ.erase i, μ j Set.univ) • (μ i)",
+    "TauCeti.Grid.cIoo_union_swap  TauCeti/KnotTheory/Grid/CyclicInterval.lean:694  (0.59)  : cIoo a b ∪ cIoo b a = (Finset.univ.erase a).erase b",
+    "TauCeti.Grid.cIoo_swap_eq_erase_erase_sdiff  TauCeti/KnotTheory/Grid/CyclicInterval.lean:706  (0.59)  : cIoo b a = (Finset.univ.erase a).erase b \\ cIoo a b",
+    "eigenvalue_mem_ball  Mathlib/LinearAlgebra/Matrix/Gershgorin.lean:30  (0.58)  : ∃ k, μ ∈ Metric.closedBall (A k k) (∑ j ∈ Finset.univ.erase k, ‖A k j‖)",
+    "Matrix.adjugate_diagonal  Mathlib/LinearAlgebra/Matrix/Adjugate.lean:313  (0.58)  : adjugate (diagonal v) = diagonal fun i => ∏ j ∈ Finset.univ.erase i, v j"
+   ],
+   "id": "1202:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 146,
+   "decl": "TauCeti.L2piMul_update_add",
+   "msg": "`L2piMul_update_add` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.49)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.43)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.43)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.Lp.smul_def  Mathlib/MeasureTheory/Function/Holder.lean:193  (0.43)  : f • g = ((Lp.memLp f).smul (Lp.memLp g)).toLp (⇑f • ⇑g)",
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.41)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a"
+   ],
+   "id": "1202:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 158,
+   "decl": "TauCeti.L2piMul_update_smul",
+   "msg": "`L2piMul_update_smul` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.49)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.Lp.smul_def  Mathlib/MeasureTheory/Function/Holder.lean:193  (0.49)  : f • g = ((Lp.memLp f).smul (Lp.memLp g)).toLp (⇑f • ⇑g)",
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.43)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.43)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.41)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a"
+   ],
+   "id": "1202:8"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 194,
+   "decl": "TauCeti.inner_L2piMul_eq_zero_of_forall_basis",
+   "msg": "`inner_L2piMul_eq_zero_of_forall_basis` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.condExpL2_const_inner  Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean:214  (0.55)  : condExpL2 𝕜 𝕜 hm (((Lp.memLp f).const_inner c).toLp fun a => ⟪c, f a⟫) =ᵐ[μ] fun a => ⟪c, (condExpL2 E 𝕜 hm f : α → E) a",
+    "MeasureTheory.Lp_toLp_restrict_add  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:955  (0.52)  : ((Lp.memLp (f + g)).restrict s).toLp (⇑(f + g)) = ((Lp.memLp f).restrict s).toLp f + ((Lp.memLp g).restrict s).toLp g",
+    "MeasureTheory.Lp_toLp_restrict_smul  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:970  (0.52)  : ((Lp.memLp (c • f)).restrict s).toLp (⇑(c • f)) = c • ((Lp.memLp f).restrict s).toLp f",
+    "MeasureTheory.norm_Lp_toLp_restrict_le  Mathlib/MeasureTheory/Integral/Bochner/Set.lean:982  (0.52)  : ‖((Lp.memLp f).restrict s).toLp f‖ ≤ ‖f‖",
+    "MeasureTheory.mem_lpMeasSubgroup_toLp_of_trim  Mathlib/MeasureTheory/Function/ConditionalExpectation/AEMeasurable.lean:145  (0.51)  : (memLp_of_memLp_trim hm (Lp.memLp f)).toLp f ∈ lpMeasSubgroup F m p μ"
+   ],
+   "id": "1202:9"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 232,
+   "decl": "TauCeti.setIntegral_pi_eq_zero_of_forall_inner",
+   "msg": "`setIntegral_pi_eq_zero_of_forall_inner` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Measure.restrict_pi_pi  Mathlib/MeasureTheory/Constructions/Pi.lean:416  (0.64)  : (Measure.pi μ).restrict (Set.univ.pi fun i ↦ s i) = .pi (fun i ↦ (μ i).restrict (s i))",
+    "ProbabilityTheory.uniformOn_pi  Mathlib/Probability/UniformOn.lean:223  (0.63)  : uniformOn (Set.univ.pi f) = Measure.pi fun i ↦ uniformOn (f i)",
+    "Set.matrix_eq_pi  Mathlib/LinearAlgebra/Matrix/Defs.lean:766  (0.46)  : S.matrix = of.symm ⁻¹' Set.univ.pi fun (_ : m) ↦ Set.univ.pi fun (_ : n) ↦ S",
+    "Set.IsPWO.pi  Mathlib/Order/WellFoundedSet.lean:453  (0.43)  : (Set.univ.pi s).IsPWO",
+    "integral_comp_pi_polarCoord_symm  Mathlib/Analysis/SpecialFunctions/PolarCoord.lean:266  (0.43)  : (∫ p in (Set.univ.pi fun _ : ι ↦ polarCoord.target), (∏ i, (p i).1) • f (fun i ↦ polarCoord.symm (p i))) = ∫ p, f p"
+   ],
+   "id": "1202:10"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 261,
+   "decl": "TauCeti.setIntegral_eq_zero_of_forall_inner_pi",
+   "msg": "`setIntegral_eq_zero_of_forall_inner_pi` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Measure.ae_eq_set_pi  Mathlib/MeasureTheory/Constructions/Pi.lean:446  (0.69)  : Set.pi I s =ᵐ[Measure.pi μ] Set.pi I t",
+    "MeasureTheory.integral_infinitePi_of_piFinset  Mathlib/Probability/ProductMeasure.lean:580  (0.66)  : ∫ y, f y ∂infinitePi μ = ∫ y, f (Function.updateFinset x s y) ∂Measure.pi (fun i : s ↦ μ i)",
+    "MeasureTheory.Measure.pi_eq  Mathlib/MeasureTheory/Constructions/Pi.lean:278  (0.66)  : Measure.pi μ = μ'",
+    "MeasureTheory.Measure.ae_eq_pi  Mathlib/MeasureTheory/Constructions/Pi.lean:430  (0.66)  : (fun (x : ∀ i, α i) i => f i (x i)) =ᵐ[Measure.pi μ] fun x i => f' i (x i)",
+    "MeasureTheory.Measure.pi_eq_generateFrom  Mathlib/MeasureTheory/Constructions/Pi.lean:261  (0.65)  : Measure.pi μ = μν"
+   ],
+   "id": "1202:11"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 331,
+   "decl": "TauCeti.piHilbertBasis",
+   "msg": "`piHilbertBasis` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "HilbertBasis.coe_mkOfOrthogonalEqBot  Mathlib/Analysis/InnerProductSpace/l2Space.lean:607  (0.51)  : ⇑(HilbertBasis.mkOfOrthogonalEqBot hv hsp) = v",
+    "HilbertBasis.mk  Mathlib/Analysis/InnerProductSpace/l2Space.lean:586  (0.51)  : HilbertBasis ι 𝕜 E",
+    "HilbertBasis.reindex  Mathlib/Analysis/InnerProductSpace/l2Space.lean:653  (0.50)  : HilbertBasis ι' 𝕜 E",
+    "OrthonormalBasis.toHilbertBasis  Mathlib/Analysis/InnerProductSpace/l2Space.lean:614  (0.50)  : HilbertBasis ι 𝕜 E",
+    "exists_hilbertBasis  Mathlib/Analysis/InnerProductSpace/l2Space.lean:640  (0.50)  : ∃ (w : Set E) (b : HilbertBasis w 𝕜 E), ⇑b = ((↑) : w → E)"
+   ],
+   "id": "1202:12"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 338,
+   "decl": "TauCeti.coeFn_piHilbertBasis",
+   "msg": "`coeFn_piHilbertBasis` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.coe_hilbertBasisOfWeightedMeasure  TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:180  (0.63)  : ",
+    "HilbertBasis.coe_mk  Mathlib/Analysis/InnerProductSpace/l2Space.lean:595  (0.53)  : ⇑(HilbertBasis.mk hv hsp) = v",
+    "HilbertBasis.coe_reindex  Mathlib/Analysis/InnerProductSpace/l2Space.lean:657  (0.52)  : ⇑(b.reindex e) = b ∘ e.symm",
+    "TauCeti.hilbertBasisOfWeightedMeasure  TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:169  (0.51)  : ",
+    "HilbertBasis.coe_toOrthonormalBasis  Mathlib/Analysis/InnerProductSpace/l2Space.lean:533  (0.51)  : (b.toOrthonormalBasis : ι → E) = b"
+   ],
+   "id": "1202:13"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/MeasureTheory/Integral/PiSystem.lean",
+   "line": 32,
+   "decl": "TauCeti.setIntegral_eq_zero_of_isPiSystem",
+   "msg": "`setIntegral_eq_zero_of_isPiSystem` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.lintegral_eq_lintegral_of_isPiSystem  Mathlib/MeasureTheory/Function/AEEqOfLIntegral.lean:152  (0.76)  : ∀ t (_ : MeasurableSet t), ∫⁻ x in t, f x ∂μ = ∫⁻ x in t, g x ∂μ",
+    "generatePiSystem_measurableSet  Mathlib/MeasureTheory/PiSystem.lean:284  (0.74)  : MeasurableSet t",
+    "MeasurableSpace.isPiSystem_measurableSet  Mathlib/MeasureTheory/PiSystem.lean:78  (0.72)  : IsPiSystem { s : Set α | MeasurableSet s }",
+    "MeasurableSpace.exists_measurableSet_of_ne  Mathlib/MeasureTheory/MeasurableSpace/CountablyGenerated.lean:279  (0.71)  : ∃ s, MeasurableSet s ∧ x ∈ s ∧ y ∉ s",
+    "MeasureTheory.Filtration.IsComplete.measurableSet_of_ae_eq  Mathlib/Probability/Process/Filtration.lean:419  (0.70)  : MeasurableSet[𝓕 i] s"
+   ],
+   "id": "1202:14"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 1,
+   "decl": null,
+   "msg": "new file under `TauCeti/Analysis/InnerProductSpace/L2/` while flat prefix-sharing sibling(s) TauCeti/Analysis/InnerProductSpace/L2Product.lean remain: move them into `TauCeti/Analysis/InnerProductSpace/L2/`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti/Analysis/InnerProductSpace/L2Product.lean"
+   ],
+   "id": "1202:15"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 338,
+   "decl": "TauCeti.coeFn_piHilbertBasis",
+   "msg": "4/8 nearest neighbours of `coeFn_piHilbertBasis` live in `TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.hilbertBasisOfWeightedMeasure TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:169",
+    "TauCeti.coe_hilbertBasisOfWeightedMeasure TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:180",
+    "TauCeti.hilbertBasisOfOrthogonalSystem TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:193",
+    "TauCeti.coe_hilbertBasisOfOrthogonalSystem TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:205"
+   ],
+   "id": "1202:16"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 20,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1202:17"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 64,
+   "decl": "TauCeti.memLp_pi_prod",
+   "msg": "section `variable [RCLike 𝕜]` (line 60) but `memLp_pi_prod` uses nothing RCLike-specific; put such decls in a section with a weaker class",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1202:18"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1202:19"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1202:20"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1202:21"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 155,
+   "decl": "TauCeti.L2piMul_update_add",
+   "msg": "8-step `rw` chain in `L2piMul_update_add`: brittle; try `simp only`/`field_simp`/a named lemma",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1202:22"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/Analysis/InnerProductSpace/L2/Pi.lean",
+   "line": 165,
+   "decl": "TauCeti.L2piMul_update_smul",
+   "msg": "9-step `rw` chain in `L2piMul_update_smul`: brittle; try `simp only`/`field_simp`/a named lemma",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1202:23"
+  }
+ ]
+}

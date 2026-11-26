@@ -1,0 +1,453 @@
+{
+ "pr": 1334,
+ "test": false,
+ "body_version": "current (never edited)",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean",
+   "line": 160,
+   "decl": "TauCeti.gaussianPDFReal_zero_one",
+   "msg": "`gaussianPDFReal_zero_one` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.hermiteFunction_one_eq  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:109  (0.51)  : hermiteFunction 1 x = Real.sqrt 2 * x * Real.exp (-(x ^ 2 / 2)) / Real.sqrt (Real.sqrt Real.pi)",
+    "ProbabilityTheory.integral_gaussianPDFReal_eq_one  Mathlib/Probability/Distributions/Gaussian/Real.lean:127  (0.51)  : ∫ x, gaussianPDFReal μ v x = 1",
+    "TauCeti.hermiteFunction_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:96  (0.51)  : hermiteFunction 0 x = Real.exp (-(x ^ 2 / 2)) / Real.sqrt (Real.sqrt Real.pi)",
+    "ProbabilityTheory.gaussianPDFReal_zero_var  Mathlib/Probability/Distributions/Gaussian/Real.lean:54  (0.50)  : gaussianPDFReal m 0 = 0",
+    "ProbabilityTheory.lintegral_gaussianPDFReal_eq_one  Mathlib/Probability/Distributions/Gaussian/Real.lean:110  (0.48)  : ∫⁻ x, ENNReal.ofReal (gaussianPDFReal μ v x) = 1"
+   ],
+   "id": "1334:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 53,
+   "decl": "TauCeti.integral_hermite_mul_hermite_mul_gaussianPDFReal",
+   "msg": "`integral_hermite_mul_hermite_mul_gaussianPDFReal` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "ProbabilityTheory.integral_gaussianPDFReal_eq_one  Mathlib/Probability/Distributions/Gaussian/Real.lean:127  (0.52)  : ∫ x, gaussianPDFReal μ v x = 1",
+    "ProbabilityTheory.gaussianPDFReal_add  Mathlib/Probability/Distributions/Gaussian/Real.lean:139  (0.48)  : gaussianPDFReal μ v (x + y) = gaussianPDFReal (μ - y) v x",
+    "ProbabilityTheory.gaussianPDFReal_sub  Mathlib/Probability/Distributions/Gaussian/Real.lean:134  (0.48)  : gaussianPDFReal μ v (x - y) = gaussianPDFReal (μ + y) v x",
+    "ProbabilityTheory.gaussianPDFReal_pos  Mathlib/Probability/Distributions/Gaussian/Real.lean:59  (0.48)  : 0 < gaussianPDFReal μ v x",
+    "ProbabilityTheory.gaussianPDFReal_nonneg  Mathlib/Probability/Distributions/Gaussian/Real.lean:64  (0.48)  : 0 ≤ gaussianPDFReal μ v x"
+   ],
+   "id": "1334:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 65,
+   "decl": "TauCeti.hermiteℝ",
+   "msg": "`hermiteℝ` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.hermite  Mathlib/RingTheory/Polynomial/Hermite/Basic.lean:47  (0.51)  : ℕ → Polynomial ℤ | 0 => 1 | n + 1 => X * hermite n - derivative (hermite n) /-- The recursion `hermite (n+1) = (x - d/dx",
+    "Polynomial.IsPrimitive.Int.dvd_iff_map_cast_dvd_map_cast  Mathlib/RingTheory/Polynomial/GaussLemma.lean:321  (0.48)  : p ∣ q ↔ p.map (Int.castRingHom ℚ) ∣ q.map (Int.castRingHom ℚ)",
+    "MvPolynomial.C_dvd_iff_zmod  Mathlib/FieldTheory/Finite/Polynomial.lean:27  (0.47)  : C (n : ℤ) ∣ φ ↔ map (Int.castRingHom (ZMod n)) φ = 0",
+    "Polynomial.IsPrimitive.Int.irreducible_iff_irreducible_map_cast  Mathlib/RingTheory/Polynomial/GaussLemma.lean:317  (0.47)  : Irreducible p ↔ Irreducible (p.map (Int.castRingHom ℚ))",
+    "Polynomial.map_cyclotomic_int  Mathlib/RingTheory/Polynomial/Cyclotomic/Basic.lean:238  (0.47)  : map (Int.castRingHom R) (cyclotomic n ℤ) = cyclotomic n R"
+   ],
+   "id": "1334:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 67,
+   "decl": "TauCeti.eval_hermiteℝ",
+   "msg": "`eval_hermiteℝ` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.ofReal_eval  Mathlib/Analysis/RCLike/Lemmas.lean:27  (0.77)  : (↑(p.eval x) : K) = aeval (↑x) p",
+    "Polynomial.coe_aeval_eq_eval  Mathlib/Algebra/Polynomial/AlgebraMap.lean:468  (0.76)  : (aeval r : R[X] → R) = eval r",
+    "Polynomial.aeval_algebraMap_apply_eq_algebraMap_eval  Mathlib/Algebra/Polynomial/AlgebraMap.lean:431  (0.74)  : aeval (algebraMap R A x) p = algebraMap R A (p.eval x)",
+    "MvPolynomial.aeval_eq_eval  Mathlib/Algebra/MvPolynomial/Eval.lean:594  (0.74)  : (aeval f : MvPolynomial σ S₁ → S₁) = eval f",
+    "Polynomial.eval_map_algebraMap  Mathlib/Algebra/Polynomial/AlgebraMap.lean:274  (0.73)  : (map (algebraMap R B) P).eval b = aeval b P"
+   ],
+   "id": "1334:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 73,
+   "decl": "TauCeti.degree_hermiteℝ",
+   "msg": "`degree_hermiteℝ` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.degree_one  Mathlib/Algebra/Polynomial/Degree/Defs.lean:260  (0.77)  : degree (1 : R[X]) = (0 : WithBot ℕ)",
+    "Polynomial.degree_C  Mathlib/Algebra/Polynomial/Degree/Defs.lean:152  (0.77)  : degree (C a) = (0 : WithBot ℕ)",
+    "Polynomial.degree_one_le  Mathlib/Algebra/Polynomial/Degree/Defs.lean:165  (0.77)  : degree (1 : R[X]) ≤ (0 : WithBot ℕ)",
+    "Polynomial.le_degree_of_ne_zero  Mathlib/Algebra/Polynomial/Degree/Defs.lean:124  (0.76)  : (n : WithBot ℕ) ≤ degree p",
+    "Polynomial.degree_eq_natDegree  Mathlib/Algebra/Polynomial/Degree/Defs.lean:93  (0.74)  : degree p = (natDegree p : WithBot ℕ)"
+   ],
+   "id": "1334:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 77,
+   "decl": "TauCeti.hermiteGaussianNormalization_pos",
+   "msg": "`hermiteGaussianNormalization_pos` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.hermiteFunction_def  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:41  (0.64)  : hermiteFunction n x = aeval (x * Real.sqrt 2) (hermite n) * Real.exp (-(x ^ 2 / 2)) / Real.sqrt ((n.factorial : ℝ) * Rea",
+    "Nat.monotone_factorial  Mathlib/Data/Nat/Factorial/BigOperators.lean:30  (0.58)  : Monotone factorial",
+    "Nat.factorization_factorial_eq_zero_of_lt  Mathlib/Data/Nat/Choose/Factorization.lean:247  (0.58)  : (factorial n).factorization p = 0",
+    "factorial_eq_factorialBinarySplitting  Mathlib/Data/Nat/Factorial/Basic.lean:544  (0.57)  : @factorial = @factorialBinarySplitting",
+    "NumberField.abs_discr_ge_of_isTotallyComplex  Mathlib/NumberTheory/NumberField/Discriminant/Basic.lean:225  (0.57)  : (finrank ℚ K) ^ (2 * finrank ℚ K) / ((4 / π) ^ (finrank ℚ K) * (finrank ℚ K).factorial ^ 2) ≤ |discr K|"
+   ],
+   "id": "1334:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 89,
+   "decl": "TauCeti.integrable_exp_mul_abs_gaussianPDFReal",
+   "msg": "`integrable_exp_mul_abs_gaussianPDFReal` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "ProbabilityTheory.lintegral_gaussianPDFReal_eq_one  Mathlib/Probability/Distributions/Gaussian/Real.lean:110  (0.51)  : ∫⁻ x, ENNReal.ofReal (gaussianPDFReal μ v x) = 1",
+    "ProbabilityTheory.integrable_gaussianPDFReal  Mathlib/Probability/Distributions/Gaussian/Real.lean:88  (0.48)  : Integrable (gaussianPDFReal μ v)",
+    "ProbabilityTheory.gaussianPDF_def  Mathlib/Probability/Distributions/Gaussian/Real.lean:165  (0.45)  : gaussianPDF μ v = fun x ↦ ENNReal.ofReal (gaussianPDFReal μ v x)",
+    "ProbabilityTheory.gaussianReal_apply_eq_integral  Mathlib/Probability/Distributions/Gaussian/Real.lean:244  (0.43)  : gaussianReal μ v s = ENNReal.ofReal (∫ x in s, gaussianPDFReal μ v x)",
+    "MeasurableEmbedding.gaussianReal_comap_apply  Mathlib/Probability/Distributions/Gaussian/Real.lean:288  (0.42)  : (gaussianReal μ v).comap f s = ENNReal.ofReal (∫ x in s, |f' x| * gaussianPDFReal μ v (f x))"
+   ],
+   "id": "1334:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 97,
+   "decl": "TauCeti.exp_moment_gaussianPDFReal",
+   "msg": "`exp_moment_gaussianPDFReal` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "ProbabilityTheory.lintegral_gaussianPDFReal_eq_one  Mathlib/Probability/Distributions/Gaussian/Real.lean:110  (0.55)  : ∫⁻ x, ENNReal.ofReal (gaussianPDFReal μ v x) = 1",
+    "ProbabilityTheory.gaussianPDF_def  Mathlib/Probability/Distributions/Gaussian/Real.lean:165  (0.48)  : gaussianPDF μ v = fun x ↦ ENNReal.ofReal (gaussianPDFReal μ v x)",
+    "ProbabilityTheory.integrable_gaussianPDFReal  Mathlib/Probability/Distributions/Gaussian/Real.lean:88  (0.45)  : Integrable (gaussianPDFReal μ v)",
+    "ProbabilityTheory.gaussianReal_apply_eq_integral  Mathlib/Probability/Distributions/Gaussian/Real.lean:244  (0.45)  : gaussianReal μ v s = ENNReal.ofReal (∫ x in s, gaussianPDFReal μ v x)",
+    "MeasurableEmbedding.gaussianReal_comap_apply  Mathlib/Probability/Distributions/Gaussian/Real.lean:288  (0.44)  : (gaussianReal μ v).comap f s = ENNReal.ofReal (∫ x in s, |f' x| * gaussianPDFReal μ v (f x))"
+   ],
+   "id": "1334:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 109,
+   "decl": "TauCeti.memLp_hermiteℝ_normalized",
+   "msg": "`memLp_hermiteℝ_normalized` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.memLp_two_bareNormalized  TauCeti/Analysis/InnerProductSpace/PolynomialCompleteness.lean:69  (0.55)  : MemLp (fun x : ℝ => (algebraMap ℝ 𝕜) ((p n).eval x / Real.sqrt (c n))) 2 ν",
+    "TauCeti.bareNormalizedLp  TauCeti/Analysis/InnerProductSpace/WeightedOrthogonalBasis.lean:69  (0.40)  : Lp 𝕜 2 (μ.withDensity (fun x => ENNReal.ofReal (w x)))",
+    "TauCeti.memLp_two_algebraMap_hermiteFunction  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Lp.lean:39  (0.38)  : MemLp (fun x : ℝ => (algebraMap ℝ 𝕜) (hermiteFunction n x)) 2 volume"
+   ],
+   "id": "1334:8"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 135,
+   "decl": "TauCeti.coe_cast_hilbertBasis",
+   "msg": "`coe_cast_hilbertBasis` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Path.cast_coe  Mathlib/Topology/Path.lean:403  (0.80)  : (γ.cast hx hy : I → X) = γ",
+    "ZMod.coe_intCast  Mathlib/Data/ZMod/Basic.lean:526  (0.75)  : cast (a : ZMod n) = a % n",
+    "cast_inj  Mathlib/Logic/Function/Basic.lean:1218  (0.72)  : cast h x = cast h y ↔ x = y",
+    "curveIntegral_cast  Mathlib/MeasureTheory/Integral/CurveIntegral/Basic.lean:189  (0.72)  : ∫ᶜ x in γ.cast hc hd, ω x = ∫ᶜ x in γ, ω x",
+    "Nat.cast_id  Mathlib/Data/Nat/Cast/Basic.lean:170  (0.72)  : n.cast = n"
+   ],
+   "id": "1334:9"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 145,
+   "decl": "TauCeti.coeFn_cast_lp",
+   "msg": "`coeFn_cast_lp` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "PiTensorProduct.cast_eq_cast  Mathlib/LinearAlgebra/TensorPower/Basic.lean:130  (0.56)  : ⇑(cast R M h) = _root_.cast (congrArg (fun i => ⨂[R]^i M) h)",
+    "CategoryTheory.congrArg_cast_hom_left  Mathlib/CategoryTheory/EqToHom.lean:167  (0.52)  : cast (congrArg (fun W : C => W ⟶ Z) p.symm) q = eqToHom p ≫ q",
+    "CategoryTheory.congrArg_cast_hom_right  Mathlib/CategoryTheory/EqToHom.lean:187  (0.52)  : cast (congrArg (fun W : C => X ⟶ W) q.symm) p = p ≫ eqToHom q.symm",
+    "TauCeti.Deck.cast_subgroupFiberOrbitClass  TauCeti/AlgebraicTopology/UniversalCover/Deck/SubgroupFiberOrbit/Basic.lean:220  (0.49)  : Equiv.cast (congrArg (fun H' => SubgroupFiberOrbitQuotient H' b) hHK) (subgroupFiberOrbitClass H e) = subgroupFiberOrbit",
+    "Path.cast_coe  Mathlib/Topology/Path.lean:403  (0.44)  : (γ.cast hx hy : I → X) = γ"
+   ],
+   "id": "1334:10"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 196,
+   "decl": "TauCeti.sqrt_gaussianPDFReal_mul_hermiteℝ_div_sqrt_factorial",
+   "msg": "`sqrt_gaussianPDFReal_mul_hermiteℝ_div_sqrt_factorial` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.sqrt_factorial_mul_sqrt_pi_pos  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:48  (0.52)  : 0 < Real.sqrt ((n.factorial : ℝ) * Real.sqrt Real.pi)",
+    "TauCeti.sqrt_factorial_mul_sqrt_pi_ne_zero  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:54  (0.52)  : Real.sqrt ((n.factorial : ℝ) * Real.sqrt Real.pi) ≠ 0",
+    "TauCeti.hermiteFunction_def  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:41  (0.44)  : hermiteFunction n x = aeval (x * Real.sqrt 2) (hermite n) * Real.exp (-(x ^ 2 / 2)) / Real.sqrt ((n.factorial : ℝ) * Rea",
+    "NumberField.exists_ne_zero_mem_ringOfIntegers_of_norm_le_mul_sqrt_discr  Mathlib/NumberTheory/NumberField/Discriminant/Basic.lean:196  (0.44)  : ∃ (a : 𝓞 K), a ≠ 0 ∧ |Algebra.norm ℚ (a : K)| ≤ (4 / π) ^ nrComplexPlaces K * (finrank ℚ K).factorial / (finrank ℚ K) ^ ",
+    "NumberField.exists_ne_zero_mem_ideal_of_norm_le_mul_sqrt_discr  Mathlib/NumberTheory/NumberField/Discriminant/Basic.lean:147  (0.42)  : ∃ a ∈ (I : FractionalIdeal (𝓞 K)⁰ K), a ≠ 0 ∧ |Algebra.norm ℚ (a : K)| ≤ FractionalIdeal.absNorm I.val * (4 / π) ^ nrCom"
+   ],
+   "id": "1334:11"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 239,
+   "decl": "TauCeti.sqrt_gaussianPDFReal_smul_gaussianHermiteHilbertBasis",
+   "msg": "`sqrt_gaussianPDFReal_smul_gaussianHermiteHilbertBasis` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Multiquadratic.sq_sqrt_natCast  TauCeti/NumberTheory/Multiquadratic/Prime/Radicands.lean:80  (0.68)  : (Real.sqrt n) ^ 2 = algebraMap ℚ ℝ (n : ℚ)",
+    "TauCeti.Multiquadratic.sq_sqrt_intCast  TauCeti/NumberTheory/Multiquadratic/SquareClass/Basic.lean:222  (0.68)  : (Real.sqrt n) ^ 2 = algebraMap ℚ ℝ (n : ℚ)",
+    "TauCeti.memLp_two_bareNormalized  TauCeti/Analysis/InnerProductSpace/PolynomialCompleteness.lean:69  (0.59)  : MemLp (fun x : ℝ => (algebraMap ℝ 𝕜) ((p n).eval x / Real.sqrt (c n))) 2 ν",
+    "Real.sqrt_monotone  Mathlib/Analysis/Real/Sqrt.lean:213  (0.57)  : Monotone Real.sqrt",
+    "TauCeti.mul_hermiteFunction  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Ladder.lean:108  (0.57)  : x * hermiteFunction n x = Real.sqrt (((n : ℝ) + 1) / 2) * hermiteFunction (n + 1) x + Real.sqrt ((n : ℝ) / 2) * hermiteF"
+   ],
+   "id": "1334:12"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 264,
+   "decl": "TauCeti.weightL2Isometry_gaussianHermiteHilbertBasis",
+   "msg": "`weightL2Isometry_gaussianHermiteHilbertBasis` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Multiquadratic.sq_sqrt_natCast  TauCeti/NumberTheory/Multiquadratic/Prime/Radicands.lean:80  (0.62)  : (Real.sqrt n) ^ 2 = algebraMap ℚ ℝ (n : ℚ)",
+    "TauCeti.Multiquadratic.sq_sqrt_intCast  TauCeti/NumberTheory/Multiquadratic/SquareClass/Basic.lean:222  (0.62)  : (Real.sqrt n) ^ 2 = algebraMap ℚ ℝ (n : ℚ)",
+    "TauCeti.memLp_two_bareNormalized  TauCeti/Analysis/InnerProductSpace/PolynomialCompleteness.lean:69  (0.59)  : MemLp (fun x : ℝ => (algebraMap ℝ 𝕜) ((p n).eval x / Real.sqrt (c n))) 2 ν",
+    "TauCeti.mul_hermiteFunction  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Ladder.lean:108  (0.58)  : x * hermiteFunction n x = Real.sqrt (((n : ℝ) + 1) / 2) * hermiteFunction (n + 1) x + Real.sqrt ((n : ℝ) / 2) * hermiteF",
+    "TauCeti.hermiteFunction_one  TauCeti/Analysis/SpecialFunctions/Hermite/Function/Basic.lean:102  (0.58)  : hermiteFunction 1 x = Real.sqrt 2 * x * hermiteFunction 0 x"
+   ],
+   "id": "1334:13"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 1,
+   "decl": null,
+   "msg": "new file under `TauCeti/Probability/Distributions/Gaussian/Hermite/` while flat prefix-sharing sibling(s) TauCeti/Probability/Distributions/Gaussian/HermiteMemLp.lean remain: move them into `TauCeti/Probability/Distributions/Gaussian/Hermite/`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti/Probability/Distributions/Gaussian/HermiteMemLp.lean"
+   ],
+   "id": "1334:14"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 135,
+   "decl": "TauCeti.coe_cast_hilbertBasis",
+   "msg": "private `coe_cast_hilbertBasis` states a fact about library notions only (HilbertBasis, Measure, cast); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:15"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 135,
+   "decl": "TauCeti.coe_cast_hilbertBasis",
+   "msg": "`coe_cast_hilbertBasis` looks like general material living in a feature file; consider the topic file for HilbertBasis, Measure, cast",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:16"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 145,
+   "decl": "TauCeti.coeFn_cast_lp",
+   "msg": "private `coeFn_cast_lp` states a fact about library notions only (Measure, cast); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:17"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 145,
+   "decl": "TauCeti.coeFn_cast_lp",
+   "msg": "`coeFn_cast_lp` looks like general material living in a feature file; consider the topic file for Measure, cast",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:18"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/PiBasis.lean",
+   "line": 1,
+   "decl": null,
+   "msg": "new file under `TauCeti/Probability/Distributions/Gaussian/Hermite/` while flat prefix-sharing sibling(s) TauCeti/Probability/Distributions/Gaussian/HermiteMemLp.lean remain: move them into `TauCeti/Probability/Distributions/Gaussian/Hermite/`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti/Probability/Distributions/Gaussian/HermiteMemLp.lean"
+   ],
+   "id": "1334:19"
+  },
+  {
+   "check": "naming",
+   "rubric": "naming",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 135,
+   "decl": "TauCeti.coe_cast_hilbertBasis",
+   "msg": "`coe_cast_hilbertBasis`: function coercions `⇑` are named `coeFn`, not `coe`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:20"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/SpecialFunctions/Hermite/Orthogonality.lean",
+   "line": 24,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:21"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 151,
+   "decl": null,
+   "msg": "decl docstring contains roadmap/process commentary (`Roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:22"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 16,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`Roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:23"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 109,
+   "decl": "TauCeti.memLp_hermiteℝ_normalized",
+   "msg": "section `variable [RCLike 𝕜]` (line 104) but `memLp_hermiteℝ_normalized` uses nothing RCLike-specific; put such decls in a section with a weaker class",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:24"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/PiBasis.lean",
+   "line": 39,
+   "decl": "TauCeti.gaussianHermitePiBasis",
+   "msg": "section `variable [RCLike 𝕜]` (line 35) but `gaussianHermitePiBasis` uses nothing RCLike-specific; put such decls in a section with a weaker class",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:25"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:26"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:27"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1334:28"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/Probability/Distributions/Gaussian/Hermite/Basis.lean",
+   "line": 224,
+   "decl": "TauCeti.sqrt_gaussianPDFReal_mul_hermiteℝ_div_sqrt_factorial",
+   "msg": "7-step `rw` chain in `sqrt_gaussianPDFReal_mul_hermiteℝ_div_sqrt_factorial`: brittle; try `simp only`/`field_simp`/a named lemma",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1334:29"
+  }
+ ]
+}

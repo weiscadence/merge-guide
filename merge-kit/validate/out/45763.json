@@ -1,0 +1,241 @@
+{
+ "pr": 45763,
+ "test": false,
+ "body_version": "version of 2026-11-25T07:37:14Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 59,
+   "decl": "Polynomial.hasDerivAt_exp_neg_mul_rpow_mul_laguerre",
+   "msg": "`hasDerivAt_exp_neg_mul_rpow_mul_laguerre` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Finset.hasDerivAt_sum_eval_mul_exp  TauCeti/Analysis/SpecialFunctions/Exp/ExponentialPolynomial.lean:81  (0.56)  : HasDerivAt (fun x ↦ ∑ i ∈ s, (p i).eval x * Real.exp (γ i * x)) (∑ i ∈ s, (derivative (p i) + C (γ i) * p i).eval x * Re",
+    "Polynomial.eval_zero_laguerre_zero_left  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:141  (0.52)  : (laguerre (0 : R) n).eval 0 = 1",
+    "TauCeti.hasDerivAt_exp_mul_const_mul_exp_neg  TauCeti/Analysis/SpecialFunctions/Exponential.lean:97  (0.52)  : HasDerivAt (fun t : ℝ ↦ exp (t • x) * c * exp (t • (-x))) (x * c - c * x) 0",
+    "Finset.hasDerivAt_sum_eval_mul_cexp  TauCeti/Analysis/SpecialFunctions/Exp/ExponentialPolynomial.lean:221  (0.52)  : HasDerivAt (fun z ↦ ∑ i ∈ s, (p i).eval z * Complex.exp (γ i * z)) (∑ i ∈ s, (derivative (p i) + C (γ i) * p i).eval z *",
+    "ProbabilityTheory.hasDerivAt_neg_exp_mul_exp  Mathlib/Probability/Distributions/Exponential.lean:111  (0.51)  : HasDerivAt (fun a ↦ -exp (-(r * a))) (r * exp (-(r * x))) x"
+   ],
+   "id": "45763:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 76,
+   "decl": "Polynomial.iteratedDeriv_exp_neg_mul_rpow_eq_laguerre",
+   "msg": "`iteratedDeriv_exp_neg_mul_rpow_eq_laguerre` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.eval_zero_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:135  (0.53)  : (laguerre α n).eval 0 = ((1 : ℚ) / n.factorial) • (ascPochhammer R n).smeval (α + 1)",
+    "Polynomial.coeff_laguerre_self  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:94  (0.45)  : (laguerre α n).coeff n = algebraMap ℚ R ((-1) ^ n / n.factorial)",
+    "MvPolynomial.iteratedDeriv_eval_update_mul_cexp  TauCeti/Analysis/MvPolynomial/Deriv.lean:68  (0.45)  : iteratedDeriv σ (fun w ↦ eval (update x i w) F * Complex.exp (a * w + b)) = fun w ↦ (∑ k ∈ range (σ + 1), (σ.choose k : ",
+    "Polynomial.leadingCoeff_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:119  (0.45)  : (laguerre α n).leadingCoeff = algebraMap ℚ R ((-1) ^ n / n.factorial)",
+    "Polynomial.coeff_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:66  (0.44)  : (laguerre α n).coeff k = if k ≤ n then (-1 : R) ^ k * (((1 : ℚ) / ((n - k).factorial * k.factorial)) • (ascPochhammer R "
+   ],
+   "id": "45763:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 96,
+   "decl": "Polynomial.laguerre_rodrigues",
+   "msg": "`laguerre_rodrigues` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.eval_zero_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:135  (0.60)  : (laguerre α n).eval 0 = ((1 : ℚ) / n.factorial) • (ascPochhammer R n).smeval (α + 1)",
+    "Polynomial.coeff_laguerre_self  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:94  (0.52)  : (laguerre α n).coeff n = algebraMap ℚ R ((-1) ^ n / n.factorial)",
+    "Polynomial.leadingCoeff_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:119  (0.51)  : (laguerre α n).leadingCoeff = algebraMap ℚ R ((-1) ^ n / n.factorial)",
+    "Polynomial.coeff_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:66  (0.51)  : (laguerre α n).coeff k = if k ≤ n then (-1 : R) ^ k * (((1 : ℚ) / ((n - k).factorial * k.factorial)) • (ascPochhammer R ",
+    "Polynomial.coeff_laguerre_of_le  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:75  (0.50)  : (laguerre α n).coeff k = (-1 : R) ^ k * (((1 : ℚ) / ((n - k).factorial * k.factorial)) • (ascPochhammer R (n - k)).smeva"
+   ],
+   "id": "45763:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 102,
+   "decl": "Polynomial.laguerre_rodrigues",
+   "msg": "`have h₁ : x ^ α ≠ 0` inside `laguerre_rodrigues` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Ordinal.opow_ne_zero  Mathlib/SetTheory/Ordinal/Exponential.lean:103 : a ^ b ≠ 0",
+    "Matrix.zpow_ne_zero_of_isUnit_det  Mathlib/LinearAlgebra/Matrix/ZPow.lean:247 : A ^ z ≠ 0",
+    "pow_ne_zero  Mathlib/Algebra/GroupWithZero/Basic.lean:257 : a ^ n ≠ 0"
+   ],
+   "id": "45763:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/RingTheory/Polynomial/Laguerre/Recurrence.lean",
+   "line": 148,
+   "decl": "Polynomial.X_mul_derivative_laguerre_add_one",
+   "msg": "`X_mul_derivative_laguerre_add_one` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Polynomial.laguerre_one  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:131  (0.60)  : laguerre α 1 = C (α + 1) - X",
+    "Polynomial.laguerre_zero  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:126  (0.57)  : laguerre α 0 = 1",
+    "Polynomial.degree_laguerre  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:114  (0.54)  : (laguerre α n).degree = n",
+    "Polynomial.coeff_laguerre_of_lt  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:83  (0.54)  : (laguerre α n).coeff k = 0",
+    "Polynomial.degree_laguerre_le  TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:89  (0.53)  : (laguerre α n).degree ≤ n"
+   ],
+   "id": "45763:4"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 8,
+   "decl": null,
+   "msg": "import `TauCeti.RingTheory.Polynomial.Laguerre.Basic` is redundant: already imported by `TauCeti.RingTheory.Polynomial.Laguerre.Recurrence`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.RingTheory.Polynomial.Laguerre.Recurrence"
+   ],
+   "id": "45763:5"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 59,
+   "decl": "Polynomial.hasDerivAt_exp_neg_mul_rpow_mul_laguerre",
+   "msg": "8/8 nearest neighbours of `hasDerivAt_exp_neg_mul_rpow_mul_laguerre` live in `TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Polynomial.integrable_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:116",
+    "Polynomial.integral_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:127",
+    "Polynomial.laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:69",
+    "Polynomial.laguerreMeasure_def TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:74",
+    "Polynomial.sigmaFinite_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:81"
+   ],
+   "id": "45763:6"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 76,
+   "decl": "Polynomial.iteratedDeriv_exp_neg_mul_rpow_eq_laguerre",
+   "msg": "6/8 nearest neighbours of `iteratedDeriv_exp_neg_mul_rpow_eq_laguerre` live in `TauCeti/Analysis/InnerProductSpace/NormPow.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Polynomial.integrable_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:116",
+    "Polynomial.integral_rpow_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:127",
+    "TauCeti.iteratedFDeriv_two_norm_rpow_apply TauCeti/Analysis/InnerProductSpace/NormPow.lean:413",
+    "TauCeti.norm_iteratedFDeriv_two_norm_rpow_le TauCeti/Analysis/InnerProductSpace/NormPow.lean:440",
+    "TauCeti.norm_iteratedFDeriv_two_norm_rpow_sub_le TauCeti/Analysis/InnerProductSpace/NormPow.lean:569"
+   ],
+   "id": "45763:7"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 96,
+   "decl": "Polynomial.laguerre_rodrigues",
+   "msg": "8/8 nearest neighbours of `laguerre_rodrigues` live in `TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Polynomial.laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:69",
+    "Polynomial.laguerreMeasure_def TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:74",
+    "Polynomial.sigmaFinite_laguerreMeasure TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:81",
+    "Polynomial.aemeasurable_laguerreWeight TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:86",
+    "Polynomial.ae_pos_laguerreWeight TauCeti/Analysis/SpecialFunctions/Laguerre/Measure.lean:91"
+   ],
+   "id": "45763:8"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/RingTheory/Polynomial/Laguerre/Recurrence.lean",
+   "line": 148,
+   "decl": "Polynomial.X_mul_derivative_laguerre_add_one",
+   "msg": "8/8 nearest neighbours of `X_mul_derivative_laguerre_add_one` live in `TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "Polynomial.laguerre TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:59",
+    "Polynomial.coeff_laguerre TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:66",
+    "Polynomial.coeff_laguerre_of_le TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:75",
+    "Polynomial.coeff_laguerre_of_lt TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:83",
+    "Polynomial.natDegree_laguerre_le TauCeti/RingTheory/Polynomial/Laguerre/Basic.lean:86"
+   ],
+   "id": "45763:9"
+  },
+  {
+   "check": "naming",
+   "rubric": "naming",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 59,
+   "decl": "Polynomial.hasDerivAt_exp_neg_mul_rpow_mul_laguerre",
+   "msg": "`Polynomial.hasDerivAt_exp_neg_mul_rpow_mul_laguerre` lives in namespace `Polynomial` but its signature never mentions Polynomial: name it in the argument type's namespace",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45763:10"
+  },
+  {
+   "check": "naming",
+   "rubric": "naming",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 76,
+   "decl": "Polynomial.iteratedDeriv_exp_neg_mul_rpow_eq_laguerre",
+   "msg": "`Polynomial.iteratedDeriv_exp_neg_mul_rpow_eq_laguerre` lives in namespace `Polynomial` but its signature never mentions Polynomial: name it in the argument type's namespace",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45763:11"
+  },
+  {
+   "check": "naming",
+   "rubric": "naming",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 96,
+   "decl": "Polynomial.laguerre_rodrigues",
+   "msg": "`Polynomial.laguerre_rodrigues` lives in namespace `Polynomial` but its signature never mentions Polynomial: name it in the argument type's namespace",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45763:12"
+  },
+  {
+   "check": "naming",
+   "rubric": "naming",
+   "file": "TauCeti/RingTheory/Polynomial/Laguerre/Recurrence.lean",
+   "line": 148,
+   "decl": "Polynomial.X_mul_derivative_laguerre_add_one",
+   "msg": "`Polynomial.X_mul_derivative_laguerre_add_one` lives in namespace `Polynomial` but its signature never mentions Polynomial: name it in the argument type's namespace",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45763:13"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Analysis/SpecialFunctions/Laguerre/Rodrigues.lean",
+   "line": 31,
+   "decl": null,
+   "msg": "module docstring contains proof mechanics (`is proved by`): docstrings describe the result, not the process or proof",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "45763:14"
+  }
+ ]
+}

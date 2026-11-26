@@ -1,0 +1,63 @@
+{
+ "pr": 1553,
+ "test": false,
+ "body_version": "current (never edited)",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/MeasureTheory/Function/Lp/CompMeasurePreservingEquiv.lean",
+   "line": 65,
+   "decl": "MeasureTheory.Lp.compMeasurePreserving_comp_apply_of_ae_id",
+   "msg": "`compMeasurePreserving_comp_apply_of_ae_id` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.Lp.compMeasurePreserving_id  Mathlib/MeasureTheory/Function/LpSpace/Basic.lean:670  (0.80)  : compMeasurePreserving (E",
+    "MeasureTheory.Lp.compMeasurePreserving_comp  Mathlib/MeasureTheory/Function/LpSpace/Basic.lean:678  (0.78)  : compMeasurePreserving (E",
+    "MeasureTheory.Lp.norm_compMeasurePreserving  Mathlib/MeasureTheory/Function/LpSpace/Basic.lean:658  (0.77)  : ‖compMeasurePreserving f hf g‖ = ‖g‖",
+    "MeasureTheory.Lp.compMeasurePreserving_iterate  Mathlib/MeasureTheory/Function/LpSpace/Basic.lean:692  (0.77)  : (compMeasurePreserving (E",
+    "MeasureTheory.Lp.coeFn_compMeasurePreserving  Mathlib/MeasureTheory/Function/LpSpace/Basic.lean:653  (0.77)  : compMeasurePreserving f hf g =ᵐ[μ] g ∘ f"
+   ],
+   "id": "1553:0"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/MeasureTheory/Function/Lp/CompMeasurePreservingEquiv.lean",
+   "line": 1,
+   "decl": null,
+   "msg": "new file under `TauCeti/MeasureTheory/Function/Lp/` while flat prefix-sharing sibling(s) TauCeti/MeasureTheory/Function/LpBilinearForm.lean remain: move them into `TauCeti/MeasureTheory/Function/Lp/`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti/MeasureTheory/Function/LpBilinearForm.lean"
+   ],
+   "id": "1553:1"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1553:2"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1553:3"
+  }
+ ]
+}

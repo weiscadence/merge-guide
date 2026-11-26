@@ -1,0 +1,167 @@
+{
+ "pr": 19002,
+ "test": true,
+ "body_version": "version of 2026-10-20T03:30:34Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/Absolute.lean",
+   "line": 179,
+   "decl": "TauCeti.natDegree_minpoly_inv",
+   "msg": "`natDegree_minpoly_inv` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "minpoly.natDegree_pos  Mathlib/FieldTheory/Minpoly/Basic.lean:194  (0.92)  : 0 < natDegree (minpoly A x)",
+    "minpoly.two_le_natDegree_subalgebra  Mathlib/FieldTheory/Minpoly/Basic.lean:232  (0.91)  : 2 ≤ (minpoly S x).natDegree ↔ x ∉ S",
+    "minpoly.natDegree_le  Mathlib/FieldTheory/Minpoly/Finite.lean:37  (0.89)  : (minpoly A x).natDegree ≤ Module.finrank A B",
+    "natDegree_minpolyDiv  Mathlib/FieldTheory/Minpoly/MinpolyDiv.lean:183  (0.89)  : natDegree (minpolyDiv R x) = natDegree (minpoly R x) - 1",
+    "TauCeti.natDegree_primitiveMinpoly  TauCeti/FieldTheory/Minpoly/Primitive.lean:217  (0.89)  : (primitiveMinpoly x).natDegree = (minpoly ℚ x).natDegree"
+   ],
+   "id": "19002:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/Absolute.lean",
+   "line": 182,
+   "decl": "TauCeti.natDegree_minpoly_inv",
+   "msg": "`have h : ℚ⟮x⁻¹⟯ = ℚ⟮x⟯` inside `natDegree_minpoly_inv` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.IntermediateField.adjoin_simple_inv  TauCeti/FieldTheory/IntermediateField/Adjoin/Inv.lean:36 : K⟮x⁻¹⟯ = K⟮x⟯"
+   ],
+   "id": "19002:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/Absolute.lean",
+   "line": 193,
+   "decl": "TauCeti.mahlerMeasure_inv",
+   "msg": "`mahlerMeasure_inv` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.mahlerMeasure_map  TauCeti/NumberTheory/Height/MahlerMeasure.lean:82  (0.91)  : mahlerMeasure (f x) = mahlerMeasure x",
+    "TauCeti.mahlerMeasure_zero  TauCeti/NumberTheory/Height/MahlerMeasure.lean:147  (0.91)  : mahlerMeasure (0 : F) = 1",
+    "TauCeti.mahlerMeasure_one  TauCeti/NumberTheory/Height/MahlerMeasure.lean:152  (0.91)  : mahlerMeasure (1 : F) = 1",
+    "TauCeti.one_le_mahlerMeasure  TauCeti/NumberTheory/Height/MahlerMeasure.lean:126  (0.90)  : 1 ≤ mahlerMeasure x",
+    "Polynomial.mahlerMeasure_mul  Mathlib/Analysis/Polynomial/MahlerMeasure.lean:126  (0.90)  : (p * q).mahlerMeasure = p.mahlerMeasure * q.mahlerMeasure"
+   ],
+   "id": "19002:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/NumberField.lean",
+   "line": 319,
+   "decl": "NumberField.absMulHeight₁_inv",
+   "msg": "`absMulHeight₁_inv` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "NumberField.one_lt_absMulHeight₁  TauCeti/NumberTheory/Height/FiniteOrder.lean:95  (0.94)  : 1 < absMulHeight₁ x",
+    "NumberField.Units.one_lt_absMulHeight₁  TauCeti/NumberTheory/NumberField/Units/Height.lean:93  (0.94)  : 1 < absMulHeight₁ (u : K)",
+    "NumberField.absMulHeight₁_eq_one_iff  TauCeti/NumberTheory/Height/FiniteOrder.lean:74  (0.90)  : absMulHeight₁ x = 1 ↔ x = 0 ∨ IsOfFinOrder x",
+    "NumberField.Units.absMulHeight₁_eq_one_iff  TauCeti/NumberTheory/NumberField/Units/Height.lean:58  (0.90)  : absMulHeight₁ (u : K) = 1 ↔ u ∈ torsion K",
+    "NumberField.RingOfIntegers.absMulHeight₁_eq_one_iff  TauCeti/NumberTheory/NumberField/Units/Height.lean:154  (0.89)  : absMulHeight₁ (x : K) = 1 ↔ IsOfFinOrder x"
+   ],
+   "id": "19002:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/NumberField.lean",
+   "line": 321,
+   "decl": "NumberField.absMulHeight₁_inv",
+   "msg": "`have _ : FiniteDimensional ℚ ℚ⟮x⟯` inside `absMulHeight₁_inv` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "IntermediateField.adjoin.finiteDimensional  Mathlib/FieldTheory/IntermediateField/Adjoin/Basic.lean:486 : FiniteDimensional K K⟮x⟯"
+   ],
+   "id": "19002:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/Height/NumberField.lean",
+   "line": 330,
+   "decl": "NumberField.absLogHeight₁_inv",
+   "msg": "`absLogHeight₁_inv` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "NumberField.absLogHeight₁_pos  TauCeti/NumberTheory/Height/FiniteOrder.lean:101  (0.95)  : 0 < absLogHeight₁ x",
+    "NumberField.Units.absLogHeight₁_pos  TauCeti/NumberTheory/NumberField/Units/Height.lean:99  (0.94)  : 0 < absLogHeight₁ (u : K)",
+    "TauCeti.NumberField.Units.prod_absLogHeight₁_pos  TauCeti/NumberTheory/NumberField/Units/Regulator/Height.lean:90  (0.94)  : 0 < ∏ i, absLogHeight₁ (ε i : K)",
+    "NumberField.absLogHeight₁_eq_zero_iff  TauCeti/NumberTheory/Height/FiniteOrder.lean:88  (0.90)  : absLogHeight₁ x = 0 ↔ x = 0 ∨ IsOfFinOrder x",
+    "NumberField.Units.absLogHeight₁_eq_zero_iff  TauCeti/NumberTheory/NumberField/Units/Height.lean:67  (0.90)  : absLogHeight₁ (u : K) = 0 ↔ u ∈ torsion K"
+   ],
+   "id": "19002:5"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/NumberTheory/Height/Absolute.lean",
+   "line": 179,
+   "decl": "TauCeti.natDegree_minpoly_inv",
+   "msg": "private `natDegree_minpoly_inv` states a fact about library notions only (minpoly, natDegree); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "19002:6"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/NumberTheory/Height/Absolute.lean",
+   "line": 179,
+   "decl": "TauCeti.natDegree_minpoly_inv",
+   "msg": "`natDegree_minpoly_inv` looks like general material living in a feature file; consider the topic file for minpoly, natDegree",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "19002:7"
+  },
+  {
+   "check": "generality",
+   "rubric": "generality",
+   "file": "TauCeti/NumberTheory/Height/Absolute.lean",
+   "line": 179,
+   "decl": "TauCeti.natDegree_minpoly_inv",
+   "msg": "statement fixes the base field to ℚ (`minpoly ℚ`); check whether any field `K` works",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "19002:8"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19002:9"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19002:10"
+  }
+ ]
+}

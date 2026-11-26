@@ -1,0 +1,313 @@
+{
+ "pr": 1256,
+ "test": false,
+ "body_version": "version of 2026-07-27T17:02:26Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 47,
+   "decl": "TauCeti.abs_max_zero_le_abs",
+   "msg": "`abs_max_zero_le_abs` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "abs_max_sub_max_le_abs  Mathlib/Algebra/Order/Group/MinMax.lean:97  (0.93)  : |max a c - max b c| ≤ |a - b|",
+    "abs_max_sub_max_le_max  Mathlib/Algebra/Order/Group/MinMax.lean:87  (0.93)  : |max a b - max c d| ≤ max |a - c| |b - d|",
+    "abs_min_sub_min_le_max  Mathlib/Algebra/Order/Group/MinMax.lean:93  (0.87)  : |min a b - min c d| ≤ max |a - c| |b - d|",
+    "ProbabilityTheory.rpow_abs_le_mul_max_exp  Mathlib/Probability/Moments/IntegrableExpMul.lean:234  (0.87)  : |x| ^ p ≤ (p / |t|) ^ p * max (exp (t * x)) (exp (-t * x))",
+    "ProbabilityTheory.rpow_abs_le_mul_max_exp_of_pos  Mathlib/Probability/Moments/IntegrableExpMul.lean:204  (0.86)  : |x| ^ p ≤ (p / t) ^ p * max (exp (t * x)) (exp (-t * x))"
+   ],
+   "id": "1256:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 54,
+   "decl": "TauCeti.pow_abs_le_factorial_div_pow_mul_exp",
+   "msg": "`pow_abs_le_factorial_div_pow_mul_exp` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Complex.norm_exp_sub_sum_le_norm_mul_exp  Mathlib/Analysis/Complex/Exponential.lean:510  (0.56)  : ‖exp x - ∑ m ∈ range n, x ^ m / m.factorial‖ ≤ ‖x‖ ^ n * Real.exp ‖x‖",
+    "Complex.norm_exp_sub_sum_le_exp_norm_sub_sum  Mathlib/Analysis/Complex/Exponential.lean:490  (0.52)  : ‖exp x - ∑ m ∈ range n, x ^ m / m.factorial‖ ≤ Real.exp ‖x‖ - ∑ m ∈ range n, ‖x‖ ^ m / m.factorial",
+    "ProbabilityTheory.tendsto_choose_mul_pow_of_tendsto_mul_atTop  Mathlib/Probability/Distributions/Poisson/PoissonLimitThm.lean:70  (0.49)  : Tendsto (fun n => n.choose k * (p n) ^ k * (1 - p n) ^ (n - k)) atTop (𝓝 (Real.exp (-r) * (r ^ k) / k.factorial))",
+    "Real.exp_bound'  Mathlib/Analysis/Complex/Exponential.lean:549  (0.48)  : Real.exp x ≤ (∑ m ∈ Finset.range n, x ^ m / m.factorial) + x ^ n * (n + 1) / (n.factorial * n)",
+    "factorial_tendsto_atTop  Mathlib/Analysis/SpecificLimits/Basic.lean:670  (0.47)  : Tendsto Nat.factorial atTop atTop"
+   ],
+   "id": "1256:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 70,
+   "decl": "TauCeti.integrable_toReal_ofReal_smul_pow",
+   "msg": "`integrable_toReal_ofReal_smul_pow` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.lintegral_ofReal_ne_top_iff_integrable  Mathlib/MeasureTheory/Function/L1Space/Integrable.lean:958  (0.67)  : ∫⁻ a, ENNReal.ofReal (f a) ∂μ ≠ ∞ ↔ Integrable f μ",
+    "ENNReal.toReal_ofReal  Mathlib/Basic/ENNReal/Basic.lean:253  (0.66)  : (ENNReal.ofReal r).toReal = r",
+    "ENNReal.toReal_ofReal_eq_iff  Mathlib/Basic/ENNReal/Basic.lean:360  (0.65)  : (ENNReal.ofReal a).toReal = a ↔ 0 ≤ a",
+    "MeasureTheory.ofReal_toReal_ae_eq  Mathlib/MeasureTheory/Function/L1Space/Integrable.lean:772  (0.65)  : (fun x => ENNReal.ofReal (f x).toReal) =ᵐ[μ] f",
+    "ENNReal.toReal_ofReal'  Mathlib/Basic/ENNReal/Basic.lean:256  (0.63)  : (ENNReal.ofReal r).toReal = max r 0"
+   ],
+   "id": "1256:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 88,
+   "decl": "TauCeti.integrable_exp_withDensity_ofReal",
+   "msg": "`integrable_exp_withDensity_ofReal` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.withDensity_ofReal_mutuallySingular  Mathlib/MeasureTheory/Measure/WithDensity.lean:219  (0.59)  : (μ.withDensity fun x => ENNReal.ofReal <| f x) ⟂ₘ μ.withDensity fun x => ENNReal.ofReal <| -f x",
+    "MeasureTheory.isFiniteMeasure_withDensity_ofReal  Mathlib/MeasureTheory/Function/L1Space/HasFiniteIntegral.lean:353  (0.58)  : IsFiniteMeasure (μ.withDensity fun x => ENNReal.ofReal <| f x)",
+    "MeasureTheory.SigmaFinite.withDensity_ofReal  Mathlib/MeasureTheory/Measure/WithDensity.lean:635  (0.58)  : SigmaFinite (μ.withDensity (fun x ↦ ENNReal.ofReal (f x)))",
+    "MeasurableEmbedding.withDensity_ofReal_comap_apply_eq_integral_abs_deriv_mul  Mathlib/MeasureTheory/Function/JacobianOneDim.lean:477  (0.57)  : (volume.withDensity (fun x ↦ ENNReal.ofReal (g x))).comap f s = ENNReal.ofReal (∫ x in s, |f' x| * g (f x))",
+    "MeasurableEmbedding.withDensity_ofReal_comap_apply_eq_integral_abs_deriv_mul'  Mathlib/MeasureTheory/Function/JacobianOneDim.lean:497  (0.57)  : (volume.withDensity (fun x ↦ ENNReal.ofReal (g x))).comap f s = ENNReal.ofReal (∫ x in s, |f' x| * g (f x))"
+   ],
+   "id": "1256:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 123,
+   "decl": "TauCeti.ae_eq_zero_of_forall_moment_eq_zero",
+   "msg": "`ae_eq_zero_of_forall_moment_eq_zero` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MeasureTheory.ae_eq_zero_of_forall_setIntegral_eq_of_sigmaFinite  Mathlib/MeasureTheory/Function/AEEqOfIntegral.lean:257  (0.78)  : f =ᵐ[μ] 0",
+    "MeasureTheory.ae_eq_of_forall_setIntegral_eq_of_sigmaFinite  Mathlib/MeasureTheory/Function/AEEqOfIntegral.lean:270  (0.70)  : f =ᵐ[μ] g",
+    "MeasureTheory.ae_eq_of_forall_setLIntegral_eq_of_sigmaFinite  Mathlib/MeasureTheory/Function/AEEqOfLIntegral.lean:117  (0.69)  : f =ᵐ[μ] g",
+    "MeasureTheory.ae_nonneg_of_forall_setIntegral_nonneg_of_sigmaFinite  Mathlib/MeasureTheory/Function/AEEqOfIntegral.lean:168  (0.63)  : 0 ≤ᵐ[μ] f",
+    "MeasureTheory.ae_le_of_forall_setLIntegral_le_of_sigmaFinite  Mathlib/MeasureTheory/Function/AEEqOfLIntegral.lean:103  (0.63)  : f ≤ᵐ[μ] g"
+   ],
+   "id": "1256:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 129,
+   "decl": "TauCeti.ae_eq_zero_of_forall_moment_eq_zero",
+   "msg": "`have hgm0 : AEStronglyMeasurable g ν` inside `ae_eq_zero_of_forall_moment_eq_zero` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TestFunction.aestronglyMeasurable  Mathlib/Analysis/Distribution/TestFunction.lean:658 : AEStronglyMeasurable f μ",
+    "ContDiffMapSupportedIn.aestronglyMeasurable  Mathlib/Analysis/Distribution/ContDiffMapSupportedIn.lean:925 : AEStronglyMeasurable f μ",
+    "ProbabilityTheory.IdentDistrib.aestronglyMeasurable_fst  Mathlib/Probability/IdentDistrib.lean:152 : AEStronglyMeasurable f μ"
+   ],
+   "id": "1256:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 138,
+   "decl": "TauCeti.ae_eq_zero_of_forall_moment_eq_zero",
+   "msg": "`have hg : Integrable g ν` inside `ae_eq_zero_of_forall_moment_eq_zero` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "BoundedVariationOn.integrable  Mathlib/Analysis/BoundedVariation.lean:181 : Integrable f μ",
+    "TestFunction.integrable  Mathlib/Analysis/Distribution/TestFunction.lean:692 : Integrable f μ",
+    "ContDiffMapSupportedIn.integrable  Mathlib/Analysis/Distribution/ContDiffMapSupportedIn.lean:933 : Integrable f μ"
+   ],
+   "id": "1256:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 144,
+   "decl": "TauCeti.ae_eq_zero_of_forall_moment_eq_zero",
+   "msg": "`have hgm : AEMeasurable g ν` inside `ae_eq_zero_of_forall_moment_eq_zero` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "ProbabilityTheory.HasCondDistrib.aemeasurable_fst  Mathlib/Probability/HasCondDistrib.lean:44 : AEMeasurable X P",
+    "ProbabilityTheory.HasCondDistrib.aemeasurable_snd  Mathlib/Probability/HasCondDistrib.lean:48 : AEMeasurable Y P",
+    "MeasureTheory.pdf.IsUniform.aemeasurable  Mathlib/Probability/Distributions/Uniform.lean:60 : AEMeasurable X P"
+   ],
+   "id": "1256:7"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 54,
+   "decl": "TauCeti.pow_abs_le_factorial_div_pow_mul_exp",
+   "msg": "private `pow_abs_le_factorial_div_pow_mul_exp` states a fact about library notions only (Nat.factorial, Real.exp); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1256:8"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 54,
+   "decl": "TauCeti.pow_abs_le_factorial_div_pow_mul_exp",
+   "msg": "`pow_abs_le_factorial_div_pow_mul_exp` looks like general material living in a feature file; consider the topic file for Nat.factorial, Real.exp",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1256:9"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 70,
+   "decl": "TauCeti.integrable_toReal_ofReal_smul_pow",
+   "msg": "private `integrable_toReal_ofReal_smul_pow` states a fact about library notions only (AEMeasurable, ENNReal.ofReal, Integrable, Real.exp); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1256:10"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 70,
+   "decl": "TauCeti.integrable_toReal_ofReal_smul_pow",
+   "msg": "`integrable_toReal_ofReal_smul_pow` looks like general material living in a feature file; consider the topic file for AEMeasurable, ENNReal.ofReal, Integrable",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1256:11"
+  },
+  {
+   "check": "placement",
+   "rubric": "api-design",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 88,
+   "decl": "TauCeti.integrable_exp_withDensity_ofReal",
+   "msg": "private `integrable_exp_withDensity_ofReal` states a fact about library notions only (AEMeasurable, ENNReal.ofReal, Integrable, Real.exp); general infrastructure should be public in its natural home",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1256:12"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 88,
+   "decl": "TauCeti.integrable_exp_withDensity_ofReal",
+   "msg": "`integrable_exp_withDensity_ofReal` looks like general material living in a feature file; consider the topic file for AEMeasurable, ENNReal.ofReal, Integrable",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "1256:13"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 106,
+   "decl": null,
+   "msg": "decl docstring contains roadmap/process commentary (`Roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:14"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 202,
+   "decl": null,
+   "msg": "decl docstring contains roadmap/process commentary (`Roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:15"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 15,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`Roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:16"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:17"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:18"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:19"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 123,
+   "decl": "TauCeti.ae_eq_zero_of_forall_moment_eq_zero",
+   "msg": "`ae_eq_zero_of_forall_moment_eq_zero` proof is 72 lines > 50: split it at natural stages",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:20"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/Probability/Moments/VanishingMoments.lean",
+   "line": 211,
+   "decl": "TauCeti.ae_eq_zero_of_forall_moment_eq_zero_of_finite_expMoments",
+   "msg": "`ae_eq_zero_of_forall_moment_eq_zero_of_finite_expMoments` proof is 79 lines > 50: split it at natural stages",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "1256:21"
+  }
+ ]
+}

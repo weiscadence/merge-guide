@@ -1,0 +1,61 @@
+{
+ "pr": 19184,
+ "test": false,
+ "body_version": "current (never edited)",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/BinaryForm.lean",
+   "line": 235,
+   "decl": "MvPolynomial.IsHomogeneous.finite_setOf_eval_eq",
+   "msg": "`_root_.MvPolynomial.IsHomogeneous.finite_setOf_eval_eq` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "MvPolynomial.eval_mem  Mathlib/Algebra/MvPolynomial/Eval.lean:849  (0.63)  : MvPolynomial.eval v p ∈ s",
+    "TauCeti.isSemialgebraic_setOf_map_eval_eq_zero  TauCeti/Geometry/RealAlgebraic/Semialgebraic/RootCount.lean:75  (0.58)  : IsSemialgebraic {x : σ → R | P.map (MvPolynomial.eval x) = 0}",
+    "MultilinearMap.exists_mvPolynomial_eval_eq_apply_const  TauCeti/LinearAlgebra/Matrix/GeneralLinearGroup/Multilinear.lean:61  (0.58)  : Matrix m n K, MvPolynomial.eval (fun p : m × n => Y p.1 p.2) P = Θ fun _ => Y",
+    "TauCeti.isSemialgebraic_setOf_natDegree_map_eval_eq  TauCeti/Geometry/RealAlgebraic/Semialgebraic/RootCount.lean:88  (0.57)  : IsSemialgebraic {x : σ → R | (P.map (MvPolynomial.eval x)).natDegree = d}",
+    "Matrix.eval_det_mvPolynomialX  Mathlib/LinearAlgebra/Matrix/MvPolynomial.lean:79  (0.56)  : MvPolynomial.eval s (det (mvPolynomialX m m R)) = det (Matrix.of fun i j : m => s (i, j))"
+   ],
+   "id": "19184:0"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19184:1"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19184:2"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19184:3"
+  }
+ ]
+}

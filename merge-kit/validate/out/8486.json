@@ -1,0 +1,258 @@
+{
+ "pr": 8486,
+ "test": true,
+ "body_version": "version of 2026-09-24T01:15:56Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 65,
+   "decl": "TauCeti.pLowerCentralStep",
+   "msg": "`pLowerCentralStep` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.isTopologicallyFinitelyGenerated_iff  TauCeti/Topology/Algebra/Group/Generation.lean:85  (0.50)  : Finset G, (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.exists_convergesToOne_topologicallyGenerates  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:902  (0.49)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤",
+    "TauCeti.exists_finset_card_le_topologicalClosure_closure_eq_top_of_rank_le  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:341  (0.49)  : Finset G, s.card ≤ n ∧ (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.topologicalGeneratorRank_def  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:103  (0.48)  : {s : Set G // ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤}, #(s.val : Set G)",
+    "TauCeti.exists_convergesToOne_mk_eq_topologicalGeneratorRank  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:193  (0.48)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤ ∧ #(s : Set G) = topologicalGeneratorRank G"
+   ],
+   "id": "8486:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 81,
+   "decl": "TauCeti.pLowerCentralSeries_zero",
+   "msg": "`pLowerCentralSeries_zero` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "PFunctor.W.mk  Mathlib/Data/PFunctor/Univariate/Basic.lean:144  (0.70)  : P (W P) → W P | ⟨a, f⟩ => ⟨a, f⟩ @[simp]",
+    "FormalMultilinearSeries.removeZero  Mathlib/Analysis/Calculus/FormalMultilinearSeries.lean:116  (0.67)  : FormalMultilinearSeries 𝕜 E F | 0 => 0 | n + 1 => p (n + 1) @[simp]",
+    "Int.zero_shiftLeft'  Mathlib/Data/Int/Bitwise.lean:418  (0.67)  : ℕ`. -/ @[simp]",
+    "CategoryTheory.ComposableArrows.Precomp.map_zero_zero  Mathlib/CategoryTheory/ComposableArrows/Basic.lean:346  (0.63)  : map F f 0 0 (by simp) = 𝟙 X",
+    "CategoryTheory.ComposableArrows.Precomp.map_zero_one  Mathlib/CategoryTheory/ComposableArrows/Basic.lean:352  (0.63)  : map F f 0 1 (by simp) = f"
+   ],
+   "id": "8486:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 88,
+   "decl": "TauCeti.pLowerCentralStep_base_le",
+   "msg": "`pLowerCentralStep_base_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.exists_finset_card_le_topologicalClosure_closure_eq_top_of_rank_le  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:341  (0.52)  : Finset G, s.card ≤ n ∧ (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.isTopologicallyFinitelyGenerated_iff  TauCeti/Topology/Algebra/Group/Generation.lean:85  (0.50)  : Finset G, (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.exists_convergesToOne_topologicallyGenerates  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:902  (0.49)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤",
+    "TauCeti.topologicalGeneratorRank_def  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:103  (0.48)  : {s : Set G // ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤}, #(s.val : Set G)",
+    "TauCeti.exists_convergesToOne_mk_eq_topologicalGeneratorRank  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:193  (0.48)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤ ∧ #(s : Set G) = topologicalGeneratorRank G"
+   ],
+   "id": "8486:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 93,
+   "decl": "TauCeti.pow_mem_pLowerCentralStep",
+   "msg": "`pow_mem_pLowerCentralStep` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.isTopologicallyFinitelyGenerated_iff  TauCeti/Topology/Algebra/Group/Generation.lean:85  (0.50)  : Finset G, (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.exists_convergesToOne_topologicallyGenerates  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:902  (0.49)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤",
+    "TauCeti.exists_finset_card_le_topologicalClosure_closure_eq_top_of_rank_le  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:341  (0.49)  : Finset G, s.card ≤ n ∧ (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.topologicalGeneratorRank_def  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:103  (0.48)  : {s : Set G // ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤}, #(s.val : Set G)",
+    "TauCeti.exists_convergesToOne_mk_eq_topologicalGeneratorRank  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:193  (0.48)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤ ∧ #(s : Set G) = topologicalGeneratorRank G"
+   ],
+   "id": "8486:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 99,
+   "decl": "TauCeti.commutator_mem_pLowerCentralStep",
+   "msg": "`commutator_mem_pLowerCentralStep` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.isTopologicallyFinitelyGenerated_iff  TauCeti/Topology/Algebra/Group/Generation.lean:85  (0.50)  : Finset G, (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.exists_convergesToOne_topologicallyGenerates  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:902  (0.49)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤",
+    "TauCeti.exists_finset_card_le_topologicalClosure_closure_eq_top_of_rank_le  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:341  (0.49)  : Finset G, s.card ≤ n ∧ (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.topologicalGeneratorRank_def  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:103  (0.48)  : {s : Set G // ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤}, #(s.val : Set G)",
+    "TauCeti.exists_convergesToOne_mk_eq_topologicalGeneratorRank  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:193  (0.48)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤ ∧ #(s : Set G) = topologicalGeneratorRank G"
+   ],
+   "id": "8486:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 105,
+   "decl": "TauCeti.pLowerCentralStep_mono",
+   "msg": "`pLowerCentralStep_mono` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.isTopologicallyFinitelyGenerated_iff  TauCeti/Topology/Algebra/Group/Generation.lean:85  (0.50)  : Finset G, (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.exists_convergesToOne_topologicallyGenerates  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:902  (0.49)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤",
+    "TauCeti.exists_finset_card_le_topologicalClosure_closure_eq_top_of_rank_le  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:341  (0.49)  : Finset G, s.card ≤ n ∧ (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.topologicalGeneratorRank_def  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:103  (0.48)  : {s : Set G // ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤}, #(s.val : Set G)",
+    "TauCeti.exists_convergesToOne_mk_eq_topologicalGeneratorRank  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:193  (0.48)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤ ∧ #(s : Set G) = topologicalGeneratorRank G"
+   ],
+   "id": "8486:5"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 115,
+   "decl": "TauCeti.pLowerCentralStep_le",
+   "msg": "`pLowerCentralStep_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.exists_finset_card_le_topologicalClosure_closure_eq_top_of_rank_le  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:341  (0.52)  : Finset G, s.card ≤ n ∧ (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.isTopologicallyFinitelyGenerated_iff  TauCeti/Topology/Algebra/Group/Generation.lean:85  (0.50)  : Finset G, (Subgroup.closure (s : Set G)).topologicalClosure = ⊤",
+    "TauCeti.exists_convergesToOne_topologicallyGenerates  TauCeti/Topology/Algebra/Group/Profinite/Generation.lean:902  (0.49)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤",
+    "TauCeti.topologicalGeneratorRank_def  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:103  (0.48)  : {s : Set G // ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤}, #(s.val : Set G)",
+    "TauCeti.exists_convergesToOne_mk_eq_topologicalGeneratorRank  TauCeti/Topology/Algebra/Group/Profinite/Rank.lean:193  (0.48)  : Set G, ConvergesToOne s ∧ (Subgroup.closure s).topologicalClosure = ⊤ ∧ #(s : Set G) = topologicalGeneratorRank G"
+   ],
+   "id": "8486:6"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 157,
+   "decl": "TauCeti.pow_mem_pLowerCentralSeries",
+   "msg": "`pow_mem_pLowerCentralSeries` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "PFunctor.W.mk  Mathlib/Data/PFunctor/Univariate/Basic.lean:144  (0.69)  : P (W P) → W P | ⟨a, f⟩ => ⟨a, f⟩ @[simp]",
+    "HahnSeries.order_pow  Mathlib/RingTheory/HahnSeries/Multiplication.lean:1017  (0.65)  : ∀ n, (x ^ n).order = n • x.order | 0 => by simp | n + 1 => by obtain rfl | hx",
+    "Nat.four_pow_le_two_mul_self_mul_centralBinom  Mathlib/Data/Nat/Choose/Central.lean:112  (0.64)  : ∀ (n : ℕ) (_ : 0 < n), 4 ^ n ≤ 2 * n * centralBinom n | 0, pr => (Nat.not_lt_zero _ pr).elim | 1, _ => by simp [centralB",
+    "LinearPMap.domainPow  TauCeti/LinearAlgebra/LinearPMap/DomainPow.lean:43  (0.64)  : ℕ → Submodule R E | 0 => ⊤ | n + 1 => Submodule.map A.domain.subtype ((domainPow A n).comap A.toFun) @[simp]",
+    "Int.zero_shiftLeft'  Mathlib/Data/Int/Bitwise.lean:418  (0.62)  : ℕ`. -/ @[simp]"
+   ],
+   "id": "8486:7"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 164,
+   "decl": "TauCeti.commutator_mem_pLowerCentralSeries_succ",
+   "msg": "`commutator_mem_pLowerCentralSeries_succ` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "PFunctor.W.mk  Mathlib/Data/PFunctor/Univariate/Basic.lean:144  (0.68)  : P (W P) → W P | ⟨a, f⟩ => ⟨a, f⟩ @[simp]",
+    "RelSeries.cons_cast_succ  Mathlib/Order/RelSeries.lean:458  (0.64)  : (s.cons a h) (.cast (by simp) (.succ i)) = s i",
+    "RelSeries.snoc_cast_castSucc  Mathlib/Order/RelSeries.lean:503  (0.63)  : (s.snoc a h) (.cast (by simp) (.castSucc i)) = s i",
+    "Int.zero_shiftLeft'  Mathlib/Data/Int/Bitwise.lean:418  (0.62)  : ℕ`. -/ @[simp]",
+    "HeckeRing.GL2.heckeTGeneratorRecGamma0  TauCeti/NumberTheory/HeckeRing/GL2/Gamma0/Diagonal/PrimePower.lean:178  (0.62)  : `T₀ = 1`. -/ @[simp]"
+   ],
+   "id": "8486:8"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 171,
+   "decl": "TauCeti.pLowerCentralSeries_succ_le",
+   "msg": "`pLowerCentralSeries_succ_le` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "PFunctor.W.mk  Mathlib/Data/PFunctor/Univariate/Basic.lean:144  (0.69)  : P (W P) → W P | ⟨a, f⟩ => ⟨a, f⟩ @[simp]",
+    "RelSeries.cons_cast_succ  Mathlib/Order/RelSeries.lean:458  (0.66)  : (s.cons a h) (.cast (by simp) (.succ i)) = s i",
+    "RelSeries.snoc_cast_castSucc  Mathlib/Order/RelSeries.lean:503  (0.65)  : (s.snoc a h) (.cast (by simp) (.castSucc i)) = s i",
+    "RelSeries.smash_castLE  Mathlib/Order/RelSeries.lean:686  (0.63)  : p.smash q h (i.castLE (by simp)) = p i",
+    "PNat.exists_eq_succ_of_ne_one  Mathlib/Data/PNat/Basic.lean:276  (0.63)  : ℕ+, n = k + 1 | ⟨1, _⟩, h₁ => False.elim <| h₁ rfl | ⟨n + 2, _⟩, _ => ⟨⟨n + 1, by simp⟩, rfl⟩ /-- Lemmas with div, dvd a"
+   ],
+   "id": "8486:9"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 179,
+   "decl": "TauCeti.isClosed_pLowerCentralSeries_succ",
+   "msg": "`isClosed_pLowerCentralSeries_succ` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.isClosed_proPKernel  TauCeti/Topology/Algebra/Group/Profinite/MaximalProP.lean:148  (0.60)  : IsClosed ((proPKernel p G : Subgroup G) : Set G)",
+    "TauCeti.isClosed_proCKernel  TauCeti/Topology/Algebra/Group/Profinite/ProC.lean:152  (0.54)  : IsClosed ((proCKernel C G : Subgroup G) : Set G)",
+    "TauCeti.IsProPSylow.isClosed  TauCeti/Topology/Algebra/Group/Profinite/Sylow/Basic.lean:79  (0.46)  : IsClosed (P : Set G)",
+    "IsClosed.lowerClosure_pi  Mathlib/Analysis/Normed/Order/UpperLower.lean:216  (0.44)  : IsClosed (lowerClosure s : Set (ι → ℝ))",
+    "Topology.IsLower.isClosed_upperClosure  Mathlib/Topology/Order/LowerUpperTopology.lean:251  (0.44)  : IsClosed (upperClosure s : Set α)"
+   ],
+   "id": "8486:10"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 187,
+   "decl": "TauCeti.pLowerCentralStep_le_proPFrattini",
+   "msg": "`pLowerCentralStep_le_proPFrattini` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.proPFrattini_le_ker  TauCeti/Topology/Algebra/Group/Profinite/ProP/ContinuousDual.lean:64  (0.61)  : proPFrattini p G ≤ f.ker",
+    "TauCeti.IsProP.proPFrattini_ne_top  TauCeti/Topology/Algebra/Group/Profinite/ProP/MaximalSubgroup.lean:129  (0.60)  : proPFrattini p G ≠ ⊤"
+   ],
+   "id": "8486:11"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Topology/Algebra/Group/Profinite/ProP/LowerCentral.lean",
+   "line": 8,
+   "decl": null,
+   "msg": "import `Mathlib.GroupTheory.Commutator.Basic` is redundant: already imported by `TauCeti.Topology.Algebra.Group.Profinite.ProP.Frattini`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti.Topology.Algebra.Group.Profinite.ProP.Frattini"
+   ],
+   "id": "8486:12"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8486:13"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8486:14"
+  }
+ ]
+}

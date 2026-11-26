@@ -1,0 +1,97 @@
+{
+ "pr": 5762,
+ "test": false,
+ "body_version": "current (never edited)",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Analysis/Contour/RegularityConditions.lean",
+   "line": 391,
+   "decl": "TauCeti.Contour.angle_rational_pi",
+   "msg": "`angle_rational_pi` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "maybe",
+   "heuristic": false,
+   "evidence": [
+    "Nat.coprime_of_probablePrime  Mathlib/NumberTheory/FermatPsp.lean:78  (0.48)  : Nat.Coprime n b",
+    "Nat.coprime_of_fermatPsp  Mathlib/NumberTheory/FermatPsp.lean:121  (0.48)  : Nat.Coprime n b",
+    "Nat.Prime.factoredNumbers_coprime  Mathlib/NumberTheory/SmoothNumbers.lean:178  (0.48)  : Nat.Coprime p n",
+    "Nat.Prime.smoothNumbers_coprime  Mathlib/NumberTheory/SmoothNumbers.lean:351  (0.48)  : Nat.Coprime p n",
+    "PNat.coprime_coe  Mathlib/Data/PNat/Prime.lean:163  (0.48)  : Nat.Coprime ↑m ↑n ↔ m.Coprime n"
+   ],
+   "id": "5762:0"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Contour/RegularityConditions.lean",
+   "line": 379,
+   "decl": "TauCeti.Contour.sectorCompatible_of_simple_pole",
+   "msg": "8/8 nearest neighbours of `sectorCompatible_of_simple_pole` live in `TauCeti/Analysis/Contour/ModelSector/Cycle.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Contour.modelSectorCurve TauCeti/Analysis/Contour/ModelSector/Cycle.lean:48",
+    "TauCeti.Contour.modelSectorCycle TauCeti/Analysis/Contour/ModelSector/Cycle.lean:54",
+    "TauCeti.Contour.modelSectorCurve_a TauCeti/Analysis/Contour/ModelSector/Cycle.lean:59",
+    "TauCeti.Contour.modelSectorCurve_b TauCeti/Analysis/Contour/ModelSector/Cycle.lean:65",
+    "TauCeti.Contour.modelSectorCurve_apply TauCeti/Analysis/Contour/ModelSector/Cycle.lean:71"
+   ],
+   "id": "5762:1"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Analysis/Contour/RegularityConditions.lean",
+   "line": 391,
+   "decl": "TauCeti.Contour.angle_rational_pi",
+   "msg": "4/8 nearest neighbours of `angle_rational_pi` live in `TauCeti/Analysis/Contour/Crossing/ExitWindow.lean`; check whether it belongs there",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [
+    "TauCeti.Contour.exp_mul_I_congr_angle TauCeti/Analysis/Contour/Argument/Lift.lean:317",
+    "TauCeti.Contour.crossingAngle_modelSector TauCeti/Analysis/Contour/ModelSector/CrossingAngle.lean:74",
+    "TauCeti.Contour.windingNumber_closedModelSector_eq_crossingAngle_div_two_pi TauCeti/Analysis/Contour/ModelSector/CrossingAngle.lean:102",
+    "TauCeti.Contour.exists_int_windingNumber_eq_add_windingNumber_sub_angle_div_two_pi TauCeti/Analysis/Contour/Crossing/Decomposition.lean:382",
+    "TauCeti.Contour.exitCapWindow_startAngle TauCeti/Analysis/Contour/Crossing/ExitWindow.lean:103"
+   ],
+   "id": "5762:2"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "5762:3"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "5762:4"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "5762:5"
+  }
+ ]
+}

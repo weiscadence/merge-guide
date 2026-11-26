@@ -1,0 +1,61 @@
+repo: leanprover-community/mathlib4
+ai_policy:
+  stance: "RESTRICT, strict"
+  who_may_write_text: "humans only for GitHub/Zulip comments: 'Using an LLM when writing comments on GitHub or Zulip is not allowed'. An agent must not write the PR description or review replies."
+  disclosure: "PR description must say which AI tools were used and how; add the `LLM-generated` label for substantial generated code"
+  consequence: "low-quality LLM PRs closed without comment; repeated low-effort PRs -> PR and Zulip ban"
+  source: "https://leanprover-community.github.io/contribute/index.html (Use of AI), via STATE-OF-THE-FIELD.md policy table §2"
+ci:
+  local: ["lake exe cache get", "lake build --wfail", "lake exe runLinter Mathlib", "lake exe shake", "lake exe lint-style"]
+  notes: "We have never opened a mathlib4 PR; commands are the standard Mathlib ones, not re-verified against the workflow today."
+  source: "mathlib4 README / contribute docs (OPEN: workflow file not fetched 2026-11-25)"
+pr:
+  title_regex: "^(feat|fix|doc|style|refactor|test|chore|perf|ci)(\\([^)]*\\))?!?: "
+  body:
+    required: []
+    forbidden: []
+    disclosure: {regex: "(AI|LLM|Claude|GPT|assist)", msg: "Mathlib requires the PR description to state which AI tools were used and how"}
+  body_template: |
+    <Human-written summary. Text above the `---` becomes the squash-commit message.>
+
+    Moves:
+    - (Old.name -> New.name, if any)
+
+    Deletions:
+    - (removed declarations, if any)
+
+    ---
+    AI use: <tools and how they were used>  (and add the `LLM-generated` label)
+
+    - [ ] depends on: #
+  source: "mathlib4 .github/PULL_REQUEST_TEMPLATE.md (gh api 2026-11-25); title convention as in cslib CONTRIBUTING which copies Mathlib's"
+placement:
+  rules: ["Mathlib naming conventions; file/topic placement decided in review", "Zulip discussion for major developments"]
+  source: "https://leanprover-community.github.io/contribute/naming.html ; contribute/index.html"
+review:
+  style: "human maintainers + bors; reviewers only notice PRs that pass CI"
+  rubric_files: [_common.md, reuse.md, generality.md, documentation.md, naming.md, placement.md, proof-quality.md]
+  recurring: {}
+  recurring_note: "none in our data: we have no mathlib4 PRs (unpublished observatory FIELD.md 'Mathlib itself is not in our data')"
+  source: "unpublished observatory FIELD.md; mathlib4 PULL_REQUEST_TEMPLATE.md"
+max_open_prs:
+  value: "no written numeric cap found; our default 2 (STATE-OF-THE-FIELD.md policy table, NumPy rule)"
+  source: "STATE-OF-THE-FIELD.md policy table §2 (NumPy row) and T8"
+ready_signal:
+  how: "CI green, then remove `WIP`/draft; `awaiting-review` label is applied by the queue (verify on the PR page before relying on it)"
+  source: "mathlib4 PULL_REQUEST_TEMPLATE.md ('most reviewers will only notice your PR if it passes CI'); label OPEN"
+lean:
+  src_dirs: [Mathlib]
+  sorry_allowed: false
+  forbid_set_option: false
+  forbid_native_decide: true
+  authors_header: true
+  max_line: 100
+  max_proof_lines: null
+  source: "Mathlib style linters (header, 100 cols); native_decide disallowed in Mathlib"
+docs:
+  theorems: main
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 3

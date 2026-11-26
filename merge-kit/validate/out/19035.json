@@ -1,0 +1,155 @@
+{
+ "pr": 19035,
+ "test": true,
+ "body_version": "version of 2026-10-20T06:25:38Z",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 41,
+   "decl": "TauCeti.liouvilleWith_tsum_inv_pow_pow",
+   "msg": "`liouvilleWith_tsum_inv_pow_pow` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Liouville.liouvilleWith  Mathlib/NumberTheory/Transcendental/Liouville/LiouvilleWith.lean:327  (0.82)  : LiouvilleWith p x",
+    "liouvilleWith_one  Mathlib/NumberTheory/Transcendental/Liouville/LiouvilleWith.lean:56  (0.81)  : LiouvilleWith 1 x",
+    "LiouvilleWith.neg  Mathlib/NumberTheory/Transcendental/Liouville/LiouvilleWith.lean:218  (0.81)  : LiouvilleWith p (-x)",
+    "LiouvilleWith.mono  Mathlib/NumberTheory/Transcendental/Liouville/LiouvilleWith.lean:89  (0.81)  : LiouvilleWith q x",
+    "LiouvilleWith.mul_nat  Mathlib/NumberTheory/Transcendental/Liouville/LiouvilleWith.lean:159  (0.80)  : LiouvilleWith p (x * n)"
+   ],
+   "id": "19035:0"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 45,
+   "decl": "TauCeti.liouvilleWith_tsum_inv_pow_pow",
+   "msg": "`have hb0 : (0 : ℝ) < b` inside `liouvilleWith_tsum_inv_pow_pow` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Units.zero_lt  Mathlib/Algebra/Order/GroupWithZero/Canonical.lean:114 : (0 : α) < u",
+    "Rat.cast_pos_of_pos  Mathlib/Data/Rat/Cast/Order.lean:34 : (0 : K) < q"
+   ],
+   "id": "19035:1"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 52,
+   "decl": "TauCeti.liouvilleWith_tsum_inv_pow_pow",
+   "msg": "`have hsum : Summable f` inside `liouvilleWith_tsum_inv_pow_pow` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "summable_of_ratio_norm_eventually_le  Mathlib/Analysis/SpecificLimits/Normed.lean:837 : Summable f",
+    "summable_of_ratio_test_tendsto_lt_one  Mathlib/Analysis/SpecificLimits/Normed.lean:855 : Summable f",
+    "summable_of_isBigO  Mathlib/Analysis/Asymptotics/Lemmas.lean:795 : Summable f"
+   ],
+   "id": "19035:2"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 62,
+   "decl": "TauCeti.liouvilleWith_tsum_inv_pow_pow",
+   "msg": "`have hq0 : (0 : ℝ) < q` inside `liouvilleWith_tsum_inv_pow_pow` has the same statement as an existing lemma",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Units.zero_lt  Mathlib/Algebra/Order/GroupWithZero/Canonical.lean:114 : (0 : α) < u",
+    "Rat.cast_pos_of_pos  Mathlib/Data/Rat/Cast/Order.lean:34 : (0 : K) < q"
+   ],
+   "id": "19035:3"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 110,
+   "decl": "TauCeti.transcendental_tsum_inv_pow_pow",
+   "msg": "`transcendental_tsum_inv_pow_pow` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Transcendental.pow  Mathlib/RingTheory/Algebraic/Basic.lean:377  (0.85)  : Transcendental R (r ^ n)",
+    "Polynomial.transcendental  Mathlib/RingTheory/Algebraic/Basic.lean:94  (0.77)  : Transcendental R f",
+    "Transcendental.algHom  TauCeti/RingTheory/Algebraic/Basic.lean:92  (0.77)  : Transcendental R (f x)",
+    "Liouville.transcendental  Mathlib/NumberTheory/Transcendental/Liouville/Basic.lean:179  (0.77)  : Transcendental ℤ x",
+    "Algebra.transcendental_def  Mathlib/RingTheory/Algebraic/Defs.lean:84  (0.77)  : A, Transcendental R x"
+   ],
+   "id": "19035:4"
+  },
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 116,
+   "decl": "TauCeti.transcendental_tsum_inv_pow_three_pow",
+   "msg": "`transcendental_tsum_inv_pow_three_pow` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Transcendental.pow  Mathlib/RingTheory/Algebraic/Basic.lean:377  (0.81)  : Transcendental R (r ^ n)",
+    "Polynomial.transcendental  Mathlib/RingTheory/Algebraic/Basic.lean:94  (0.75)  : Transcendental R f",
+    "Transcendental.algHom  TauCeti/RingTheory/Algebraic/Basic.lean:92  (0.74)  : Transcendental R (f x)",
+    "Liouville.transcendental  Mathlib/NumberTheory/Transcendental/Liouville/Basic.lean:179  (0.74)  : Transcendental ℤ x",
+    "Algebra.transcendental_def  Mathlib/RingTheory/Algebraic/Defs.lean:84  (0.74)  : A, Transcendental R x"
+   ],
+   "id": "19035:5"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19035:6"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19035:7"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 41,
+   "decl": "TauCeti.liouvilleWith_tsum_inv_pow_pow",
+   "msg": "`liouvilleWith_tsum_inv_pow_pow` proof is 65 lines > 50: split it at natural stages",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "19035:8"
+  },
+  {
+   "check": "proof-shape",
+   "rubric": "proof-quality",
+   "file": "TauCeti/NumberTheory/DiophantineApproximation/Roth/Lacunary.lean",
+   "line": 83,
+   "decl": "TauCeti.liouvilleWith_tsum_inv_pow_pow",
+   "msg": "8-step `rw` chain in `liouvilleWith_tsum_inv_pow_pow`: brittle; try `simp only`/`field_simp`/a named lemma",
+   "severity": "maybe",
+   "heuristic": true,
+   "evidence": [],
+   "id": "19035:9"
+  }
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "pr": 8953,
+ "test": false,
+ "body_version": "current (never edited)",
+ "findings": [
+  {
+   "check": "reuse",
+   "rubric": "reuse",
+   "file": "TauCeti/Topology/Algebra/Group/TopAbelianization.lean",
+   "line": 39,
+   "decl": "TauCeti.topAbelianization",
+   "msg": "`topAbelianization` may duplicate an existing declaration; check the candidates and use them if one replaces it",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TopologicalAbelianization.conjAct_smul_mem_topologicalClosure_commutator  TauCeti/Topology/Algebra/Group/TopologicalAbelianization.lean:260  (0.80)  : g • n ∈ (commutator N).topologicalClosure",
+    "TopologicalAbelianization.topologicalClosure_commutator_le_comap  TauCeti/Topology/Algebra/Group/TopologicalAbelianization.lean:107  (0.79)  : (commutator G).topologicalClosure ≤ (commutator H).topologicalClosure.comap f",
+    "TopologicalAbelianization.topologicalClosure_commutator_le_ker  TauCeti/Topology/Algebra/Group/TopologicalAbelianization/Lift.lean:54  (0.79)  : (commutator G).topologicalClosure ≤ (f : G →* A).ker",
+    "TopologicalAbelianization.lift_comp_quotientMk  TauCeti/Topology/Algebra/Group/TopologicalAbelianization/Lift.lean:71  (0.74)  : (lift f).comp (Subgroup.quotientMkContinuousMonoidHom (commutator G).topologicalClosure) = f",
+    "OpenNormalSubgroup.toSubgroup_maximalAbelianLayer  TauCeti/NumberTheory/ClassFieldTheory/Formation/AbelianLayer.lean:141  (0.56)  : (maximalAbelianLayer V).toSubgroup = V.toSubgroup ⊔ (commutator G).topologicalClosure"
+   ],
+   "id": "8953:0"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Topology/Algebra/Group/TopAbelianization.lean",
+   "line": 1,
+   "decl": null,
+   "msg": "new file under `TauCeti/Topology/Algebra/Group/` while flat prefix-sharing sibling(s) TauCeti/Topology/Algebra/GroupCompletion.lean remain: move them into `TauCeti/Topology/Algebra/Group/`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "TauCeti/Topology/Algebra/GroupCompletion.lean"
+   ],
+   "id": "8953:1"
+  },
+  {
+   "check": "placement",
+   "rubric": "placement",
+   "file": "TauCeti/Topology/Algebra/Group/TopAbelianization.lean",
+   "line": 9,
+   "decl": null,
+   "msg": "import `Mathlib.Topology.Algebra.Group.Basic` is redundant: already imported by `Mathlib.Topology.Algebra.Group.Subgroup`",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [
+    "Mathlib.Topology.Algebra.Group.Subgroup"
+   ],
+   "id": "8953:2"
+  },
+  {
+   "check": "naming",
+   "rubric": "naming",
+   "file": "TauCeti/Topology/Algebra/Group/TopAbelianization.lean",
+   "line": 39,
+   "decl": "TauCeti.topAbelianization",
+   "msg": "`topAbelianization` returns Type: name it UpperCamelCase",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8953:3"
+  },
+  {
+   "check": "docs",
+   "rubric": "documentation",
+   "file": "TauCeti/Topology/Algebra/Group/TopAbelianization.lean",
+   "line": 18,
+   "decl": null,
+   "msg": "module docstring contains roadmap/process commentary (`roadmap`): docstrings describe the result, not the process or proof",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8953:4"
+  },
+  {
+   "check": "attribution",
+   "rubric": "attribution",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Roadmap: <CanonicalAreaName or none>` line (template; TauCeti#8954, #8955)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8953:5"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: missing `Quality pass:` block Q1-Q5 (`gh pr create --body` skips the template; TauCeti#45354, #45797)",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8953:6"
+  },
+  {
+   "check": "attribution",
+   "rubric": "quality-pass",
+   "file": "",
+   "line": 0,
+   "decl": null,
+   "msg": "PR body: Quality pass must have all five lines Q1..Q5",
+   "severity": "ask",
+   "heuristic": false,
+   "evidence": [],
+   "id": "8953:7"
+  }
+ ]
+}

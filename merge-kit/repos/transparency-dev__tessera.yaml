@@ -1,0 +1,44 @@
+repo: transparency-dev/tessera
+ai_policy:
+  stance: "no AI section in CONTRIBUTING.md"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; disclose anyway (a tessera reviewer's own comment used 'Tested with the assistance of an AI coding agent', tessera#1277)"
+  cla: "Google CLA required; first PR adds you to AUTHORS and CONTRIBUTORS"
+  source: "https://github.com/transparency-dev/tessera/blob/main/CONTRIBUTING.md 'Contributor License Agreement' (fetched 2026-11-25); tessera#1277"
+ci:
+  local: ["go build ./...", "go vet ./...", "go test -race ./...", "gofmt -l ."]
+  notes: "storage back ends (AWS/GCP/POSIX) are tested by maintainers; say which ones you ran"
+  source: "tessera#1290 PR body (verification commands); tessera#1277 review (the reviewer ran AWS/GCP/POSIX)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: issue, regex: "(?i)(fixes|closes|towards) #\\d+", rubric: scope, msg: "link the issue you opened or claimed first (CONTRIBUTING 'Submitting a patch' step 1)"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    Fixes #<issue>.
+
+    <Problem, change, why this is the root cause.>
+
+    Verified: <commands run; which storage back ends>
+  source: "tessera CONTRIBUTING.md 'Submitting a patch'"
+placement:
+  rules: ["open or comment on an issue first and ask to be assigned", "each group of changes in its own branch"]
+  source: "tessera CONTRIBUTING.md 'Submitting a patch' steps 1-2"
+review:
+  style: "human maintainers; slow (tessera#1277 sat about two weeks)"
+  recurring:
+    tests: 1   # reverting the fix did not fail any test (tessera#1277)
+  source: "FAILURE-MODES.md (review-harvest counts), general classes"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "tessera CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "CLA green, CI green, non-draft; issue linked"
+  source: "tessera CONTRIBUTING.md"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

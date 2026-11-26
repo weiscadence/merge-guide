@@ -1,0 +1,37 @@
+repo: otter-sec/anchor
+ai_policy:
+  stance: "DISCLOSE / restrict replies"
+  who_may_write_text: "LLM may help draft the PR description but 'write out the majority of the description by hand'; 'do not use LLMs to autonomously respond to PR feedback'"
+  disclosure: "not mandated in writing"
+  source: "https://github.com/otter-sec/anchor/blob/master/CONTRIBUTING.md lines 52-53 (gh api 2026-11-25)"
+ci:
+  local: ["cargo build", "yarn build", "cargo test", "yarn test", "anchor test", "cargo fmt --check", "cargo clippy"]
+  source: "anchor CONTRIBUTING.md 'Building and Testing Locally' lines 90-130, line 51"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <Concise, hand-written: problem, change, tests (including adversarial ones).>
+  source: "anchor CONTRIBUTING.md 'PR Guidelines' lines 30-53"
+placement:
+  rules: ["only change code directly relevant to the PR", "typo-only PRs rejected", "breaking changes target `anchor-next`, others `master`", "add new tests folders to CI tests.yaml", "prefix core/std with `::`"]
+  source: "anchor CONTRIBUTING.md lines 12, 25-50, 72-81"
+review:
+  style: "human maintainers"
+  recurring: {}
+  recurring_note: "anchor#5360 landed with zero friction"
+  source: "FAILURE-MODES.md (review-harvest counts), general classes"
+max_open_prs:
+  value: "no written cap; 'submit a draft PR asap'"
+  source: "anchor CONTRIBUTING.md line 41"
+ready_signal:
+  how: "move the draft to ready for review after build/test/fmt/lint pass locally"
+  source: "anchor CONTRIBUTING.md lines 41, 51"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

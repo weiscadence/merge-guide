@@ -1,0 +1,7 @@
+.run*.sums
+merge-kit/cache/
+merge-kit/rubrics/
+__pycache__/
+*.pyc
+.merge-kit/
+merge-kit/validate/cache/

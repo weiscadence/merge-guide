@@ -1,0 +1,52 @@
+repo: google-deepmind/formal-conjectures
+ai_policy:
+  stance: "follows Mathlib AI conventions"
+  who_may_write_text: "NO agent-written PR text/comments (inherits Mathlib)"
+  disclosure: "state AI tools and how they were used in the PR description"
+  cla: "Google CLA required"
+  source: "https://raw.githubusercontent.com/google-deepmind/formal-conjectures/main/CONTRIBUTING.md lines 11-19, ~419 (gh api 2026-11-25)"
+ci:
+  local: ["lake exe cache get", "lake build"]
+  notes: "sorry is allowed by design (warn.sorry = false): conjecture statements are `sorry`"
+  source: "CONTRIBUTING.md lines 106-119; unpublished observatory raw/ci-evidence.json (lakefile.toml:47-55)"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: {regex: "(AI|LLM|Claude|GPT|assist)", msg: "Mathlib-convention repo: state AI tool use in the description"}
+  body_template: |
+    <Human-written: which problem, source (paper, page, equation), and what is formalised.>
+
+    AI use: <tools and how>
+  source: "CONTRIBUTING.md 'Formalise a problem' + AI section"
+placement:
+  rules: ["one problem per file under FormalConjectures/<Source>/", "`theorem` or `lemma` for problem statements; answers as `<theorem>.answer` with sorry", "proofs over 25-50 lines go elsewhere", "category tags (AMS MSC2020) required"]
+  source: "CONTRIBUTING.md lines 196-385"
+review:
+  style: "human maintainers; cite the primary source (bocowgill, formal-conjectures#8069/#8218)"
+  recurring:
+    attribution: 2   # primary-source citation asks, #8069 and #8218
+  source: "FAILURE-MODES.md (review-harvest counts), general classes 'Cite the primary source'"
+max_open_prs:
+  value: "no written cap; claim issues by commenting first"
+  source: "CONTRIBUTING.md (claim by comment); STATE-OF-THE-FIELD.md policy table"
+ready_signal:
+  how: "CLA signed, CI green, non-draft"
+  source: "CONTRIBUTING.md lines 92-106"
+lean:
+  src_dirs: [FormalConjectures]
+  sorry_allowed: true
+  forbid_set_option: false
+  authors_header: true
+  max_line: 100
+  max_proof_lines: 50
+  source: "lakefile warn.sorry=false; CONTRIBUTING 'proofs over 25-50 lines go elsewhere'"
+naming:
+  forbid_lemma_keyword: false
+docs:
+  theorems: required
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 3

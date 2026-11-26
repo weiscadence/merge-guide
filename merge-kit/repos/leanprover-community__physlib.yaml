@@ -1,0 +1,46 @@
+repo: leanprover-community/physlib
+ai_policy:
+  stance: "AI contributions expected in PhyslibAlpha (lighter review); main Physlib has higher review standards; no explicit ban found"
+  who_may_write_text: "not stated (OPEN: docs/ReviewGuidelines.md not fetched)"
+  disclosure: "not stated; disclose anyway"
+  source: "physlib README.md lines 55, 95, 102 (gh api 2026-11-25)"
+ci:
+  local: ["lake exe cache get", "lake build -KCI --iofail", "lake exe lint_all (per docs/ReviewGuidelines.md, OPEN)"]
+  source: ".github/workflows/build.yml line 68 (`lake build -KCI --iofail`), ci-evidence.json"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <Summary; link the Zulip discussion for larger proposals.>
+  source: "physlib CONTRIBUTING.md (Zulip for larger proposals, review guidelines)"
+placement:
+  rules: ["large/AI-generated work goes to PhyslibAlpha; reviewed material to Physlib", "API maps per docs/GettingStarted/FirstAPIMap.md"]
+  source: "physlib README.md lines 55, 102; CONTRIBUTING.md"
+review:
+  style: "human maintainers"
+  recurring: {}
+  recurring_note: "physlib#2168 landed with zero friction (review harvest scoreboard)"
+  source: "FAILURE-MODES.md (review-harvest counts), general classes 'Zero-friction landings'"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "physlib CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "CI green, non-draft"
+  source: "physlib CONTRIBUTING.md"
+lean:
+  src_dirs: [Physlib, PhyslibAlpha]
+  sorry_allowed: false
+  forbid_set_option: false
+  authors_header: true
+  max_line: 100
+  max_proof_lines: null
+  source: "build.yml --iofail (sorry fails), ci-evidence.json"
+docs:
+  theorems: main
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 3
