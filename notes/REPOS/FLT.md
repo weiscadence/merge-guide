@@ -4,7 +4,7 @@ not stated
 > No AI section in CONTRIBUTING. The workflow rule that matters: "To claim a task, comment the single word `claim` on the relevant GitHub issue." · "After submitting the PR, comment `propose #PR_NUMBER` on the original issue." · "comment `awaiting-review` on the PR."
 > [lit:https://github.com/ImperialCollegeLondon/FLT/blob/main/CONTRIBUTING.md]
 ## ours
-<!--n:obs.t.by_repo.imperialcollegelondon_flt.open--><!--/n--> open (FLT#1215). We commented `claim` and `propose`, but the bot never assigned the issue and we never posted `awaiting-review`, so by the written workflow the PR never entered review.
+<!--n:obs.t.by_repo.imperialcollegelondon_flt.open--><!--/n--> open (<!--n:obs.prs.imperialcollegelondon_flt.open--><!--/n-->). On FLT#1215 we commented `claim` and `propose`, but the bot never assigned the issue and we never posted `awaiting-review`, so by the written workflow the PR never entered review.
 ## rounds
 Unmeasured (no review yet).
 ## do

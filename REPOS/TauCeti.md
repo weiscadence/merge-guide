@@ -55,23 +55,23 @@ Review style: AI rubric bot (TauCetiReview), one thread per rubric; humans write
 
 | class | asks / threads in our data |
 |---|---|
-| reuse | <!--n:profile.tauceti.reuse-->21<!--/n--> |
-| api-design | <!--n:profile.tauceti.api_design-->19<!--/n--> |
-| documentation | <!--n:profile.tauceti.documentation-->18<!--/n--> |
-| generality | <!--n:profile.tauceti.generality-->18<!--/n--> |
-| naming | <!--n:profile.tauceti.naming-->15<!--/n--> |
-| placement | <!--n:profile.tauceti.placement-->14<!--/n--> |
-| proof-quality | <!--n:profile.tauceti.proof_quality-->11<!--/n--> |
-| attribution | <!--n:profile.tauceti.attribution-->6<!--/n--> |
+| reuse | <!--n:profile.tauceti.reuse-->23<!--/n--> |
+| generality | <!--n:profile.tauceti.generality-->22<!--/n--> |
+| api-design | <!--n:profile.tauceti.api_design-->21<!--/n--> |
+| documentation | <!--n:profile.tauceti.documentation-->20<!--/n--> |
+| naming | <!--n:profile.tauceti.naming-->16<!--/n--> |
+| placement | <!--n:profile.tauceti.placement-->16<!--/n--> |
+| proof-quality | <!--n:profile.tauceti.proof_quality-->13<!--/n--> |
+| attribution | <!--n:profile.tauceti.attribution-->7<!--/n--> |
+| correctness | <!--n:profile.tauceti.correctness-->5<!--/n--> |
+| quality-pass | <!--n:profile.tauceti.quality_pass-->5<!--/n--> |
 | scope | <!--n:profile.tauceti.scope-->5<!--/n--> |
-| correctness | <!--n:profile.tauceti.correctness-->4<!--/n--> |
-| quality-pass | <!--n:profile.tauceti.quality_pass-->3<!--/n--> |
 
-Source: FAILURE-MODES.md (review-harvest counts), TauCeti classes (from review harvest, 2026-11-25)
+Source: FAILURE-MODES.md (review-harvest counts), TauCeti classes (recounted from the review harvest on every data refresh)
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.taucetiproject_tauceti.landed-->22<!--/n--> landed, <!--n:obs.t.by_repo.taucetiproject_tauceti.closed-->7<!--/n--> closed, <!--n:obs.t.by_repo.taucetiproject_tauceti.open-->2<!--/n--> open of <!--n:obs.t.by_repo.taucetiproject_tauceti.n-->31<!--/n-->. All landings were bot-merged after AI-rubric review; no human-typed review comment exists on our TauCeti PRs. Closed PRs were reuse or scope blocks and premature roadmap slices (TauCeti#8953, #8954, #8955, #5762).
+<!--n:obs.t.by_repo.taucetiproject_tauceti.landed-->25<!--/n--> landed, <!--n:obs.t.by_repo.taucetiproject_tauceti.closed-->7<!--/n--> closed, <!--n:obs.t.by_repo.taucetiproject_tauceti.open-->2<!--/n--> open of <!--n:obs.t.by_repo.taucetiproject_tauceti.n-->34<!--/n-->. All landings were bot-merged after AI-rubric review; no human-typed review comment exists on our TauCeti PRs. Closed PRs were reuse or scope blocks and premature roadmap slices (TauCeti#8953, #8954, #8955, #5762).
 
 ## Typical rounds
 

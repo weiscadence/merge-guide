@@ -51,7 +51,7 @@ Source: maintainer notes; FAILURE-MODES.md (review-harvest counts), general clas
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.leanprover_cslib.landed--><!--/n--> landed, <!--n:obs.t.by_repo.leanprover_cslib.closed--><!--/n--> closed, <!--n:obs.t.by_repo.leanprover_cslib.open--><!--/n--> open. Both landings (cslib#1242, #1261) had a human approval and a human merge. Our bodies disclosed AI correctly but were agent-written, which the inherited Mathlib rule does not allow.
+<!--n:obs.t.by_repo.leanprover_cslib.landed--><!--/n--> landed, <!--n:obs.t.by_repo.leanprover_cslib.closed--><!--/n--> closed, <!--n:obs.t.by_repo.leanprover_cslib.open--><!--/n--> open. cslib#1242 and #1261 both landed, and both had a human approval and a human merge. Our bodies disclosed AI correctly but were agent-written, which the inherited Mathlib rule does not allow.
 
 ## Typical rounds
 

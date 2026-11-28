@@ -47,7 +47,7 @@ Source: FAILURE-MODES.md (review-harvest counts), general classes
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.otter_sec_anchor.landed-->1<!--/n--> landed (anchor#5360, no asks, human merge), <!--n:obs.t.by_repo.otter_sec_anchor.open-->1<!--/n--> open.
+<!--n:obs.t.by_repo.otter_sec_anchor.landed-->1<!--/n--> landed (<!--n:obs.prs.otter_sec_anchor.landed-->anchor#5360<!--/n-->), <!--n:obs.t.by_repo.otter_sec_anchor.open-->1<!--/n--> open (<!--n:obs.prs.otter_sec_anchor.open-->anchor#5366<!--/n-->). anchor#5360 had no asks and a human merge.
 
 ## Typical rounds
 

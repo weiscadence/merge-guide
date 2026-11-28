@@ -25,7 +25,7 @@ own data (two or more PRs); **C** = plausible, one case or untested. Per-repo de
 
 ## 3. Build
 - **Fix at the root**, inside the existing mechanism. [ours:mpmath#1244] [ours:abx#186] [ours:rust-analyzer#22906] **B**
-- **Reuse before writing.** For every new declaration: `exact?`, `rw?`, grep Mathlib and the repo. Delete wrappers with no consumer. [ours:TauCeti#8954] **B** (the most common ask: <!--n:profile.tauceti.reuse-->21<!--/n--> of <!--n:obs.reviewer_prs-->29<!--/n--> TauCeti PRs)
+- **Reuse before writing.** For every new declaration: `exact?`, `rw?`, grep Mathlib and the repo. Delete wrappers with no consumer. [ours:TauCeti#8954] **B** (the most common ask: <!--n:profile.tauceti.reuse-->23<!--/n--> of <!--n:obs.reviewer_prs-->32<!--/n--> TauCeti PRs)
 - **Place it where the topic lives**, in the receiver's namespace. [ours:TauCeti#45354] [ours:TauCeti#19680] **B**
 - **State it at full generality**: delete each hypothesis in turn. [ours:TauCeti#19680] **B**
 - **Visibility**: library-type helpers public in their natural home; proof-only helpers private. [ours:TauCeti#45756] **B**
@@ -61,7 +61,7 @@ Use the repo's signal exactly: FLT `awaiting-review` comment; anchor draft → r
 not WIP; TauCeti non-draft with a filled Quality pass. Lack of reviewer engagement is a named reason agent PRs die. [lit:https://arxiv.org/abs/2601.15195] [ours:FLT#1215] **A** (cause) / **C** (remedy)
 
 ## 8. Respond to review
-- **One round.** Collect all asks, fix them all, push once. Each push restarts a TauCeti sweep. <!--n:obs.threads_recurred_loose-->34<!--/n--> of <!--n:obs.threads_total-->134<!--/n--> of our rubric threads needed a second comment. [ours:TauCeti#19035] **B**
+- **One round.** Collect all asks, fix them all, push once. Each push restarts a TauCeti sweep. <!--n:obs.threads_recurred_loose-->36<!--/n--> of <!--n:obs.threads_total-->153<!--/n--> of our rubric threads needed a second comment. [ours:TauCeti#19035] **B**
 - **Answer the actual ask**: quote it, fix it, re-read every passing rubric. **B**
 - **Fresh push vs reply.** On TauCeti, editing the description alone does not re-trigger review; reply on the thread. A contest must meet the rubric's own burden of proof. On human repos, a short reply per thread (human-written where required) plus one push. [ours:TauCeti#45797] **B**
 - A verified technical objection is accepted quickly (rust-analyzer maintainer on `#[salsa::tracked]`). [ours:rust-analyzer#22906] **C**

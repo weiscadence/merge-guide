@@ -6,16 +6,24 @@
 Sources (all read-only):
   obs.*        contrib-observatory out/metrics.json `counts`         (our 64 PRs, 334 comments)
   obs.t.*      contrib-observatory out/tables.json                    (rendered tables of the same data)
+               rows keyed by a third-party login are stored under the export's pseudonym (user_<10 hex>)
+  obs.rubric.* contrib-observatory out/threads.jsonl                  (PR x rubric threads per repo and rubric)
+  obs.prs.*    contrib-observatory out/prs.jsonl                      (per repo: the PRs in each bucket, as text;
+                                                                       landings merged by a bot / by a person)
+  obs.comments_human_by_repo.*  out/comments.jsonl                    (comments with no AI marker, per repo)
   field.*      contrib-observatory field/stats.json                   (1496-PR field sample)
   census.*     contrib-observatory field/census/stats.json            (full census; may be absent)
   mk.*         merge-kit/validate/results.json                        (merge-kit recall/precision)
   profile.*    merge-kit/repos/*.yaml review.recurring                (asks per class, our data)
 
+A profile whose `recurring:` line carries the marker `distinct PR x rubric threads` is not typed by hand: its
+block is rewritten here from out/threads.jsonl, so the profile, the repo page and the docs move together.
+
 Keys are lower-case, non-alphanumerics folded to `_`. Fractions "k/n" become .k, .n, .pct, .lo, .hi
 (Wilson 95%, percent, rounded). Output is sorted, so the same inputs give the same bytes.
 If the observatory directory is missing, the existing data/numbers.json is kept (offline build).
 """
-import glob, json, math, os, re, sys
+import glob, hashlib, json, math, os, re, sys
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(HERE, "data", "numbers.json")
@@ -56,6 +64,14 @@ def flat(N, prefix, v):
 
 
 ROWKEY = ("group", "cls", "repo", "month", "model", "key", "who")
+OWN = {"weiscadence", "jiggy-cadence"}
+
+
+def pseud(login):
+    """Third-party logins never enter the ledger: same stable pseudonym as the observatory's public export."""
+    if login in OWN or login.endswith("[bot]") or re.fullmatch(r"user_[0-9a-f]{10}", login):
+        return login
+    return "user_" + hashlib.sha256(("login:" + login).encode()).hexdigest()[:10]
 
 
 def flat_table(N, prefix, rows):
@@ -67,11 +83,50 @@ def flat_table(N, prefix, rows):
         name = next((r[k] for k in ROWKEY if k in r), None)
         if name is None:
             continue
+        if "who" in r and name == r["who"]:
+            name = pseud(name)
         if "month" in r and "group" in r:
             name = f"{r['group']}_{r['month']}"
         for k, x in r.items():
             if k not in ROWKEY:
                 flat(N, f"{prefix}.{slug(name)}.{slug(k)}", x)
+
+
+def threads_by_repo(path):
+    by = {}
+    for line in open(path):
+        r = json.loads(line); by.setdefault(r["repo"], []).append(r)
+    return by
+
+
+MARK = "distinct PR x rubric threads"
+BLOCK = re.compile(r"(?m)^(  recurring:)[^\n]*" + MARK + r"[^\n]*\n((?:    [\w-]+: \d+\n)+)")
+
+
+def sync_profiles(obs):
+    """Rewrite marked `recurring:` blocks from the observatory's threads; untouched without observatory outputs."""
+    th = os.path.join(obs, "out", "threads.jsonl")
+    if not os.path.exists(th):
+        return
+    import yaml
+    by = threads_by_repo(th)
+    for p in sorted(glob.glob(os.path.join(HERE, "merge-kit", "repos", "*.yaml"))):
+        src = open(p).read()
+        if not BLOCK.search(src):
+            continue
+        y = yaml.safe_load(src); rows = by.get(y["repo"], [])
+        if not rows:
+            sys.exit(f"collect: {os.path.basename(p)} is marked as thread-derived but the observatory has no threads for {y['repo']}")
+        order = [f[:-3] for f in (y.get("review") or {}).get("rubric_files", [])]
+        n = {}
+        for r in rows:
+            n[r["rubric"]] = n.get(r["rubric"], 0) + 1
+        ranked = sorted(n, key=lambda k: (-n[k], order.index(k) if k in order else len(order), k))
+        head = (f"  recurring:   # {MARK} over {len({r['pr'] for r in rows})} {y['repo'].split('/')[1]} PRs "
+                f"with rubric activity ({len(rows)} threads)\n")
+        out = BLOCK.sub(lambda m: head + "".join(f"    {k}: {n[k]}\n" for k in ranked), src, count=1)
+        if out != src:
+            open(p, "w").write(out); print(f"collect: {os.path.basename(p)} recurring block rewritten from threads.jsonl")
 
 
 def collect_obs(N, obs, m):
@@ -81,6 +136,33 @@ def collect_obs(N, obs, m):
     N["obs.asof"] = met["generated"][:10]
     for t, rows in sorted(json.load(open(os.path.join(obs, "out", "tables.json"))).items()):
         flat_table(N, "obs.t." + slug(t), rows)
+    th = os.path.join(obs, "out", "threads.jsonl")
+    if os.path.exists(th):
+        for repo, rows in sorted(threads_by_repo(th).items()):
+            key = "obs.rubric." + slug(repo.split("/")[1])
+            N[key + ".threads"] = len(rows); N[key + ".prs"] = len({r["pr"] for r in rows})
+            for rub in sorted({r["rubric"] for r in rows}):
+                N[f"{key}.{slug(rub)}"] = sum(r["rubric"] == rub for r in rows)
+    pj = os.path.join(obs, "out", "prs.jsonl")
+    if os.path.exists(pj):
+        rows = [json.loads(l) for l in open(pj)]
+        repos = sorted({r["repo"] for r in rows})
+        N["obs.repos_total"] = len(repos)
+        human = {}
+        for l in open(os.path.join(obs, "out", "comments.jsonl")):
+            c = json.loads(l)
+            if c["reviewer_type"] == "human":
+                human[c["repo"]] = human.get(c["repo"], 0) + 1
+        for repo in repos:
+            key, short = "obs.prs." + slug(repo), repo.split("/")[1]
+            mine = [r for r in rows if r["repo"] == repo]
+            for b, name in (("landed", "landed"), ("closed_unmerged", "closed"), ("open", "open")):
+                nums = sorted(int(r["num"]) for r in mine if r["bucket"] == b)
+                N[f"{key}.{name}"] = (f"{short}#{nums[0]}" + "".join(f", #{n}" for n in nums[1:])) if nums else "none"
+                N[f"{key}.{name}_n"] = len(nums)
+            N[key + ".landed_bot"] = sum(1 for r in mine if r["bucket"] == "landed" and r["merger_is_bot"])
+            N[key + ".landed_human"] = sum(1 for r in mine if r["bucket"] == "landed" and r["merger"] and not r["merger_is_bot"])
+            N["obs.comments_human_by_repo." + slug(repo)] = human.get(repo, 0)
     fs = os.path.join(obs, "field", "stats.json")
     if os.path.exists(fs):
         flat(N, "field", json.load(open(fs)))
@@ -108,6 +190,7 @@ def main():
     flat(N, "mk", json.load(open(os.path.join(HERE, "merge-kit", "validate", "results.json"))))
     try:
         import yaml
+        sync_profiles(obs)
         N["mk.profiles"] = len(glob.glob(os.path.join(HERE, "merge-kit", "repos", "*.yaml")))
         for p in sorted(glob.glob(os.path.join(HERE, "merge-kit", "repos", "*.yaml"))):
             y = yaml.safe_load(open(p))

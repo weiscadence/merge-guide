@@ -1,10 +1,10 @@
 # Limits: read before quoting anything here
 
-1. **Single operator, single agent.** All <!--n:obs.prs_total-->64<!--/n--> of "our" PRs come from one AI agent run by
+1. **Single operator, single agent.** All <!--n:obs.prs_total-->85<!--/n--> of "our" PRs come from one AI agent run by
    one person, across two GitHub accounts. Habits of that operator (which repos, which tasks, how fast
    replies went out) are baked into every "ours" number. Nothing here is a sample of agents in general.
-2. **Small n.** Outside TauCeti we have <!--n:obs.prs_total-obs.t.by_repo.taucetiproject_tauceti.n-obs.t.by_repo.taucetiproject_taucetiroadmap.n-->30<!--/n-->
-   PRs spread over a dozen repos, and only <!--n:obs.comments_human-->34<!--/n--> review comments with no AI marker.
+2. **Small n.** Outside TauCeti we have <!--n:obs.prs_total-obs.t.by_repo.taucetiproject_tauceti.n-obs.t.by_repo.taucetiproject_taucetiroadmap.n-->45<!--/n-->
+   PRs spread over <!--n:obs.repos_total-2-->22<!--/n--> repos, and only <!--n:obs.comments_human-->43<!--/n--> review comments with no AI marker.
    Per-repo rows with fewer than about 20 resolved PRs have intervals too wide to rank. The hand-typed
    human classes (root cause, tests, policy) rest on one or two PRs each.
 3. **AI review is edited in place.** TauCeti's rubric comments are overwritten to "✅ now passing" when
@@ -30,7 +30,7 @@
 9. **Census scope.** The full-window census covers TauCeti, formal-conjectures and mathlib4 (mathlib4 only
    since the `LLM-generated` label appeared). Comment bodies are sampled, not complete. If the census output
    is missing when the guide is rebuilt, its cells read "(census pending)" instead of a number.
-10. **Policies move.** Every policy quote was fetched on <!--asof-->2026-11-25<!--/asof-->. Re-read the repo's file before relying on it.
+10. **Policies move.** Each policy quote was fetched once, on the date its profile records (`source:` in `merge-kit/repos/*.yaml`). The daily number refresh does not refetch them. Re-read the repo's file before relying on it.
 11. **What the lint covers.** `make check` fails on any untagged ratio or percentage outside a line that
     cites the literature. Plain counts in prose (for example "one operator") are not linted.
 

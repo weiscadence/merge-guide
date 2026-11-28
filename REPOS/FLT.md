@@ -46,7 +46,7 @@ Source: unpublished observatory REPORT.md §1.1 (FLT: 1 PR, open)
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.imperialcollegelondon_flt.open-->1<!--/n--> open (FLT#1215). We commented `claim` and `propose`, but the bot never assigned the issue and we never posted `awaiting-review`, so by the written workflow the PR never entered review.
+<!--n:obs.t.by_repo.imperialcollegelondon_flt.open-->1<!--/n--> open (<!--n:obs.prs.imperialcollegelondon_flt.open-->FLT#1215<!--/n-->). On FLT#1215 we commented `claim` and `propose`, but the bot never assigned the issue and we never posted `awaiting-review`, so by the written workflow the PR never entered review.
 
 ## Typical rounds
 

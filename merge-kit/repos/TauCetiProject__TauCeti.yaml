@@ -47,20 +47,20 @@ placement:
 review:
   style: "AI rubric bot (TauCetiReview), one thread per rubric; humans write the rubric, not the reviews"
   rubric_files: [_common.md, reuse.md, api-design.md, generality.md, documentation.md, naming.md, placement.md, proof-quality.md, attribution.md, scope.md, correctness.md]
-  recurring:   # distinct PR x rubric threads over 29 TauCeti PRs with rubric activity (134 threads)
-    reuse: 21
-    api-design: 19
-    generality: 18
-    documentation: 18
-    naming: 15
-    placement: 14
-    proof-quality: 11
-    attribution: 6
+  recurring:   # distinct PR x rubric threads over 32 TauCeti PRs with rubric activity (153 threads)
+    reuse: 23
+    generality: 22
+    api-design: 21
+    documentation: 20
+    naming: 16
+    placement: 16
+    proof-quality: 13
+    attribution: 7
     scope: 5
-    correctness: 4
-    quality-pass: 3
+    correctness: 5
+    quality-pass: 5
   blocking: "⛔ on reuse (#8486, #8953, #8954 x2), scope (#5762), correctness (#1850); 4 of those 5 PRs closed unmerged"
-  source: "FAILURE-MODES.md (review-harvest counts), TauCeti classes (from review harvest, 2026-11-25)"
+  source: "FAILURE-MODES.md (review-harvest counts), TauCeti classes (recounted from the review harvest on every data refresh)"
 max_open_prs:
   value: "no written cap; stacked PRs are prohibited (each prerequisite must land first)"
   source: "TauCeti AGENTS.md 'The rules of the repo' (no-stacking policy)"

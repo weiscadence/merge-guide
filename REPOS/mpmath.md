@@ -50,7 +50,7 @@ Source: FAILURE-MODES.md (review-harvest counts), general classes (mpmath#1244 x
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.mpmath_mpmath.open-->2<!--/n--> open (mpmath#1241, #1244). Review came within hours.
+<!--n:obs.t.by_repo.mpmath_mpmath.landed-->2<!--/n--> landed (<!--n:obs.prs.mpmath_mpmath.landed-->mpmath#1244, #1246<!--/n-->), <!--n:obs.t.by_repo.mpmath_mpmath.open-->1<!--/n--> open (<!--n:obs.prs.mpmath_mpmath.open-->mpmath#1241<!--/n-->). Review came within hours.
 
 ## Typical rounds
 

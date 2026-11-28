@@ -33,7 +33,9 @@ are undercounted (see [LIMITS.md](LIMITS.md)).
 | 15 | fix does not answer the ask (re-raised thread) | <!--n:obs.threads_recurred_loose--><!--/n--> re-raised | – | match, larger for us | not covered |
 
 Ranks 1–10 come from the TauCeti rubric data, which is most of our review volume. Ranks 11–15 come
-from a handful of hand-typed human reviews on other repos, so their order is not meaningful.
+from a handful of hand-typed human reviews on other repos, so their order is not meaningful. The row order was
+set when the guide was first built. The counts are restamped on every data refresh, so neighbouring rows can
+trade places: read the counts, not the position.
 The overall merge-kit dev recall is <!--frac:mk.dev.recall_strict--><!--/frac--> strict and
 <!--frac:mk.dev.recall_lenient--><!--/frac--> lenient; precision is low (<!--n:mk.dev.precision_ask_only.k--><!--/n-->
 of <!--n:mk.dev.precision_ask_only.n--><!--/n--> `ask` findings matched a real first-round ask).

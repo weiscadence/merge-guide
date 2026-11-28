@@ -43,7 +43,7 @@ Source: FAILURE-MODES.md (review-harvest counts), general classes 'Zero-friction
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.leanprover_community_physlib.landed--><!--/n--> landed (physlib#2168), with no review asks and a human merge.
+<!--n:obs.t.by_repo.leanprover_community_physlib.landed--><!--/n--> landed (<!--n:obs.prs.leanprover_community_physlib.landed--><!--/n-->). physlib#2168 had no review asks and a human merge.
 
 ## Typical rounds
 

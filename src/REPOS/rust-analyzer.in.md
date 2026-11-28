@@ -50,7 +50,7 @@ Source: FAILURE-MODES.md (review-harvest counts), general classes; maintainer no
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.rust_lang_rust_analyzer.closed--><!--/n--> closed (rust-analyzer#22906). The cautionary case: an agent opened it and wrote the body, both against the written policy. The code review itself was constructive (restore `#[deprecated]` rather than delete it; a lint sweep belongs in a separate PR).
+<!--n:obs.t.by_repo.rust_lang_rust_analyzer.closed--><!--/n--> closed (<!--n:obs.prs.rust_lang_rust_analyzer.closed--><!--/n-->). rust-analyzer#22906 is the cautionary case: an agent opened it and wrote the body, both against the written policy. The code review itself was constructive (restore `#[deprecated]` rather than delete it; a lint sweep belongs in a separate PR).
 
 ## Typical rounds
 

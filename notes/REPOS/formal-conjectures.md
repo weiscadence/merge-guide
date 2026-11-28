@@ -4,7 +4,7 @@ NO (follows Mathlib)
 > "Follow the same AI usage conventions as Mathlib."
 > [lit:https://github.com/google-deepmind/formal-conjectures/blob/main/CONTRIBUTING.md]
 ## ours
-<!--n:obs.t.by_repo.google_deepmind_formal_conjectures.open--><!--/n--> open (formal-conjectures#8069, #8218), both with an approving review and no merge yet: an example of slow merge after approval, not of rejection.
+<!--n:obs.t.by_repo.google_deepmind_formal_conjectures.open--><!--/n--> open (<!--n:obs.prs.google_deepmind_formal_conjectures.open--><!--/n-->). formal-conjectures#8069 and #8218 each got an approving review and then waited for a merge: an example of slow merge after approval, not of rejection.
 ## rounds
 One round: the reviewer's only asks were optional citations of the primary source (page and equation).
 ## do

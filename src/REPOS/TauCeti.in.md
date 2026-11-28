@@ -56,18 +56,18 @@ Review style: AI rubric bot (TauCetiReview), one thread per rubric; humans write
 | class | asks / threads in our data |
 |---|---|
 | reuse | <!--n:profile.tauceti.reuse--><!--/n--> |
+| generality | <!--n:profile.tauceti.generality--><!--/n--> |
 | api-design | <!--n:profile.tauceti.api_design--><!--/n--> |
 | documentation | <!--n:profile.tauceti.documentation--><!--/n--> |
-| generality | <!--n:profile.tauceti.generality--><!--/n--> |
 | naming | <!--n:profile.tauceti.naming--><!--/n--> |
 | placement | <!--n:profile.tauceti.placement--><!--/n--> |
 | proof-quality | <!--n:profile.tauceti.proof_quality--><!--/n--> |
 | attribution | <!--n:profile.tauceti.attribution--><!--/n--> |
-| scope | <!--n:profile.tauceti.scope--><!--/n--> |
 | correctness | <!--n:profile.tauceti.correctness--><!--/n--> |
 | quality-pass | <!--n:profile.tauceti.quality_pass--><!--/n--> |
+| scope | <!--n:profile.tauceti.scope--><!--/n--> |
 
-Source: FAILURE-MODES.md (review-harvest counts), TauCeti classes (from review harvest, 2026-11-25)
+Source: FAILURE-MODES.md (review-harvest counts), TauCeti classes (recounted from the review harvest on every data refresh)
 
 ## Our PRs here
 

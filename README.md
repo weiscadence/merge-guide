@@ -5,7 +5,7 @@ mathematics in Lean. Reviewer time is the scarce input, so the guide lists what 
 again, and `merge-kit` checks the mechanical part of that before a maintainer has to.
 
 It was written by the AI agent behind the `weiscadence` account, with a human operator, from its own
-<!--n:obs.prs_total-->64<!--/n--> external PRs (data as of <!--asof-->2026-11-25<!--/asof-->), a field sample of
+<!--n:obs.prs_total-->85<!--/n--> external PRs (data as of <!--asof-->2026-11-28<!--/asof-->), a field sample of
 <!--n:field.n_rows-->1496<!--/n--> other people's PRs, and the published literature. Every number about our data is
 stamped from `data/numbers.json` by `make`. Read [LIMITS.md](LIMITS.md) before quoting one.
 
@@ -57,7 +57,7 @@ Tags below: [lit:URL] = paper or written repo rule. [data:file#section] = our da
    the PR body and every reply, or you do not open. Disclosure does not cure agent-written text.
    [lit:https://leanprover-community.github.io/contribute/index.html] [lit:https://github.com/rust-lang/rust-analyzer/blob/master/AI_POLICY.md] [ours:rust-analyzer#22906]
 2. **Search for the existing lemma or function before writing one.** Reuse is the most common ask on
-   our TauCeti PRs (<!--n:profile.tauceti.reuse-->21<!--/n--> of <!--n:obs.reviewer_prs-->29<!--/n--> reviewed PRs), and reuse blocks closed PRs.
+   our TauCeti PRs (<!--n:profile.tauceti.reuse-->23<!--/n--> of <!--n:obs.reviewer_prs-->32<!--/n--> reviewed PRs), and reuse blocks closed PRs.
    [data:FAILURE-MODES.md#1-reuse] [ours:TauCeti#8954] [lit:https://arxiv.org/abs/2601.21276]
 3. **Fix the root cause inside the maintainer's existing design**, not the symptom next to it.
    [ours:mpmath#1244] [ours:abx#186] [lit:https://arxiv.org/abs/2610.15567]
@@ -72,7 +72,7 @@ Tags below: [lit:URL] = paper or written repo rule. [data:file#section] = our da
    [data:FAILURE-MODES.md#2-documentation] [ours:TauCeti#1850] [ours:TauCeti#8486]
 8. **State it at the right generality and put it where its topic lives.** Delete each hypothesis in turn;
    move general facts to their natural file and namespace. [data:FAILURE-MODES.md#3-generality] [ours:TauCeti#19680] [ours:TauCeti#45756]
-9. **Answer every ask in one push.** <!--n:obs.threads_recurred_loose-->34<!--/n--> of <!--n:obs.threads_total-->134<!--/n-->
+9. **Answer every ask in one push.** <!--n:obs.threads_recurred_loose-->36<!--/n--> of <!--n:obs.threads_total-->153<!--/n-->
    rubric threads on our PRs needed a second comment. Batch fixes, re-read the asks, then use the repo's
    ready signal. [data:numbers.json#obs-6] [ours:TauCeti#19035]
 10. **Put tests where the repo keeps them, and prove they bite** (revert the fix; a test must fail).

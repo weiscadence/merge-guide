@@ -1,6 +1,6 @@
 # State of the field: how AI contributes to formal mathematics (late 2026)
 
-Data as of <!--asof-->2026-11-25<!--/asof-->. Three evidence layers, weakest claims flagged inline:
+Data as of <!--asof-->2026-11-28<!--/asof-->. Three evidence layers, weakest claims flagged inline:
 
 - **Literature**: large studies of agent PRs on GitHub, nearly all general code, mostly 2025 data.
 - **Field sample**: <!--n:field.n_rows-->1496<!--/n--> PRs by other people in seven repos (TauCeti, mathlib4,
@@ -10,7 +10,7 @@ Data as of <!--asof-->2026-11-25<!--/asof-->. Three evidence layers, weakest cla
 - **Field census**: every PR in the census window for TauCeti, formal-conjectures and mathlib4, with
   sampled comment bodies. If the census output is missing, its cells read "(census pending)" and
   `make collect && make` fills them. [data:numbers.json#census]
-- **Our PRs**: <!--n:obs.prs_total-->64<!--/n--> external PRs by one agent, one operator.
+- **Our PRs**: <!--n:obs.prs_total-->85<!--/n--> external PRs by one agent, one operator.
   [data:numbers.json#obs-1]
 
 ## 1. Four models of AI contribution
@@ -34,14 +34,14 @@ quality-pass check of the PR template). Each comment carries a `tauceti-meta` bl
 model, and is posted under whichever maintainer ran the tool. Automatic review "is currently switched
 off. For now, reviews are run from the command line." [lit:https://github.com/TauCetiProject/TauCeti/blob/main/README.md]
 
-What that means for counting "human review": on our TauCeti PRs, <!--n:obs.rubric_under_human_login-->158<!--/n-->
-of <!--n:obs.rubric_comments-->173<!--/n--> rubric comments sit under maintainers' personal logins. Typed
+What that means for counting "human review": on our TauCeti PRs, <!--n:obs.rubric_under_human_login-->179<!--/n-->
+of <!--n:obs.rubric_comments-->194<!--/n--> rubric comments sit under maintainers' personal logins. Typed
 by login they look human; typed by marker, none of them are. [data:numbers.json#obs-3.1]
 In the field sample the same correction took the median "human review comments" on TauCeti PRs to
 <!--n:field.by_repo.taucetiproject_tauceti_declared.median_human_comments-->0<!--/n-->.
 [data:numbers.json#obs-correction]
 
-Reviewer models on our <!--n:obs.reviewer_prs-->29<!--/n--> reviewed TauCeti PRs: <!--n:obs.reviewer_family_codex-->144<!--/n-->
+Reviewer models on our <!--n:obs.reviewer_prs-->32<!--/n--> reviewed TauCeti PRs: <!--n:obs.reviewer_family_codex-->165<!--/n-->
 rubric comments from codex-family models, <!--n:obs.reviewer_family_claude-->29<!--/n--> from Claude, across
 <!--n:obs.reviewer_models_n-->9<!--/n--> model versions. Models change with the month, so no model ranking is
 supported. [data:numbers.json#obs-3.2]
@@ -152,13 +152,13 @@ is a floor; on TauCeti almost every review comment is engine output.
 
 ## 3. Our own PRs, for scale
 
-<!--n:obs.prs_total-->64<!--/n--> PRs: <!--n:obs.prs_landed-->35<!--/n--> landed, <!--n:obs.prs_closed-->14<!--/n--> closed,
-<!--n:obs.prs_open-->15<!--/n--> open; merge rate <!--n:obs.prs_landed/(obs.prs_landed+obs.prs_closed)%-->71%<!--/n-->
-(95% CI <!--n:obs.merge_rate_lo-->58<!--/n-->–<!--n:obs.merge_rate_hi-->82<!--/n-->%). TauCeti
-<!--n:obs.t.by_repo.taucetiproject_tauceti.landed-->22<!--/n--> landed of <!--n:obs.t.by_repo.taucetiproject_tauceti.n-->31<!--/n-->.
-Of <!--n:obs.comments_total-->334<!--/n--> review comments, <!--n:obs.comments_human-->34<!--/n--> carry no AI marker
-(<!--n:obs.comments_human/obs.comments_total%-->10%<!--/n-->), and none of those are on TauCeti.
-Of <!--n:obs.lean_landed-->26<!--/n--> Lean landings, <!--n:obs.verified-->4<!--/n--> had a human sign-off; the rest
+<!--n:obs.prs_total-->85<!--/n--> PRs: <!--n:obs.prs_landed-->42<!--/n--> landed, <!--n:obs.prs_closed-->14<!--/n--> closed,
+<!--n:obs.prs_open-->29<!--/n--> open; merge rate <!--n:obs.prs_landed/(obs.prs_landed+obs.prs_closed)%-->75%<!--/n-->
+(95% CI <!--n:obs.merge_rate_lo-->62<!--/n-->–<!--n:obs.merge_rate_hi-->84<!--/n-->%). TauCeti
+<!--n:obs.t.by_repo.taucetiproject_tauceti.landed-->25<!--/n--> landed of <!--n:obs.t.by_repo.taucetiproject_tauceti.n-->34<!--/n-->.
+Of <!--n:obs.comments_total-->375<!--/n--> review comments, <!--n:obs.comments_human-->43<!--/n--> carry no AI marker
+(<!--n:obs.comments_human/obs.comments_total%-->11%<!--/n-->), and none of those are on TauCeti.
+Of <!--n:obs.lean_landed-->29<!--/n--> Lean landings, <!--n:obs.verified-->4<!--/n--> had a human sign-off; the rest
 were bot-merged after AI review, which is TauCeti's design. [data:numbers.json#obs-1] [data:numbers.json#obs-2]
 
 ## 4. What the literature says (general code)

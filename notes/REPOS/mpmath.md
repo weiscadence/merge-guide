@@ -4,7 +4,7 @@ not stated; disclosed AI accepted
 > No written AI policy (no CONTRIBUTING file at master). The maintainer reviewed our disclosed AI PRs on the merits.
 > [ours:mpmath#1244]
 ## ours
-<!--n:obs.t.by_repo.mpmath_mpmath.open--><!--/n--> open (mpmath#1241, #1244). Review came within hours.
+<!--n:obs.t.by_repo.mpmath_mpmath.landed--><!--/n--> landed (<!--n:obs.prs.mpmath_mpmath.landed--><!--/n-->), <!--n:obs.t.by_repo.mpmath_mpmath.open--><!--/n--> open (<!--n:obs.prs.mpmath_mpmath.open--><!--/n-->). Review came within hours.
 ## rounds
 One fast round per PR, all asks in one pass: where the fix belongs (`format_digits()` should return the prefix), and which existing test function each assertion belongs in. On mpmath#1241 the whole review was "CI fails."
 ## do

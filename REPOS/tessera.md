@@ -52,7 +52,7 @@ Source: FAILURE-MODES.md (review-harvest counts), general classes
 
 ## Our PRs here
 
-<!--n:obs.t.by_repo.transparency_dev_tessera.open-->2<!--/n--> open (tessera#1277, #1290). On #1277 a maintainer ran the storage back ends and found that reverting the change did not fail any test.
+<!--n:obs.t.by_repo.transparency_dev_tessera.open-->2<!--/n--> open (<!--n:obs.prs.transparency_dev_tessera.open-->tessera#1277, #1290<!--/n-->). On tessera#1277 a maintainer ran the storage back ends and found that reverting the change did not fail any test.
 
 ## Typical rounds
 

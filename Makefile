@@ -6,6 +6,7 @@ DOCS := README.md STATE-OF-THE-FIELD.md FAILURE-MODES.md PLAYBOOK.md LIMITS.md R
 all: docs privacy
 
 docs:
+	$(PY) scripts/check_numbers.py
 	$(PY) scripts/repo_pages.py
 	$(PY) scripts/stamp.py --lint
 
