@@ -72,7 +72,7 @@ Tags below: [lit:URL] = paper or written repo rule. [data:file#section] = our da
    [data:FAILURE-MODES.md#2-documentation] [ours:TauCeti#1850] [ours:TauCeti#8486]
 8. **State it at the right generality and put it where its topic lives.** Delete each hypothesis in turn;
    move general facts to their natural file and namespace. [data:FAILURE-MODES.md#3-generality] [ours:TauCeti#19680] [ours:TauCeti#45756]
-9. **Answer every ask in one push.** <!--n:obs.threads_recurred_loose-->36<!--/n--> of <!--n:obs.threads_total-->153<!--/n-->
+9. **Answer every ask in one push.** <!--n:obs.threads_recurred_loose-->38<!--/n--> of <!--n:obs.threads_total-->153<!--/n-->
    rubric threads on our PRs needed a second comment. Batch fixes, re-read the asks, then use the repo's
    ready signal. [data:numbers.json#obs-6] [ours:TauCeti#19035]
 10. **Put tests where the repo keeps them, and prove they bite** (revert the fix; a test must fail).

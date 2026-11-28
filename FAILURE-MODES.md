@@ -4,7 +4,7 @@ Data as of <!--asof-->2026-11-28<!--/asof-->. Two counts per mode:
 - **TauCeti threads**: distinct PR × rubric threads on our <!--n:obs.reviewer_prs-->32<!--/n--> rubric-reviewed
   TauCeti PRs (<!--n:obs.threads_total-->153<!--/n--> threads). Source: the merge-kit TauCeti profile, built from the review harvest.
 - **All asks**: findings classified by the observatory keyword classifier over all <!--n:obs.prs_reviewed-->53<!--/n-->
-  reviewed PRs (<!--n:obs.findings_asks-->229<!--/n--> asks; classifier agrees with a hand label on
+  reviewed PRs (<!--n:obs.findings_asks-->231<!--/n--> asks; classifier agrees with a hand label on
   <!--n:obs.gold_agree-->29<!--/n--> of <!--n:obs.gold_n-->40<!--/n--> gold findings, CI <!--n:obs.gold_lo-->57<!--/n-->–<!--n:obs.gold_hi-->84<!--/n-->%).
 
 merge-kit recall is the **dev split**, strict (same declaration and same kind of fix), from
@@ -16,9 +16,9 @@ are undercounted (see [LIMITS.md](LIMITS.md)).
 
 | rank | mode | TauCeti threads | all asks (PRs) | literature match | merge-kit dev recall |
 |---|---|---|---|---|---|
-| 1 | reuse / duplicate of existing code | <!--n:profile.tauceti.reuse-->23<!--/n--> | <!--n:obs.t.classes.reuse.findings-->28<!--/n--> (<!--n:obs.t.classes.reuse.prs-->17<!--/n-->) | strong | <!--n:mk.dev.per_rubric.reuse.strict.k-->0<!--/n-->/<!--n:mk.dev.per_rubric.reuse.strict.n-->4<!--/n--> strict, <!--n:mk.dev.per_rubric.reuse.lenient.k-->3<!--/n-->/<!--n:mk.dev.per_rubric.reuse.lenient.n-->4<!--/n--> lenient |
+| 1 | reuse / duplicate of existing code | <!--n:profile.tauceti.reuse-->23<!--/n--> | <!--n:obs.t.classes.reuse.findings-->29<!--/n--> (<!--n:obs.t.classes.reuse.prs-->17<!--/n-->) | strong | <!--n:mk.dev.per_rubric.reuse.strict.k-->0<!--/n-->/<!--n:mk.dev.per_rubric.reuse.strict.n-->4<!--/n--> strict, <!--n:mk.dev.per_rubric.reuse.lenient.k-->3<!--/n-->/<!--n:mk.dev.per_rubric.reuse.lenient.n-->4<!--/n--> lenient |
 | 2 | API design (public/private, missing simp lemmas) | <!--n:profile.tauceti.api_design-->21<!--/n--> | <!--n:obs.t.classes.api_design.findings-->21<!--/n--> (<!--n:obs.t.classes.api_design.prs-->12<!--/n-->) | none named | <!--n:mk.dev.per_rubric.api_design.strict.k-->1<!--/n-->/<!--n:mk.dev.per_rubric.api_design.strict.n-->6<!--/n--> |
-| 3 | generality (needless hypotheses, wrong base type) | <!--n:profile.tauceti.generality-->22<!--/n--> | <!--n:obs.t.classes.generality.findings-->23<!--/n--> (<!--n:obs.t.classes.generality.prs-->16<!--/n-->) | none named | <!--n:mk.dev.per_rubric.generality.strict.k-->0<!--/n-->/<!--n:mk.dev.per_rubric.generality.strict.n-->5<!--/n--> |
+| 3 | generality (needless hypotheses, wrong base type) | <!--n:profile.tauceti.generality-->22<!--/n--> | <!--n:obs.t.classes.generality.findings-->24<!--/n--> (<!--n:obs.t.classes.generality.prs-->16<!--/n-->) | none named | <!--n:mk.dev.per_rubric.generality.strict.k-->0<!--/n-->/<!--n:mk.dev.per_rubric.generality.strict.n-->5<!--/n--> |
 | 4 | documentation (overclaim, proof mechanics, process talk) | <!--n:profile.tauceti.documentation-->20<!--/n--> | <!--n:obs.t.classes.docs.findings-->38<!--/n--> (<!--n:obs.t.classes.docs.prs-->15<!--/n-->) | match | <!--n:mk.dev.per_rubric.documentation.strict.k-->0<!--/n-->/<!--n:mk.dev.per_rubric.documentation.strict.n-->6<!--/n--> |
 | 5 | naming / namespace | <!--n:profile.tauceti.naming-->16<!--/n--> | <!--n:obs.t.classes.naming.findings-->10<!--/n--> (<!--n:obs.t.classes.naming.prs-->6<!--/n-->) | match (style) | <!--n:mk.dev.per_rubric.naming.strict.k-->1<!--/n-->/<!--n:mk.dev.per_rubric.naming.strict.n-->5<!--/n--> |
 | 6 | placement (wrong file, unused imports) | <!--n:profile.tauceti.placement-->16<!--/n--> | <!--n:obs.t.classes.placement.findings-->10<!--/n--> (<!--n:obs.t.classes.placement.prs-->7<!--/n-->) | match (style) | <!--n:mk.dev.per_rubric.placement.strict.k-->1<!--/n-->/<!--n:mk.dev.per_rubric.placement.strict.n-->2<!--/n--> |
@@ -30,7 +30,7 @@ are undercounted (see [LIMITS.md](LIMITS.md)).
 | 12 | tests in the wrong place, or tests that do not bite | – | <!--n:obs.t.classes.tests.findings-->6<!--/n--> (<!--n:obs.t.classes.tests.prs-->3<!--/n-->) | partial | not covered |
 | 13 | CI red when review was requested | – | <!--n:obs.t.classes.ci.findings-->1<!--/n--> (<!--n:obs.t.classes.ci.prs-->1<!--/n-->) | strong | hygiene only (sorry, set_option) |
 | 14 | AI-policy violation | – | <!--n:obs.t.classes.policy.findings-->5<!--/n--> (<!--n:obs.t.classes.policy.prs-->3<!--/n-->) | match (rare, severe) | disclosure regex only |
-| 15 | fix does not answer the ask (re-raised thread) | <!--n:obs.threads_recurred_loose-->36<!--/n--> re-raised | – | match, larger for us | not covered |
+| 15 | fix does not answer the ask (re-raised thread) | <!--n:obs.threads_recurred_loose-->38<!--/n--> re-raised | – | match, larger for us | not covered |
 
 Ranks 1–10 come from the TauCeti rubric data, which is most of our review volume. Ranks 11–15 come
 from a handful of hand-typed human reviews on other repos, so their order is not meaningful. The row order was
@@ -131,7 +131,7 @@ others cost rounds. [data:numbers.json#obs-6]
 
 ## 15. The fix does not answer the ask
 - **Example.** TauCeti#19035 needed many flagged rubric rounds before it closed. [ours:TauCeti#19035]
-- **Data.** <!--n:obs.threads_recurred_loose-->36<!--/n--> of <!--n:obs.threads_total-->153<!--/n--> threads needed a second comment (CI <!--n:obs.recur_loose_lo-->18<!--/n-->–<!--n:obs.recur_loose_hi-->31<!--/n-->%); <!--n:obs.threads_recurred_strict-->7<!--/n--> came back after being marked ✅.
+- **Data.** <!--n:obs.threads_recurred_loose-->38<!--/n--> of <!--n:obs.threads_total-->153<!--/n--> threads needed a second comment (CI <!--n:obs.recur_loose_lo-->19<!--/n-->–<!--n:obs.recur_loose_hi-->32<!--/n-->%); <!--n:obs.threads_recurred_strict-->7<!--/n--> came back after being marked ✅.
 - **Literature.** Agent misalignment with reviewer instructions is a named, rare rejection class (1%); it is larger for us. [lit:https://arxiv.org/abs/2601.15195]
 - **Pre-PR check.** Quote each ask, write the fix next to it, re-read every passing rubric before the push.
 
