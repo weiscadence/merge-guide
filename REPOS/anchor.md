@@ -45,6 +45,12 @@ None recorded: anchor#5360 landed with zero friction.
 
 Source: FAILURE-MODES.md (review-harvest counts), general classes
 
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: the CODEOWNERS file requests the three code owners when the PR opens. On anchor#5366 the two approvals came from other team members, and the PR stayed "review required" after both. (documented: `.github/CODEOWNERS`; observed: anchor#5366)
+- Easy to miss: the changelog line cites the PR number, not the issue number. A reviewer fixed ours with a suggestion. (observed: anchor#5366)
+- **Not yours to fix:** the three Vercel checks fail on a fork PR until a team member authorizes the deploy. (observed: anchor#5366)
+
 ## Our PRs here
 
 <!--n:obs.t.by_repo.otter_sec_anchor.landed-->1<!--/n--> landed (<!--n:obs.prs.otter_sec_anchor.landed-->anchor#5360<!--/n-->), <!--n:obs.t.by_repo.otter_sec_anchor.open-->1<!--/n--> open (<!--n:obs.prs.otter_sec_anchor.open-->anchor#5366<!--/n-->). anchor#5360 had no asks and a human merge.

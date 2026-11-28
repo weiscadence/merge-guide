@@ -1,0 +1,46 @@
+repo: AeneasVerif/aeneas
+ai_policy:
+  stance: "AI-assisted PRs welcome if you say how much AI was used; avoid AI-generated PR descriptions"
+  who_may_write_text: "AI-assisted PRs are welcome, but the template asks you to avoid AI-generated PR descriptions"
+  disclosure: "required in the PR: say whether AI assisted and by how much, from limited use to fully generated"
+  cla: "none found"
+  source: "https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md (fetched 2026-11-28)"
+ci:
+  local: ["gmake format", "gmake test", "cd backends/lean && lake build Aeneas AeneasMeta --wfail", "cd tests/lean && make"]
+  notes: "CI runs through nix; a fork PR waits for a maintainer to approve the run (aeneas#1606 showed action_required); CI runs on a merge with main, so stay rebased"
+  source: "https://github.com/AeneasVerif/aeneas/blob/main/.github/workflows/ci.yml; documentation/skills/aeneas-compiler-dev.instructions.md (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: ai, regex: "(?i)\\bAI\\b", rubric: disclosure, msg: "state whether the PR was AI assisted and by how much (PR template)"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <Short, precise description of the change and why.>
+
+    AI assistance: <how much was AI-generated: code, tests, description.>
+
+    Closes #<issue>
+  source: "https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md"
+placement:
+  rules: ["discuss non-trivial features on Zulip or in an issue first", "small scoped fixes and new std-library theorems can be submitted directly", "test new models of Rust definitions with #[verify::test]", "keep PRs small"]
+  source: "https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md; README.md lines 20-25"
+review:
+  style: "human maintainers; most sampled outside PRs got a first review within about 4 days; a few merged with none recorded"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "aeneas#1373, #1386, #1380, #1400, #1360, #1302, #1414, #1441, #1421"
+max_open_prs:
+  value: "no written cap; template asks for small scoped PRs; our default 2"
+  source: "https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md"
+ready_signal:
+  how: "nothing assigns a reviewer: no CODEOWNERS file and no auto-assign. Maintainers pick PRs up; some authors request the maintainer who owns the issue. A maintainer must approve CI on a fork PR"
+  source: "aeneas tree; sampled merged PRs #1373, #1386 (author-requested), #1380, #1400, #1360 (none requested)"
+lean:
+  src_dirs: ["backends/lean/Aeneas"]
+  source: "tactic code lives under backends/lean/Aeneas (aeneas#1606 touches backends/lean/Aeneas/Tactic/Conv/Bvify)"
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

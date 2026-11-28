@@ -2,7 +2,7 @@
 """Build src/REPOS/<repo>.in.md from merge-kit/repos/<profile>.yaml + notes/REPOS/<repo>.md.
 
 The profile is the single source for AI rule, CI commands, ready signal and recurring asks, so the
-guide and merge-kit cannot disagree. The notes file adds the verbatim policy quote, rounds, do/don't.
+guide and merge-kit cannot disagree. The notes file adds the verbatim policy quote, the reviewer/author process, rounds, do/don't.
 Recurring-ask counts are emitted as stamp tags (profile.<repo>.<class>) so stamp.py fills them.
 """
 import glob, os, re, sys
@@ -49,6 +49,8 @@ def page(y, notes):
     else:
         L += [f"None recorded: {rv.get('recurring_note', 'no review in our data')}.", ""]
     L += [f"Source: {rv.get('source')}", ""]
+    if notes.get("process"):
+        L += ["## How a PR gets a reviewer, and what the author must do", "", notes["process"].strip(), ""]
     if notes.get("ours"):
         L += ["## Our PRs here", "", notes["ours"].strip(), ""]
     if notes.get("rounds"):
@@ -85,9 +87,10 @@ def main():
         o = f"obs.t.by_repo.{obs_slug(y['repo'])}"
         has = o + ".n" in NUM
         who = (notes.get("short") or "").strip() or str((y.get("ai_policy") or {}).get("who_may_write_text"))[:60]
-        cnt = f"<!--n:{o}.landed--><!--/n--> / <!--n:{o}.closed--><!--/n--> / <!--n:{o}.open--><!--/n-->" if has else "none"
+        cnt = f"<!--n:{o}.landed--><!--/n--> / <!--n:{o}.closed--><!--/n--> / <!--n:{o}.open--><!--/n-->" if has else "not in snapshot"
         index.append(f"| [{name}]({name}.md) | {who} | {cnt} |")
-    index += ["", "Counts are from the observatory snapshot; see [../LIMITS.md](../LIMITS.md)."]
+    index += ["", "Counts are from the observatory snapshot of <!--asof--><!--/asof-->; a repo where we have no PR in it reads "
+              "\"not in snapshot\"; its page says what we did there instead. See [../LIMITS.md](../LIMITS.md)."]
     open(os.path.join(HERE, "src", "REPOS", "README.in.md"), "w").write("\n".join(index) + "\n")
 
 

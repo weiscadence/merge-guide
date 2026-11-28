@@ -1,0 +1,66 @@
+repo: Verified-zkEVM/ArkLib
+ai_policy:
+  stance: "AI-assisted work allowed; the author is responsible (CONTRIBUTING.md 'Tool-Assisted Contributions')"
+  who_may_write_text: "an agent may draft; the author must read the headline statements and the full description before requesting review"
+  disclosure: "not required; no AI-attribution line in file headers ('Do not add a separate AI-attribution line'). Our PR body states the AI authorship anyway"
+  forbidden_content: "temporary plans, handoff notes and session logs in the contribution; competing PRs for the same target"
+  source: "https://github.com/Verified-zkEVM/ArkLib/blob/main/CONTRIBUTING.md lines 142-154 and 359-361; AGENTS.md (fetched 2026-11-28)"
+ci:
+  local: ["lake exe cache get", "./scripts/validate.sh", "./scripts/validate.sh --axioms", "uv run --no-project --python 3.12 python scripts/check-pr-title.py"]
+  notes: "git add new files before validation; --axioms for any proof change; --docs is optional; no maxHeartbeats, no linter suppression, files at most 1500 lines"
+  source: "CONTRIBUTING.md 'Set Up and Validate'; AGENTS.md 'Fast Start'; .github/workflows/pr-checks.yml (fetched 2026-11-28)"
+pr:
+  title_regex: "^(feat|fix|doc|docs|style|refactor|test|chore|perf|ci)(\\([^)]+\\))?!?: .+"
+  body:
+    required:
+      - {id: validation, regex: "(?i)validat", rubric: tests, msg: "give each validation command, result and commit (template 'Validation')"}
+      - {id: axioms, regex: "(?i)(axiom|admission)", rubric: scope, msg: "list admissions and axiom output (template 'Admissions and axioms')"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    ## Summary
+    <Problem, change, purpose.>
+
+    ## Formalized statements
+    <Headline declarations and how each relates to its source.>
+
+    ## Admissions and axioms
+    <Admissions added or closed; #print axioms for each headline theorem.>
+
+    ## Validation
+    <Each command, its result, and the commit it ran on.>
+
+    ## Breaking changes
+    <Renamed or removed declarations; omit if none.>
+
+    ## Known gaps
+    <What is not formalized.>
+
+    ## Related work
+    <Closes #...; stack base; overlapping PRs.>
+
+    ## Checklist
+    - [ ] I searched the open pull requests and issues for overlapping work.
+    - [ ] I did the applicable statement checks in CONTRIBUTING.md, "Statement Correctness".
+    - [ ] The description matches the code and the evidence.
+    - [ ] The pull request contains no working files from a tool session.
+  source: ".github/pull_request_template.md; CONTRIBUTING.md 'Title Format' lines 68-100 (fetched 2026-11-28)"
+placement:
+  rules: ["one topic per PR; split mechanical from mathematical changes", "search open PRs for the same declarations first and link any overlap", "no paper items in declaration names (no author-year suffix, no lemma numbers)", "update every caller in the same PR when renaming"]
+  source: "CONTRIBUTING.md 'Check for Overlap', 'Size and Stacking', 'Naming Conventions'"
+review:
+  style: "human maintainers review unprompted; observed first review from about 1 day to about 8 days on 7 sampled merged PRs; bots comment at open (PR Summary, build timing)"
+  recurring: {}
+  recurring_note: "no review has landed on our PR yet"
+  source: "ArkLib#1498, #1506, #1507, #1512, #1514, #1524, #1526 timelines; ArkLib#1617 timeline (fetched 2026-11-28)"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "ArkLib CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "No reviewer is assigned: no CODEOWNERS, no auto-assign, no label bot. Open the PR non-draft with CI green and the template filled in; a maintainer picks it up. The `/review` LLM command works only for maintainers."
+  source: ".github/workflows/review.yml; absence of CODEOWNERS; ArkLib#1498, #1506, #1507, #1512, #1514, #1524, #1526 (no review_requested events)"
+lean: {src_dirs: [ArkLib, ArkLibTest], sorry_allowed: false, forbid_set_option: true, authors_header: true, max_line: 100, max_proof_lines: null, source: "CONTRIBUTING.md 'Syntax and Formatting' and AGENTS.md 'Guardrails' (fetched 2026-11-28)"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

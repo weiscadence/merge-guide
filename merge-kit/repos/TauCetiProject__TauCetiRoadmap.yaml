@@ -1,0 +1,48 @@
+repo: TauCetiProject/TauCetiRoadmap
+ai_policy:
+  stance: "AI use welcome; attribute it"
+  who_may_write_text: "AI may write roadmap prose, Suggested.lean and review comments; the author must have read them carefully"
+  disclosure: "required: name the models used in the PR description; mark AI-written review comments with a :robot: prefix"
+  source: "https://github.com/TauCetiProject/TauCetiRoadmap/blob/main/CONTRIBUTING.md 'Attribute AI assistance' (fetched 2026-11-28)"
+ci:
+  local: ["lake exe cache get", "lake build", "python3 .github/scripts/check_roadmap_topics.py", "python3 .github/scripts/check_roadmap_areas.py --fix (then discard the result)"]
+  notes: "Suggested.lean may use sorry honestly; the build check fails without a metadata.toml topic; a branch need not be up to date (merge queue tests the merge)"
+  source: "README.md 'Building', 'Filing a roadmap'; CONTRIBUTING.md 'Opening a pull request'; .github/workflows/ci.yml (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: ai_attribution, regex: "(?i)(claude|gpt|gemini|model|AI)", rubric: scope, msg: "name the models used (CONTRIBUTING 'Attribute AI assistance')"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <What roadmap this adds or revises, and its directory.>
+
+    ## Checks
+    <What was run and what was not.>
+
+    ## Subject-area expert
+    <Who could confirm the scope, or "needed: ...".>
+
+    ## AI assistance
+    <Models used and what they did; what the human decided.>
+  source: "CONTRIBUTING.md 'Getting started' (AI attribution, subject-area expert) and 'Opening a pull request' (fetched 2026-11-28)"
+placement:
+  rules: ["a roadmap PR touches only its own directory under TauCetiRoadmap/", "new roadmap directory holds README.md, optional Suggested.lean and metadata.toml with topic", "do not edit the generated roadmap list, issue-template dropdowns or TauCetiRoadmap.lean", "README order: Summary overview, Conventions, Layers, Scope and ownership, Exact supplier contracts, References"]
+  source: "CONTRIBUTING.md 'Opening a pull request'; README.md 'Laying out the README', 'Filing a roadmap'"
+review:
+  style: "a roadmap-reviewers member comments within about an hour, a bot applies the AI-review label, then one member approval plus green build merges through the queue; first-comment latency 30 minutes to 6 hours on 5 sampled PRs (all by org members)"
+  recurring: {}
+  recurring_note: "no review has landed on our PR yet"
+  source: "TauCetiRoadmap#3074, #3081, #3170, #3182, #3189 timelines; #3243 (fetched 2026-11-28)"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "TauCetiRoadmap CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "Post the awaiting-review label when you open the PR (directly or by a comment line `awaiting-review`) and again after each review round. CODEOWNERS requests the roadmap-reviewers team automatically, a bot arms auto-merge, and one approval from a team member plus a green build merges it. Ask for review on the Lean Zulip topic 'Getting started: roadmaps'."
+  source: "CONTRIBUTING.md 'Opening a pull request', 'The review workflow: labels'; .github/CODEOWNERS; .github/workflows/auto-merge.yml"
+lean: {src_dirs: [TauCetiRoadmap], sorry_allowed: true, forbid_set_option: null, authors_header: null, max_line: null, max_proof_lines: null, source: "Suggested.lean files carry honest sorry (README.md 'Prototyping')"}
+scope:
+  allowed_paths: ["TauCetiRoadmap/<RoadmapName>/"]
+  max_topics: 1
+  topic_depth: 2

@@ -1,0 +1,45 @@
+repo: rocq-prover/rocq
+ai_policy:
+  stance: "AI assistance is permitted; contributors stay responsible"
+  who_may_write_text: "allowed; the contributor must review, understand and be able to explain every contribution"
+  disclosure: "disclose how AI was used (not which agent or model); no commit trailer required"
+  source: "https://rocq-prover.org/policies/ai-policy, linked from CONTRIBUTING.md (fetched 2026-11-28)"
+ci:
+  local: ["make test-suite", "dev/lint-repository.sh"]
+  notes: "only light CI runs at first and the bot adds `needs: full CI`; only members of the contributors team can request a full run, otherwise a maintainer does it"
+  source: "CONTRIBUTING.md 'Understanding automatic feedback' (fetched 2026-11-28); rocq#22942 labels"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: issue, regex: "(?i)(fixes|closes) #\\d+", rubric: scope, msg: "link the issue: 'Fixes / closes #N' (PR template)"}
+    forbidden: []
+    disclosure: "one line saying how AI was used"
+  body_template: |
+    Fixes #<issue>.
+
+    <Problem, change, how it was tested.>
+
+    - [x] Added / updated **test-suite**.
+
+    AI use: <what the AI did and who checked it>.
+  source: "rocq .github/PULL_REQUEST_TEMPLATE.md; AI policy"
+placement:
+  rules: ["target master", "regression test in test-suite/", "changelog entry in doc/changelog only for features, user-visible changes and important bug fixes (./dev/tools/make-changelog.sh)", "open overlay PRs only if plugins or libraries break in CI", "rebase on conflict instead of merging master"]
+  source: "CONTRIBUTING.md 'Fixing bugs and performing small changes'; doc/changelog/README.md"
+review:
+  style: "human maintainers; the owning maintainer teams are requested automatically and one maintainer self-assigns, sets milestone and kind label, and merges through the merge bot"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "CONTRIBUTING.md 'Merging pull requests'; sampled merged PRs rocq#22926, #22873, #22869, #22874"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "none stated in CONTRIBUTING.md"
+ready_signal:
+  how: "reviewers are requested automatically by CODEOWNERS when the PR opens or leaves draft; if nobody self-assigns after a few days, ping the requested maintainers. Authors cannot self-assign or merge"
+  source: "CONTRIBUTING.md 'Using GitHub pull requests' and 'Merging pull requests'; .github/CODEOWNERS"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

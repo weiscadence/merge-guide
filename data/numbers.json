@@ -4773,7 +4773,7 @@
 "mk.dev.union_strict_with_llm.mimic.lo": 12,
 "mk.dev.union_strict_with_llm.mimic.n": 35,
 "mk.dev.union_strict_with_llm.mimic.pct": 23,
-"mk.profiles": 12,
+"mk.profiles": 25,
 "mk.test.llm_recall.gemini.hi": 70,
 "mk.test.llm_recall.gemini.k": 7,
 "mk.test.llm_recall.gemini.lo": 25,

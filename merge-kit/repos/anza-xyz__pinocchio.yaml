@@ -1,0 +1,42 @@
+repo: anza-xyz/pinocchio
+ai_policy:
+  stance: "no AI policy found; no CONTRIBUTING file, no PR template"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; disclose anyway"
+  cla: "none found"
+  source: "repo root, README.md, SECURITY.MD, .github/ (fetched 2026-11-28); https://github.com/anza-xyz/pinocchio"
+ci:
+  local: ["pnpm format", "pnpm clippy", "pnpm test", "pnpm spellcheck", "pnpm build-sbf"]
+  notes: "CI also runs cargo-audit and miri; a fork PR waits for a maintainer to approve the run (pinocchio#472 showed action_required)"
+  source: "https://github.com/anza-xyz/pinocchio/blob/main/package.json and .github/workflows/main.yml (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: issue, regex: "(?i)(fixes|closes) #\\d+", rubric: scope, msg: "link the issue; nothing documented, but sampled merged PRs reference one"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <Problem, cause, change, how verified.>
+
+    Fixes #<issue>
+  source: "no template; observed on merged PRs #435, #445, #446 and open PR #472"
+placement:
+  rules: ["title starts with the area, e.g. programs:, sdk:, programs/token:", "squash merge only, so one clean commit subject", "release notes are generated from commit subjects"]
+  source: "https://github.com/anza-xyz/pinocchio/blob/main/.github/cliff.toml; ruleset on main (squash only); titles of #445, #446, #458"
+review:
+  style: "human maintainers; slow and uneven (first review on sampled merged PRs ranged from under 1 hour to about 48 days; 28 PRs open and waiting)"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "pinocchio#451, #458, #446, #445, #441, #435, #434, #429; open PR list 2026-11-28"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "no CONTRIBUTING file"
+ready_signal:
+  how: "nothing assigns a reviewer: no CODEOWNERS file and no auto-assign. Maintainers pick PRs up or request reviewers themselves. Non-draft, CI approved by a maintainer and green"
+  source: "pinocchio tree; ruleset on main (1 approval, code-owner review); sampled merged PRs"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

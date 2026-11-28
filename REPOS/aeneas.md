@@ -1,0 +1,70 @@
+# aeneas
+
+`AeneasVerif/aeneas` · profile: `merge-kit/repos/AeneasVerif__aeneas.yaml`
+
+## AI policy
+
+> "AI assisted PRs: Please indicate whether the PR was AI assisted, and by how much: did you use AI in a limited way or did you completely vibe-code the PR? We welcome AI assisted PRs but need this information to adjust our level of scrutinee during the review". The same template says "avoid AI generated PR descriptions: they tend to be verbose and imprecise".
+> [lit:https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md]
+
+- **Stance:** AI-assisted PRs welcome if you say how much AI was used; avoid AI-generated PR descriptions
+- **Who may write PR text and replies:** AI-assisted PRs are welcome, but the template asks you to avoid AI-generated PR descriptions
+- **Disclosure:** required in the PR: say whether AI assisted and by how much, from limited use to fully generated
+- **Cla:** none found
+- Source: https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md (fetched 2026-11-28)
+
+## Ready signal
+
+nothing assigns a reviewer: no CODEOWNERS file and no auto-assign. Maintainers pick PRs up; some authors request the maintainer who owns the issue. A maintainer must approve CI on a fork PR (source: aeneas tree; sampled merged PRs #1373, #1386 (author-requested), #1380, #1400, #1360 (none requested))
+
+Open-PR cap: no written cap; template asks for small scoped PRs; our default 2 (source: https://github.com/AeneasVerif/aeneas/blob/main/.github/pull_request_template.md)
+
+## CI to run locally
+
+```sh
+gmake format
+gmake test
+cd backends/lean && lake build Aeneas AeneasMeta --wfail
+cd tests/lean && make
+```
+Note: CI runs through nix; a fork PR waits for a maintainer to approve the run (aeneas#1606 showed action_required); CI runs on a merge with main, so stay rebased
+Source: https://github.com/AeneasVerif/aeneas/blob/main/.github/workflows/ci.yml; documentation/skills/aeneas-compiler-dev.instructions.md (fetched 2026-11-28)
+
+## PR body skeleton
+
+```
+<Short, precise description of the change and why.>
+
+AI assistance: <how much was AI-generated: code, tests, description.>
+
+Closes #<issue>
+```
+
+## What reviewers here actually ask for (our data)
+
+Review style: human maintainers; most sampled outside PRs got a first review within about 4 days; a few merged with none recorded
+
+None recorded: no review has landed on our work here yet.
+
+Source: aeneas#1373, #1386, #1380, #1400, #1360, #1302, #1414, #1441, #1421
+
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: no one is assigned. A maintainer picks PRs up; two outside authors requested the maintainer who owned the issue. (observed: aeneas#1373, #1386)
+- Easy to miss: CI on a fork PR stops at `action_required` until a maintainer approves it, and the branch must be rebased when it falls behind main. The template asks for a short description written by the author and says to avoid AI-written ones. Which checks are required is unknown. (observed: aeneas#1606; documented: `.github/pull_request_template.md`)
+
+## Our PRs here
+
+<!--n:obs.t.by_repo.aeneasverif_aeneas.open-->1<!--/n--> open (<!--n:obs.prs.aeneasverif_aeneas.open-->aeneas#1606<!--/n-->). aeneas#1606 is a new `bvify ... by` tactic for issue #621, opened 2026-11-26. It states that the code, tests and description were AI-written. CI is waiting for a maintainer to approve the run, the branch is one commit behind main, and there is no review yet.
+
+## Typical rounds
+
+Sampled merged outside PRs: 6 of 9 got a first review within about 4 days (from about 2 hours to about 4 days); 3 were merged with no review recorded. Time to merge ranged from about 1 hour to about 41 days.
+
+## Do / don't
+
+- Do: say how much of the PR was AI-generated, in the PR body (documented: pull_request_template.md).
+- Do: keep the description short and exact; the template says AI-written descriptions run verbose (documented: pull_request_template.md).
+- Do: for anything beyond a small scoped fix, talk on Zulip or the issue first (documented: README.md, pull_request_template.md).
+- Do: expect no reviewer to be assigned; maintainers pick PRs up, and two authors requested the maintainer who owned the issue (observed: #1373, #1386).
+- Do: expect a maintainer to approve CI on a fork PR, and rebase when behind (observed: #1606 action_required, BEHIND).

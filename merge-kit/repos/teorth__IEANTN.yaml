@@ -1,0 +1,46 @@
+repo: teorth/IEANTN
+ai_policy:
+  stance: "AI assistance expected and welcome; disclose it in the PR body"
+  who_may_write_text: "AI-assisted work is expected; the submitter must understand the diff"
+  disclosure: "one line in the PR body, for example 'Made with Claude Code' or the tool's Co-Authored-By footer"
+  cla: "none found"
+  source: "https://github.com/teorth/IEANTN/blob/main/CONTRIBUTING.md 'Disclose AI assistance' (fetched 2026-11-28)"
+ci:
+  local: ["lake build", "python scripts/ieantn.py check", "python scripts/ieantn.py fingerprint", "python scripts/ieantn.py gen-challenges", "python scripts/ieantn.py diff"]
+  notes: "required checks: Build Vocabulary and Nodes, Check the node network, Network impact; branch must be up to date with main; CI fails a PR that commits STATE.md, GRAPH.md, docs/graph.html or docs/nodes/"
+  source: "https://github.com/teorth/IEANTN/blob/main/CLAUDE.md 'Build'; CONTRIBUTING.md 'Generated files'; ruleset on main (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: ai, regex: "(?i)(AI|Claude|agent)", rubric: disclosure, msg: "one-line AI disclosure in the PR body (CONTRIBUTING 'Disclose AI assistance')"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    <What changed and which source or claim it was checked against.>
+
+    Made with <tool>.
+
+    Closes #<issue>
+  source: "https://github.com/teorth/IEANTN/blob/main/CONTRIBUTING.md 'Disclose AI assistance'; no PR template exists"
+placement:
+  rules: ["comment `claim` on the board issue before starting; `propose PR #N` links your PR", "commit Challenge.lean, Nodes.lean, Bridges.lean and fingerprints.json when they change", "do not commit STATE.md, GRAPH.md, docs/graph.html or docs/nodes/", "never edit a conclusion other nodes depend on; make a new version", "do not hold one huge PR open for a month"]
+  source: "https://github.com/teorth/IEANTN/blob/main/CONTRIBUTING.md 'Where to start', 'Large tasks', 'Generated files'; CLAUDE.md 'Hard rules'"
+review:
+  style: "one maintainer; PRs are read as comments, with no formal review on most sampled PRs; sampled merges took about 3 hours to 15 days"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "IEANTN#220, #226, #235, #243, #247, #263, #270, #274; CODEOWNERS"
+max_open_prs:
+  value: "no written cap; one person per node solution; our default 2"
+  source: "https://github.com/teorth/IEANTN/blob/main/CONTRIBUTING.md 'Large tasks'"
+ready_signal:
+  how: "no reviewer is assigned by default. CODEOWNERS requests the maintainer only for PRs that touch Vocabulary, workflows, the verify script or receipts. Otherwise the maintainer picks PRs up. Required checks green and branch up to date with main"
+  source: "IEANTN .github/CODEOWNERS; ruleset on main; sampled merged PRs"
+lean:
+  src_dirs: ["IEANTN", "Solutions"]
+  source: "CLAUDE.md 'Layers, and what may import what'"
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

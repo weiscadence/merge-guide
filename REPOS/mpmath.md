@@ -48,6 +48,11 @@ Review style: human maintainer, fast
 
 Source: FAILURE-MODES.md (review-harvest counts), general classes (mpmath#1244 x2 tests, #1241 CI)
 
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: unknown from the docs. No CODEOWNERS file; on mpmath#1241 the maintainer commented unasked within hours and later put a review request on himself. (observed: mpmath#1241)
+- Easy to miss: nothing found beyond green CI. mpmath#1241 has all checks green and no merge conflict and waits on the maintainer. (observed: mpmath#1241)
+
 ## Our PRs here
 
 <!--n:obs.t.by_repo.mpmath_mpmath.landed-->2<!--/n--> landed (<!--n:obs.prs.mpmath_mpmath.landed-->mpmath#1244, #1246<!--/n-->), <!--n:obs.t.by_repo.mpmath_mpmath.open-->1<!--/n--> open (<!--n:obs.prs.mpmath_mpmath.open-->mpmath#1241<!--/n-->). Review came within hours.

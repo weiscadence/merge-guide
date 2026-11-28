@@ -1,0 +1,52 @@
+repo: leanprover/LNSym
+ai_policy:
+  stance: "no AI section in CONTRIBUTING.md, README or the PR template"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; disclose anyway (LNSym#267 has a one-line disclosure in the body)"
+  cla: "no CLA; the PR template asks you to confirm the Apache 2.0 license"
+  source: "https://github.com/leanprover/LNSym/blob/main/CONTRIBUTING.md and .github/pull_request_template.md (fetched 2026-11-28)"
+ci:
+  local: ["make specs correctness proofs tests", "lake build AWSLCELFTests", "lake build lnsym", "lake build Doc"]
+  notes: "no nonterminal simp (use simp only unless it closes the goal); no new external dependencies; every .lean file starts with the copyright header (CI checks it); cosim needs an Aarch64 machine, say if you did not run it"
+  source: ".github/workflows/ci.yml; CONTRIBUTING.md 'Submitting a Pull Request' (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: license, regex: "(?i)apache 2\\.0", rubric: scope, msg: "keep the License line from the PR template"}
+      - {id: testing, regex: "(?i)(lake build|make )", rubric: tests, msg: "say what was built and whether conformance testing ran (template 'Testing')"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    ### Issues:
+    Resolves #<issue>.   (omit if none)
+
+    ### Description:
+    <What changed and why.>
+
+    ### Testing:
+    <make / lake build commands run; whether cosim ran.>
+
+    ### License:
+    By submitting this pull request, I confirm that my contribution is
+    made under the terms of the Apache 2.0 license.
+  source: ".github/pull_request_template.md (fetched 2026-11-28)"
+placement:
+  rules: ["one focused change per PR", "no new external dependencies", "no nonterminal simp"]
+  source: "CONTRIBUTING.md 'Submitting a Pull Request'"
+review:
+  style: "one code owner reviews; slow and bursty (no outside PR merged since 2024-10-08; four outside PRs open without review)"
+  recurring: {}
+  recurring_note: "no review has landed on our PR yet"
+  source: "LNSym#264, #265, #266, #267 timelines (fetched 2026-11-28)"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "LNSym CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "CODEOWNERS requests the single code owner automatically when the PR opens. First-time fork CI stays in action_required until a maintainer approves it; the author cannot do that. Merge needs an approval from a maintainer and all conversations resolved."
+  source: ".github/CODEOWNERS; .github/pull_request_template.md; LNSym#267 timeline and runs (fetched 2026-11-28)"
+lean: {src_dirs: [Arm, Proofs], source: "Lean 4 repo; directories seen in LNSym#267 and CONTRIBUTING (Proofs/, Arm/Memory/)"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

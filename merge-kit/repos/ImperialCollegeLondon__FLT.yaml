@@ -31,8 +31,8 @@ max_open_prs:
   value: "one PR per claimed task; no numeric cap"
   source: "FLT CONTRIBUTING.md lines 19-57"
 ready_signal:
-  how: "comment `awaiting-review` on the PR (adds the label, moves the task to In Review). FLT#1215 never got it."
-  source: "FLT CONTRIBUTING.md line 61; STATE-OF-THE-FIELD.md policy table"
+  how: "comment `awaiting-review` on the PR (adds the label, moves the task to In Review). No reviewer is requested by the author. On FLT#1215 the comment was posted on 2026-11-25 and the bot added the label within a minute; the `Build project` workflow still showed `action_required` on 2026-11-28 (a maintainer has to approve a first-time contributor's run), and the task issue was still unassigned."
+  source: "FLT CONTRIBUTING.md line 61; STATE-OF-THE-FIELD.md policy table; FLT#1215 timeline and workflow runs (read 2026-11-28)"
 lean:
   src_dirs: [FLT]
   sorry_allowed: true

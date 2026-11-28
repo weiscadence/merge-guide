@@ -1,0 +1,46 @@
+repo: Verified-zkEVM/VCVio
+ai_policy:
+  stance: "no AI section; repo ships an agent guide (AGENTS.md, docs/agents/)"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; one rule: 'Do not add a separate AI-attribution line' in file headers. Disclose in the PR body anyway"
+  source: "https://github.com/Verified-zkEVM/VCVio/blob/main/CONTRIBUTING.md 'Attribution And File Headers' item 5 and AGENTS.md (fetched 2026-11-28)"
+ci:
+  local: ["lake exe cache get && lake build", "./scripts/update-lib.sh", "lake exe axiomsweep --check", "lake lint -- --env-only", "lake exe lint-style <libs>", "uv run --no-project --python 3.12 python scripts/check-agent-docs.py"]
+  notes: "no sorry on main; no linter set_option; inspect every check on the head (lint and downstream builds too) and re-run cancelled ones before the merge queue"
+  source: "CONTRIBUTING.md 'Pull Request Checks And Merge Queue'; .github/PULL_REQUEST_TEMPLATE.md (fetched 2026-11-28)"
+pr:
+  title_regex: "^(feat|fix|doc|docs|refactor|test|chore|perf|ci|style)(\\([^)]+\\))?!?: .+"
+  body:
+    required:
+      - {id: verification, regex: "(?i)verif", rubric: tests, msg: "list the commands run (template 'Verification')"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    ## Summary
+    <What changes and why.>
+
+    ## Verification
+    <lake build ... VCVioTest; lake exe axiomsweep --check; ./scripts/update-lib.sh; lint commands.>
+
+    ## Checklist
+    <Tick the template boxes that apply.>
+  source: ".github/PULL_REQUEST_TEMPLATE.md; title style observed on VCVio#1165, #1187, #1215, #1223, #1241, #1242 and validated by summary.yml validate_title (not documented in CONTRIBUTING)"
+placement:
+  rules: ["respect the module layering in AGENTS.md and docs/design/repository-layout.md", "new files: header, module docstring, plain public section", "state security reductions for a named reduction"]
+  source: "CONTRIBUTING.md 'Documentation Expectations', 'Module Scopes'; AGENTS.md"
+review:
+  style: "human collaborators review unprompted; observed first human comment from about 3 hours to about 8 days on 5 sampled merged PRs; bots comment at open"
+  recurring: {}
+  recurring_note: "no PR of ours; one comment on issue #1154 with no reply"
+  source: "VCVio#1123, #1165, #1187, #1215, #1223 timelines; issue #1154 (fetched 2026-11-28)"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "VCVio CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "No reviewer is assigned (no CODEOWNERS, no auto-assign). Open non-draft, or mark ready_for_review, with every check green on the head; a collaborator picks it up, then enqueues it in the merge queue. After replying to review, re-request the earlier reviewer (observed on #1187)."
+  source: "CONTRIBUTING.md 'Pull Request Checks And Merge Queue'; VCVio#1123, #1165, #1187, #1215, #1223 timelines"
+lean: {src_dirs: [VCVio, ToMathlib, LatticeCrypto, Examples], sorry_allowed: false, forbid_set_option: true, authors_header: true, max_line: null, max_proof_lines: null, source: "CONTRIBUTING.md and AGENTS.md (fetched 2026-11-28); set_option linter.* false is rejected"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

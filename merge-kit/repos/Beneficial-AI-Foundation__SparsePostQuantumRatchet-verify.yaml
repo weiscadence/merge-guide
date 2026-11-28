@@ -1,0 +1,48 @@
+repo: Beneficial-AI-Foundation/SparsePostQuantumRatchet-verify
+ai_policy:
+  stance: "AI-generated proofs welcome; AI-generated specifications strictly prohibited"
+  who_may_write_text: "an agent may write proofs; the human submitter is responsible for the whole PR"
+  disclosure: "not required by the guide; our PRs disclose anyway and say which statements are the maintainer's and which helper statements the AI wrote"
+  consequence: "a submission with AI-generated specifications may result in a contribution ban at the maintainers' discretion"
+  source: "https://github.com/Beneficial-AI-Foundation/SparsePostQuantumRatchet-verify/blob/main/doc/WORKFLOW_AND_PR_GUIDE.md 'Contribution policy' (fetched 2026-11-28)"
+ci:
+  local: ["lake build", "lake exe runLinter Spqr", "lake exe mk_all --git"]
+  notes: "run mk_all after adding, removing or renaming a .lean file; never edit generated Aeneas files or the Rust sources; new sorry is flagged by CI; fork workflows wait for maintainer approval"
+  source: "doc/WORKFLOW_AND_PR_GUIDE.md 'Updating the Import File', 'Linting', 'Proof cheats'; .github/workflows/lean.yml (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: this_pr, regex: "^This PR", rubric: scope, msg: "first paragraph starts with 'This PR' (guide 'Body format')"}
+      - {id: closes, regex: "(?m)^Closes #\\d+", rubric: scope, msg: "footer line 'Closes #N' (guide 'Footer format')"}
+    forbidden:
+      - {id: headings, regex: "(?m)^#{1,6} ", msg: "no markdown headings in the PR body (guide 'Body format')"}
+    disclosure: null
+  body_template: |
+    This PR <imperative statement of the change, with the full function name>. <Motivation and contrast with the old behaviour.>
+
+    <Checks run.>
+
+    Breaking changes: <none, or description, justification, migration notes>
+
+    Closes #<issue>
+  source: "doc/WORKFLOW_AND_PR_GUIDE.md 'PR Workflow and Formatting' lines 46-56 (fetched 2026-11-28)"
+placement:
+  rules: ["each PR closes an open issue; one issue per PR where possible", "about 500 lines at most, except refactors and docs", "open or discuss an issue before starting"]
+  source: "doc/WORKFLOW_AND_PR_GUIDE.md lines 34-40"
+review:
+  style: "team reviews; fast for insiders (first review within minutes to about a day on 7 sampled merged PRs); no outsider merge found to compare"
+  recurring: {}
+  recurring_note: "no review has landed on our PRs yet"
+  source: "SparsePostQuantumRatchet-verify#636, #677, #761, #817, #820, #822, #832 timelines; #836 and #837 (fetched 2026-11-28)"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "doc/WORKFLOW_AND_PR_GUIDE.md (none stated)"
+ready_signal:
+  how: "CODEOWNERS auto-requests the fc-team review team when the PR opens and again at ready_for_review. Reviewers look at non-draft PRs whose checks have passed. First-time fork PRs sit in action_required until a maintainer approves workflows; Radar is skipped for non-members and a maintainer can request it with a !radar comment."
+  source: ".github/CODEOWNERS; doc/WORKFLOW_AND_PR_GUIDE.md line 42 and 'Performance'; .github/workflows/radar.yml; #836 and #837 runs"
+lean: {src_dirs: [Spqr], sorry_allowed: null, forbid_set_option: null, authors_header: null, max_line: null, max_proof_lines: null, source: "doc/WORKFLOW_AND_PR_GUIDE.md; Spqr/ is the hand-written tree (SrcTranslated/ is generated)"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

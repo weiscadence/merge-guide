@@ -65,8 +65,8 @@ max_open_prs:
   value: "no written cap; stacked PRs are prohibited (each prerequisite must land first)"
   source: "TauCeti AGENTS.md 'The rules of the repo' (no-stacking policy)"
 ready_signal:
-  how: "open as a normal (non-draft) PR with a filled Quality pass and green CI. Automatic review is currently switched off (README: 'it is currently switched off. For now, reviews are run from the command line'), so a maintainer or worker runs it. Editing the description alone does not re-trigger review: reply on the thread."
-  source: "TauCeti README.md 'Review' section (fetched 2026-11-25); review.yml gates on vars.CI_REVIEW_ENABLED; FAILURE-MODES.md quality-pass row"
+  how: "open as a normal (non-draft) PR with a filled Quality pass and green CI. Automatic review is currently switched off (README: 'it is currently switched off. For now, reviews are run from the command line'), so a maintainer or worker runs it. Editing the description alone does not re-trigger review: reply on the thread. No reviewer is requested: the review bot sets awaiting-CI, then awaiting-review once the build is green, then awaiting-author after a round with asks; a push sends it back to awaiting-CI (TauCeti#47554, #47588)."
+  source: "TauCeti README.md 'Review' section (fetched 2026-11-25, re-read 2026-11-28); review.yml gates on vars.CI_REVIEW_ENABLED; FAILURE-MODES.md quality-pass row; TauCetiReview REVIEWING.md `--mode` row (2026-11-28)"
   corrected: "2026-11-25: earlier profile said 'review runs automatically on push'; the README says it is switched off"
 lean:
   src_dirs: [TauCeti]

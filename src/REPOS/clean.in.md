@@ -44,6 +44,11 @@ Review style: human maintainer; fast approvals
 
 Source: FAILURE-MODES.md (review-harvest counts), general classes; maintainer notes
 
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: unknown. No CODEOWNERS file, no reviewer was requested on our PRs, and the docs name no step. On the landed clean#515 a maintainer picked it up unasked. (observed: clean#515, #519, #526)
+- Easy to miss: a first-time contributor's CI waits for a maintainer to approve the run. clean#519 and #526 showed no checks at all; the `CI` run for each had the conclusion `action_required` (from 2026-11-24 and 2026-11-25, still so on 2026-11-28). An empty check list is not a green one. (observed: clean#519, #526)
+
 ## Our PRs here
 
 <!--n:obs.t.by_repo.verified_zkevm_clean.landed--><!--/n--> landed, <!--n:obs.t.by_repo.verified_zkevm_clean.closed--><!--/n--> closed, <!--n:obs.t.by_repo.verified_zkevm_clean.open--><!--/n--> open. clean#515 landed after two "why the detour?" questions; clean#512 was refused.

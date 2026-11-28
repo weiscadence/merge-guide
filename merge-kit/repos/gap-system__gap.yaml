@@ -1,0 +1,48 @@
+repo: gap-system/gap
+ai_policy:
+  stance: "AI use is allowed if disclosed; AGENTS.md sets three rules"
+  who_may_write_text: "an agent may write code and text; it may open PRs or post comments only after the human gives explicit permission"
+  disclosure: "end every AI-touched commit with the trailer `Assisted-by: Generative AI` (no tool or model name, no Co-authored-by); add a brief note in the PR, issue comment or review saying AI was used and how"
+  source: "https://github.com/gap-system/gap/blob/master/AGENTS.md 'AI disclosure' (fetched 2026-11-28)"
+ci:
+  local: ["make check", "./gap tst/testinstall.g"]
+  notes: "CI (CI, CI with GAP.jl, Lint, Wrap releases) runs on pull_request; a first-time contributor's runs wait as action_required until a maintainer approves them (gap#6905)"
+  source: "AGENTS.md 'Run tests'; gap#6905 workflow runs (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: release_notes, regex: "(?m)^## Text for release notes", rubric: process, msg: "keep the '## Text for release notes' section from the PR template (write 'see title' or 'none')"}
+      - {id: fixes, regex: "(?i)(fixes|closes) #\\d+", rubric: scope, msg: "if it fixes an issue, write 'Fixes #N' in the description, not the title"}
+    forbidden: []
+    disclosure: "brief AI note in the description (AGENTS.md rule 3)"
+  body_template: |
+    <Short summary of the change and why.>
+
+    Fixes #<issue>
+
+    AI assistance was used to prepare <what: code, tests, this text>.
+
+    ## Text for release notes
+
+    see title
+  source: "gap .github/pull_request_template.md and AGENTS.md 'Commit messages and pull requests' (fetched 2026-11-28)"
+placement:
+  rules: ["target master", "title is used verbatim as the release note: a self-contained user-facing sentence, no prefix like 'lib:'", "one issue per PR; split changes that need several release-note entries"]
+  source: "AGENTS.md 'Commit messages and pull requests'; CONTRIBUTING.md 'Before you dive into the code'"
+review:
+  style: "human core developers with write access; one approving review is required before merge; first response in 8 sampled merged PRs took from about 2.5 hours to 3.5 days"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "CONTRIBUTING.md 'The reviewing process'; sampled merged PRs gap#6889, #6780, #6788, #6521, #6441, #6190, #6668, #6725"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "none stated in CONTRIBUTING.md or AGENTS.md"
+ready_signal:
+  how: "no reviewer is requested automatically (no CODEOWNERS); a maintainer picks the PR up, labels it and reviews it. A first-time contributor's CI waits for a maintainer to approve it. Do not use a reviewer request as the signal; ask on Slack if nothing happens"
+  source: "gap#6889, #6780, #6788 (maintainer triage without a request); CONTRIBUTING.md 'Contact'"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

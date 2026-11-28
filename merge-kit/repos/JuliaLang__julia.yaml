@@ -1,0 +1,42 @@
+repo: JuliaLang/julia
+ai_policy:
+  stance: "allowed with disclosure; the human opens the PR"
+  who_may_write_text: "AI may help; substantive AI contributions to PRs, issues, discussions and comments must be disclosed with details and reviewed by the human before opening"
+  disclosure: "say how AI was used in the PR, issue or comment; end every AI-touched commit with `Assisted-by: <tool> (<model>)` naming both tool and model; no Co-authored-by for tools"
+  source: "https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md (AI notes) and AGENTS.md 'For all changes' (fetched 2026-11-28)"
+ci:
+  local: ["make", "./usr/bin/julia test/runtests.jl <test>", "make clean testall"]
+  notes: "CI is Buildkite plus small GitHub workflows (Labels, Typos, Whitespace); a PR must not carry any `needs *` or DO NOT MERGE label when merged"
+  source: "doc/src/devdocs/contributing/code-changes.md; .github/workflows/LabelCheck.yml (fetched 2026-11-28)"
+pr:
+  title_regex: null
+  body:
+    required: []
+    forbidden: []
+    disclosure: "state how AI was used and how much of it the human read (AGENTS.md)"
+  body_template: |
+    <What was wrong, what the change does, one before/after example.>
+
+    Fixes #<issue>
+
+    AI use: <what the AI did; what the human checked>.
+  source: "AGENTS.md 'Commit messages and pull requests'; code-changes.md"
+placement:
+  rules: ["title like 'component: Brief summary'", "put `Fixes #N` at the end of the commit message, not in the title", "quote macro names in backticks", "base the branch on a recent commit", "add tests under test/"]
+  source: "AGENTS.md 'Commit messages and pull requests'"
+review:
+  style: "human committers; no assignment bot; response from 1 hour to a day on sampled merged PRs"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "sampled merged PRs julia#65072, #65044, #64990, #64746, #65075, #64873"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "none stated in CONTRIBUTING.md"
+ready_signal:
+  how: "no reviewer is assigned automatically (CODEOWNERS covers few paths); a committer reviews or requests a reviewer. Nothing for the author to click"
+  source: "julia#65072, #64990, #64746 (committer-driven review); .github/CODEOWNERS"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 1
+  topic_depth: 2

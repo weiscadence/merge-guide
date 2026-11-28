@@ -42,7 +42,7 @@ merge-kit/merge-kit template TauCetiProject/TauCeti   # PR body skeleton for tha
 
 `check` makes no model calls and no builds. It writes `REPORT.md` (findings by rubric, `ask` vs `maybe`, the
 repo's CI commands and ready signal), `llm-pass-prompt.md` to hand to a second model of a different family,
-and a filled PR body. Profiles for <!--n:mk.profiles-->12<!--/n--> repos live in `merge-kit/repos/`; each rule
+and a filled PR body. Profiles for <!--n:mk.profiles-->25<!--/n--> repos live in `merge-kit/repos/`; each rule
 in a profile cites its source.
 
 With a free LLM pass added, recall on the same split is <!--frac:mk.dev.union_strict_with_llm.gemini-->12/35 (34%, 95% CI 21–51%)<!--/frac-->.

@@ -14,7 +14,7 @@
 
 ## Ready signal
 
-comment `awaiting-review` on the PR (adds the label, moves the task to In Review). FLT#1215 never got it. (source: FLT CONTRIBUTING.md line 61; STATE-OF-THE-FIELD.md policy table)
+comment `awaiting-review` on the PR (adds the label, moves the task to In Review). No reviewer is requested by the author. On FLT#1215 the comment was posted on 2026-11-25 and the bot added the label within a minute; the `Build project` workflow still showed `action_required` on 2026-11-28 (a maintainer has to approve a first-time contributor's run), and the task issue was still unassigned. (source: FLT CONTRIBUTING.md line 61; STATE-OF-THE-FIELD.md policy table; FLT#1215 timeline and workflow runs (read 2026-11-28))
 
 Open-PR cap: one PR per claimed task; no numeric cap (source: FLT CONTRIBUTING.md lines 19-57)
 
@@ -44,9 +44,15 @@ None recorded: FLT#1215 has no review yet (our only FLT PR).
 
 Source: unpublished observatory REPORT.md §1.1 (FLT: 1 PR, open)
 
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: the author requests nobody. The `awaiting-review` comment adds the label and moves the task on the project board; maintainers review from there. (documented: CONTRIBUTING.md; observed: FLT#1215)
+- Easy to miss: three comments in order: `claim` on the issue, `propose #PR` on the issue, `awaiting-review` on the PR. The last one is the only thing that puts the PR in the queue. (documented: CONTRIBUTING.md)
+- Easy to miss: a first-time contributor's CI does not start until a maintainer approves the run. The label does not start it. (observed: FLT#1215, run conclusion `action_required` from 2026-11-23 to 2026-11-28)
+
 ## Our PRs here
 
-<!--n:obs.t.by_repo.imperialcollegelondon_flt.open--><!--/n--> open (<!--n:obs.prs.imperialcollegelondon_flt.open--><!--/n-->). On FLT#1215 we commented `claim` and `propose`, but the bot never assigned the issue and we never posted `awaiting-review`, so by the written workflow the PR never entered review.
+<!--n:obs.t.by_repo.imperialcollegelondon_flt.open--><!--/n--> open (<!--n:obs.prs.imperialcollegelondon_flt.open--><!--/n-->). On FLT#1215 we commented `claim` and `propose #1215` on the task issue on 2026-11-23, and `awaiting-review` on the PR on 2026-11-25; the bot added the label in the same minute. As of 2026-11-28 the issue is still unassigned, the `Build project` run still reads `action_required` (no CI has run), and there is no review.
 
 ## Typical rounds
 
@@ -56,4 +62,4 @@ Unmeasured (no review yet).
 
 - Do: `claim` and wait until you are actually assigned; then `propose #PR`; then `awaiting-review` on the PR; answer `awaiting-author` with a fresh `awaiting-review`.
 - Do: run `scripts/run_before_push.sh` (or install the pre-push hook).
-- Don't: assume the PR is in the review queue without the label.
+- Don't: assume the PR is in the review queue without the label, or that CI ran because no check is red.

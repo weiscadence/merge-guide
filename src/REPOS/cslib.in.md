@@ -49,6 +49,11 @@ Review style: human maintainers; at least one maintainer approval
 
 Source: maintainer notes; FAILURE-MODES.md (review-harvest counts), general classes; cslib CONTRIBUTING.md line 47
 
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: the CODEOWNERS file requests all code owners when the PR opens. The timeline shows the requests with the author as actor at the minute of opening; the author did not make them and need not request anyone. (documented: `.github/CODEOWNERS`; observed: cslib#1263, #1274)
+- Easy to miss: a comment-only review leaves the PR at "review required". Reply in each thread and leave resolving to the reviewer; cslib#1263 has one open thread where the reviewer asked a second maintainer for an opinion. (observed: cslib#1263)
+
 ## Our PRs here
 
 <!--n:obs.t.by_repo.leanprover_cslib.landed--><!--/n--> landed, <!--n:obs.t.by_repo.leanprover_cslib.closed--><!--/n--> closed, <!--n:obs.t.by_repo.leanprover_cslib.open--><!--/n--> open. cslib#1242 and #1261 both landed, and both had a human approval and a human merge. Our bodies disclosed AI correctly but were agent-written, which the inherited Mathlib rule does not allow.

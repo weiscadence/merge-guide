@@ -1,0 +1,51 @@
+repo: cedar-policy/cedar
+ai_policy:
+  stance: "no AI policy found; CONTRIBUTING says only submit your own work or work you have the rights to submit"
+  who_may_write_text: "not stated"
+  disclosure: "not stated; disclose anyway"
+  cla: "no CLA; a DCO check runs on the PR (sign off commits with git commit -s); CONTRIBUTING says you will be asked to confirm licensing"
+  source: "https://github.com/cedar-policy/cedar/blob/main/CONTRIBUTING.md 'First Things First' and 'Licensing' (fetched 2026-11-28); cedar#2736 DCO check"
+ci:
+  local: ["cargo build", "cargo test", "cargo test -p cedar-policy-cli --all-features", "cargo clippy --all-features", "cargo fmt --all --check"]
+  notes: "CI on a fork PR waits for a maintainer to approve the run (cedar#2736 showed action_required); CI also checks coverage and semver"
+  source: "https://github.com/cedar-policy/cedar/blob/main/.github/workflows/build_and_test.yml (fetched 2026-11-28); cedar#2736"
+pr:
+  title_regex: null
+  body:
+    required:
+      - {id: issue, regex: "(?i)(fixes|closes) #\\d+", rubric: scope, msg: "link the issue (CONTRIBUTING 'First Things First' step 1)"}
+      - {id: checklist, regex: "(?s)Checklist for requesting a review", rubric: scope, msg: "keep the template checklist and delete the options that do not apply"}
+    forbidden: []
+    disclosure: null
+  body_template: |
+    ## Description of changes
+
+    <Problem, change, how tested.>
+
+    ## Issue #, if available
+
+    Fixes #<issue>
+
+    ## Checklist for requesting a review
+
+    <Keep one option per group; delete the rest.>
+  source: "https://github.com/cedar-policy/cedar/blob/main/.github/PULL_REQUEST_TEMPLATE.md (fetched 2026-11-28)"
+placement:
+  rules: ["open an issue first unless the change is trivial", "add a changelog entry under Unreleased in the crate changelog that changed, in the same PR", "keep the diff focused; do not reformat unrelated code"]
+  source: "https://github.com/cedar-policy/cedar/blob/main/CONTRIBUTING.md lines 7, 41-64, 86"
+review:
+  style: "human maintainers; a maintainer requests reviewers; first review took about 2 to 5 days on most sampled PRs, one took about 30"
+  recurring: {}
+  recurring_note: "no review has landed on our work here yet"
+  source: "cedar#2735, #2638, #2651, #2713, #2726, #2696"
+max_open_prs:
+  value: "no written cap; our default 2"
+  source: "cedar CONTRIBUTING.md (none stated)"
+ready_signal:
+  how: "a maintainer requests reviewers; authors cannot. The ruleset needs 2 approvals and code-owner review. Before that: DCO green, changelog entry added, template filled, and a maintainer approves the CI run on a fork PR"
+  source: "cedar CONTRIBUTING.md; ruleset on main; cedar#2736 timeline; sampled merged PRs"
+lean: {src_dirs: [], source: "not a Lean repo"}
+scope:
+  allowed_paths: []
+  max_topics: 2
+  topic_depth: 2

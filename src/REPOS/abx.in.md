@@ -50,6 +50,12 @@ Review style: human maintainer; superseded our abx#152 and #186 with own PRs (#1
 
 Source: FAILURE-MODES.md (review-harvest counts), general classes 'Superseded without merge'
 
+## How a PR gets a reviewer, and what the author must do
+
+- Reviewer: unknown. No CODEOWNERS file and no reviewer request on our PRs; the maintainer picks PRs up. (observed: abx#222)
+- Easy to miss: fork workflow runs wait for maintainer approval. On abx#222 the `CI` run has read `action_required` since 2026-11-16, and the branch was 16 commits behind main on 2026-11-28. (documented: CONTRIBUTING.md; observed: abx#222)
+- Easy to miss: an open issue here may already be fixed. abx#148 is open, and the maintainer's merged abx#177 cross-references it. Read the timeline before pinging. (observed: abx#148)
+
 ## Our PRs here
 
 <!--n:obs.t.by_repo.artblocks_abx.landed--><!--/n--> landed, <!--n:obs.t.by_repo.artblocks_abx.closed--><!--/n--> closed, <!--n:obs.t.by_repo.artblocks_abx.open--><!--/n--> open; all landings human-merged. Two closed PRs (abx#152, #186) were superseded by the maintainer's own PRs, with credit, that extended the shared script preparation instead.

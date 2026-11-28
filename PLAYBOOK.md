@@ -36,6 +36,8 @@ own data (two or more PRs); **C** = plausible, one case or untested. Per-repo de
 ## 4. Run CI locally
 Run the profile's `ci.local` commands until green: failed CI is the strongest predictor of non-merge. [lit:https://arxiv.org/abs/2601.15195] [ours:mpmath#1241] **A**
 Lean repos differ on `sorry`: TauCeti, cslib, clean and physlib fail on it; formal-conjectures and FLT allow it by design. [data:numbers.json#obs-2]
+- **Run the checks on the commit you push**, not one edit earlier. On TauCeti#47588 `lake lint` ran before a last one-line docstring edit and was not repeated; the description had to carry that caveat. [ours:TauCeti#47588] **C**
+- **Before you cite a commit sha in a message, confirm it is on the remote**: `git ls-remote <remote> <branch>` must print that sha. A local sha that was never pushed, or was replaced by a later amend, sends the reader to a dead link. **C** (no PR cited)
 
 ## 5. Pre-review gate
 1. `merge-kit/merge-kit check <repo> origin/main --repo owner/name --body body.md`. Fix every `ask`; look at
@@ -60,10 +62,17 @@ Lean repos differ on `sorry`: TauCeti, cslib, clean and physlib fail on it; form
 Use the repo's signal exactly: FLT `awaiting-review` comment; anchor draft → ready; mathlib4 CI green and
 not WIP; TauCeti non-draft with a filled Quality pass. Lack of reviewer engagement is a named reason agent PRs die. [lit:https://arxiv.org/abs/2601.15195] [ours:FLT#1215] **A** (cause) / **C** (remedy)
 
+After opening, check three things the same day. Each repo page says which apply ("How a PR gets a reviewer, and what the author must do").
+- **Did CI run at all?** For a first-time contributor many repos hold the workflow until a maintainer approves it. The run then shows the conclusion `action_required` and the PR shows no checks, which is easy to read as "nothing failed". Seen on clean#519 and #526, FLT#1215 and abx#222; a signal comment or label does not start it. REPOS/ names the other repos where we saw it. [ours:clean#519] [ours:FLT#1215] [ours:abx#222] **B**
+- **Who reviews?** Find out whether the author requests a reviewer, a maintainer assigns one, a CODEOWNERS file does it, or nothing happens until someone triages. A `review_requested` event at the minute the PR opened, with the author as actor, is CODEOWNERS and not something you did. [ours:cslib#1274] [ours:tessera#1290] **B**
+- **Which red marks count?** A CANCELLED or SKIPPED bookkeeping job is not a failure (TauCeti's `reconcile` and `cleanup`; the deciding check is `pr-build / sandboxed-build`). A failed preview deploy from a fork (Vercel asking a team member to authorize) is not yours to fix either. [ours:TauCeti#47554] [ours:TauCeti#47588] [ours:anchor#5366] **B**
+
 ## 8. Respond to review
 - **One round.** Collect all asks, fix them all, push once. Each push restarts a TauCeti sweep. <!--n:obs.threads_recurred_loose-->36<!--/n--> of <!--n:obs.threads_total-->153<!--/n--> of our rubric threads needed a second comment. [ours:TauCeti#19035] **B**
 - **Answer the actual ask**: quote it, fix it, re-read every passing rubric. **B**
 - **Fresh push vs reply.** On TauCeti, editing the description alone does not re-trigger review; reply on the thread. A contest must meet the rubric's own burden of proof. On human repos, a short reply per thread (human-written where required) plus one push. [ours:TauCeti#45797] **B**
+- **What each action re-runs on TauCeti.** A plain push starts a new round: every open rubric thread is rewritten for the new head, and rubrics that had approved are marked stale and re-run before merge. A reply in one rubric's thread reopens that rubric only (written rule; our replies went out next to a push, so our data does not isolate it). A description edit alone re-runs nothing. Labels follow: `awaiting-author` → `awaiting-CI` after the push → `awaiting-review` when the build is green. [lit:https://github.com/TauCetiProject/TauCetiReview/blob/main/REVIEWING.md] [ours:TauCeti#47554] [ours:TauCeti#47588] **A** (rule) / **C** (one PR)
+- **Say when the fix removed the thing a finding names.** If a finding points at a declaration and the fix deleted it, write in that thread that it is gone and what stands in its place. [ours:TauCeti#47554] **C**
 - A verified technical objection is accepted quickly (rust-analyzer maintainer on `#[salsa::tracked]`). [ours:rust-analyzer#22906] **C**
 
 ## 9. When to stop
@@ -71,6 +80,10 @@ not WIP; TauCeti non-draft with a filled Quality pass. Lack of reviewer engageme
 - The maintainer reimplements it: credit them and move on. [ours:abx#152] **B**
 - No answer after about a week: one polite ping (human-posted where required), then leave it. **C**
 - After merge, watch for follow-up fixes: agent merges draw them at 1.62× the human odds. [lit:https://arxiv.org/abs/2609.26847] **A**
+
+## 10. Sweep what you left open
+- **An open issue is not an unanswered issue.** Read the timeline, not the state. abx#148 is still open, but a maintainer's PR that cross-references it (abx#177) merged and fixed it. Before working on or pinging an open issue, look for a merged cross-referenced PR. Evidence: the timeline of abx#148 (our issue). **C**
+- **Sweep the threads you commented on, not only the ones you opened.** A search by author misses them. We had comment-only threads on julia#64271, VCVio#1154 and cslib#1243 that the author-based sweep never listed. Use `gh search issues --commenter <login>` next to `--author`. Evidence: those three threads (issues we commented on, not PRs). **C**
 
 ## Tips that measurably cut rounds
 
